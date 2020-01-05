@@ -138,36 +138,7 @@ function refreshHandCardsDiv(handcards) {
 
 }
 
-function getInitDeck() {
-	let deck = [];
-	deck.push(CardUtil.getCardInstance(CARD1));
-	deck.push(CardUtil.getCardInstance(CARD1));
-	deck.push(CardUtil.getCardInstance(CARD1));
-	deck.push(CardUtil.getCardInstance(CARD2));
-	deck.push(CardUtil.getCardInstance(CARD2));
-	deck.push(CardUtil.getCardInstance(CARD2));
-	deck.push(CardUtil.getCardInstance(CARD3));
-	deck.push(CardUtil.getCardInstance(CARD3));
-	deck.push(CardUtil.getCardInstance(CARD3));
-	deck.push(CardUtil.getCardInstance(CARD4));
-	deck.push(CardUtil.getCardInstance(CARD4));
-	deck.push(CardUtil.getCardInstance(CARD4));
-	deck.push(CardUtil.getCardInstance(CARD5));
-	deck.push(CardUtil.getCardInstance(CARD5));
-	deck.push(CardUtil.getCardInstance(CARD5));
-	deck.push(CardUtil.getCardInstance(CARD6));
-	deck.push(CardUtil.getCardInstance(CARD6));
-	deck.push(CardUtil.getCardInstance(CARD6));
-	deck.push(CardUtil.getCardInstance(CARD7));
-	deck.push(CardUtil.getCardInstance(CARD7));
-	deck.push(CardUtil.getCardInstance(CARD7));
-	deck.push(CardUtil.getCardInstance(CARD8));
-	deck.push(CardUtil.getCardInstance(CARD8));
-	deck.push(CardUtil.getCardInstance(CARD8));
-	deck.shuffle();
-	return deck;
 
-}
 
 function initMonDiv(divid, monData) {
 	refreshMonDiv(divid, monData);
@@ -186,7 +157,7 @@ function initMonAndPlayer() {
 	initMonDiv("div3", mon3);
 
 	player = MonData.getPlayerInstance();
-	Turn.deck = getInitDeck();
+	Turn.deck = CommonUtil.getDeckStorage().shuffle();
 	for (let i = 0; i < 5; i++) {
 		let tmpcard = Turn.deck.pop();
 		Turn.handCardList.push(tmpcard);
@@ -211,6 +182,14 @@ function initClick() {
 		}
 		if(checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall"){
 			playerAttAll();		
+		}else if(checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal"){
+			Turn.addAnim(function() {
+				Anim.playerGoAct("player_div", function() {
+					Turn.nextAnim();
+				});
+			});
+			comMonBeHurt("player_div");
+			Turn.nextAnim();
 		}else{
 			if (playerAttOne() == 0) { //没有目标怪兽
 				return;
@@ -239,7 +218,12 @@ function initClick() {
 
 	});
 	$("#btn2").on("click", function() {
-		// playerAttAll();
+		let r = confirm("你确定要离开这场战斗？");
+		if (r == true) {
+			location.href = "index.html";
+		} else {
+		
+		}
 	});
 
 	$(".mon").on("click", function() {

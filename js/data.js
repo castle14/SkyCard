@@ -1,3 +1,9 @@
+var MonData = {};
+var CommonUtil = {};
+var CardUtil = {};
+var MonList = {};
+var CardList = {};
+
 Array.prototype.shuffle = function() {
 	var array = this;
 	var m = array.length,
@@ -27,10 +33,9 @@ FIRE_MON = {
 		"value": "15"
 	}, {
 		"type": "mag",
-		"value": "8"
+		"value": "5"
 	}]
 }
-var MonData = {};
 
 MonData.getComInstance = function(obj) {
 	let mon = JSON.parse(JSON.stringify(obj));
@@ -119,7 +124,7 @@ MonData.comAct = function(attmon, defmon) {
 	let i = CommonUtil.randomNum(0, n - 1);
 	let o = attmon.actions[i];
 	if (o.type == "att" || o.type == "mag") {
-		return MonData.att(o.value, defmon,o.type);
+		return MonData.att(o.value, defmon, o.type);
 	} else if (o.type == "heal") {
 		return MonData.heal(o.value, attmon);
 	} else if (o.type == "arm") {
@@ -129,7 +134,7 @@ MonData.comAct = function(attmon, defmon) {
 	}
 }
 
-var CommonUtil = {};
+
 /* 
  获取uuid
  */
@@ -153,7 +158,41 @@ CommonUtil.randomNum = function(minNum, maxNum) {
 	}
 }
 
-var CardUtil = {};
+CommonUtil.getDeckStorage = function() {
+	return JSON.parse(localStorage.getItem("skycard_deck"));
+}
+
+CommonUtil.initDeckStorage = function() {
+	let deck = [];
+	deck.push(CardUtil.getCardInstance(CARD1));
+	deck.push(CardUtil.getCardInstance(CARD1));
+	deck.push(CardUtil.getCardInstance(CARD1));
+	deck.push(CardUtil.getCardInstance(CARD2));
+	deck.push(CardUtil.getCardInstance(CARD2));
+	deck.push(CardUtil.getCardInstance(CARD2));
+	deck.push(CardUtil.getCardInstance(CARD3));
+	deck.push(CardUtil.getCardInstance(CARD3));
+	deck.push(CardUtil.getCardInstance(CARD3));
+	deck.push(CardUtil.getCardInstance(CARD4));
+	deck.push(CardUtil.getCardInstance(CARD4));
+	deck.push(CardUtil.getCardInstance(CARD4));
+	deck.push(CardUtil.getCardInstance(CARD5));
+	deck.push(CardUtil.getCardInstance(CARD5));
+	deck.push(CardUtil.getCardInstance(CARD5));
+	deck.push(CardUtil.getCardInstance(CARD6));
+	deck.push(CardUtil.getCardInstance(CARD6));
+	deck.push(CardUtil.getCardInstance(CARD6));
+	deck.push(CardUtil.getCardInstance(CARD7));
+	deck.push(CardUtil.getCardInstance(CARD7));
+	deck.push(CardUtil.getCardInstance(CARD7));
+	deck.push(CardUtil.getCardInstance(CARD8));
+	deck.push(CardUtil.getCardInstance(CARD8));
+	deck.push(CardUtil.getCardInstance(CARD8));
+	deck.shuffle();
+	localStorage.setItem("skycard_deck", JSON.stringify(deck));
+	return deck;
+}
+
 CardUtil.getCardInstance = function(obj) {
 	let card = JSON.parse(JSON.stringify(obj));
 	card.id = CommonUtil.getUUID(8);
@@ -196,7 +235,7 @@ CARD5 = {
 CARD6 = {
 	"name": "红色药剂",
 	"type": "heal",
-	"value": 20,
+	"value": 30,
 	"img": "card/红色药剂.jpg"
 }
 CARD7 = {
@@ -211,3 +250,19 @@ CARD8 = {
 	"value": 10,
 	"img": "card/火炎弹.jpg"
 }
+
+
+
+
+
+
+
+MonList["FIRE_MON"] = FIRE_MON;
+CardList["CARD1"] = CARD1;
+CardList["CARD2"] = CARD2;
+CardList["CARD3"] = CARD3;
+CardList["CARD4"] = CARD4;
+CardList["CARD5"] = CARD5;
+CardList["CARD6"] = CARD6;
+CardList["CARD7"] = CARD7;
+CardList["CARD8"] = CARD8;
