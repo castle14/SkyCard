@@ -1,6 +1,10 @@
 Turn = {
+	comCounter: 3,
 	index: 1,
 	turnOwner: "PLAYER",
+	deck:[],
+	handCardList:[],
+	discardList:[],
 	animList: [],
 	addAnim: function(fn) {
 		this.animList.push(fn);
@@ -20,17 +24,19 @@ Turn = {
 		}
 	},
 	playTurnEnd: function() {
-		console.log("TURN " + this.index + " END!");
+		console.log("【TURN " + this.index + " END】");
+		refreshHandCardsDiv(this.handCardList);
 		this.comTurnStart();
 	},
 	comTurnEnd: function() {
-		console.log("TURN " + this.index + " END!");
+		console.log("【TURN " + this.index + " END】");
 		this.playerTurnStart();
 	},
 	comTurnStart: function() {
 		this.turnOwner = "COMPUTER";
 		this.index = this.index + 1;
-		$(".turn_info_div").text("TURN " + this.index + " " + this.turnOwner);
+		$(".turn_info_div").text("TURN " + this.index);
+		$(".owner_info_div").text(this.turnOwner);
 		initComAtt("div1");
 		initComAtt("div2");
 		initComAtt("div3");
@@ -40,20 +46,45 @@ Turn = {
 	playerTurnStart: function() {
 		this.turnOwner = "PLAYER";
 		this.index = this.index + 1;
-		$(".turn_info_div").text("TURN " + this.index + " " + this.turnOwner);
+		$(".turn_info_div").text("TURN " + this.index);
+		$(".owner_info_div").text(this.turnOwner);
 	}
 }
 
 function initComAtt(divid) {
+	if($("#"+divid).css('display') == "none"){
+		return;
+	}
 	Turn.addAnim(function() {
-		comGoAtt(divid,function(){
+		Anim.comGoAct(divid, function() {
 			Turn.nextAnim();
 		});
 	});
 	Turn.addAnim(function() {
-		beHurt("player_div",123,function(){
-			Turn.nextAnim();
-		});
+		let ret = MonData.comAct(getMonObjFromDivID(divid),player);
+		if(ret.type == "-hp"){
+			Anim.beHurt("player_div", ret.hurtValue, function() {
+				refreshMonDiv("player_div", player);
+				// console.log(player);
+				Turn.nextAnim();
+			});
+		}else if(ret.type == "-ac"){
+			Anim.beShielded("player_div", ret.hurtValue, function() {
+				refreshMonDiv("player_div", player);
+				Turn.nextAnim();
+			});
+		}else if(ret.type == "+hp"){
+			Anim.beHealed(divid, ret.hurtValue, function() {
+				refreshMonDiv(divid, getMonObjFromDivID(divid));
+				Turn.nextAnim();
+			});
+		}else if(ret.type == "+ac"){
+			Anim.beArmed(divid, ret.hurtValue, function() {
+				refreshMonDiv(divid, getMonObjFromDivID(divid));
+				Turn.nextAnim();
+			});
+		}else{
+			console.log("other actions to do ")
+		}
 	});
-	
 }
