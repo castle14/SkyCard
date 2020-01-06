@@ -3,6 +3,7 @@ var CommonUtil = {};
 var CardUtil = {};
 var MonList = {};
 var CardList = {};
+var TaskList = {};
 
 Array.prototype.shuffle = function() {
 	var array = this;
@@ -17,25 +18,7 @@ Array.prototype.shuffle = function() {
 	return array;
 };
 
-FIRE_MON = {
-	"name": "火球怪",
-	"maxHp": 50, //最大生命
-	"maxAc": 50, //最大护甲
-	"img": "fire_mon.jpg",
-	"actions": [{
-		"type": "att",
-		"value": "10"
-	}, {
-		"type": "heal",
-		"value": "20"
-	}, {
-		"type": "arm",
-		"value": "15"
-	}, {
-		"type": "mag",
-		"value": "5"
-	}]
-}
+
 
 MonData.getComInstance = function(obj) {
 	let mon = JSON.parse(JSON.stringify(obj));
@@ -44,7 +27,7 @@ MonData.getComInstance = function(obj) {
 	mon.status = [];
 	return mon;
 }
-MonData.getPlayerInstance = function() {
+/* MonData.getPlayerInstance = function() {
 	let mon = {};
 	mon.name = "PLAYER"
 	mon.maxHp = 100;
@@ -53,7 +36,7 @@ MonData.getPlayerInstance = function() {
 	mon.ac = mon.maxAc;
 	mon.img = "player/英雄小子.jpg";
 	return mon;
-}
+} */
 /* 
  怪兽或者玩家进行物理攻击
  */
@@ -161,6 +144,15 @@ CommonUtil.randomNum = function(minNum, maxNum) {
 CommonUtil.getDeckStorage = function() {
 	return JSON.parse(localStorage.getItem("skycard_deck"));
 }
+CommonUtil.getPlayerStorage = function() {
+	return JSON.parse(localStorage.getItem("skycard_player"));
+}
+CommonUtil.saveDeckStorage = function(dck) {
+	localStorage.setItem("skycard_deck", JSON.stringify(dck));
+}
+CommonUtil.savePlayerStorage = function(ply) {
+	localStorage.setItem("skycard_deck", JSON.stringify(ply));
+}
 
 CommonUtil.initDeckStorage = function() {
 	let deck = [];
@@ -192,14 +184,70 @@ CommonUtil.initDeckStorage = function() {
 	localStorage.setItem("skycard_deck", JSON.stringify(deck));
 	return deck;
 }
-
+CommonUtil.initPlayerStorage = function() {
+	let mon = {};
+	mon.name = "PLAYER";
+	mon.maxHp = 100;
+	mon.maxAc = 100;
+	mon.hp = mon.maxHp;
+	mon.ac = mon.maxAc;
+	mon.img = "player/英雄小子.jpg";
+	localStorage.setItem("skycard_player", JSON.stringify(mon));
+	return mon;
+}
+CommonUtil.saveTaskState = function(tsklst) {
+	localStorage.setItem("skycard_tasklist", JSON.stringify(tsklst));
+}
+CommonUtil.getTaskState = function() {
+	return JSON.parse(localStorage.getItem("skycard_tasklist"));
+}
+CommonUtil.initTaskState = function() {
+	return localStorage.setItem("skycard_tasklist", JSON.stringify(TaskList));
+}
 CardUtil.getCardInstance = function(obj) {
 	let card = JSON.parse(JSON.stringify(obj));
 	card.id = CommonUtil.getUUID(8);
 	return card;
 }
-
-
+/* 怪兽的初始化数据 */
+FIRE_MON = {
+	"name": "火球怪",
+	"maxHp": 50, //最大生命
+	"maxAc": 50, //最大护甲
+	"img": "fire_mon.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "10"
+	}, {
+		"type": "heal",
+		"value": "20"
+	}, {
+		"type": "arm",
+		"value": "15"
+	}, {
+		"type": "mag",
+		"value": "5"
+	}]
+}
+HAT_MON = {
+	"name": "帽子怪",
+	"maxHp": 25, //最大生命
+	"maxAc": 75, //最大护甲
+	"img": "hat_mon.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "5"
+	}, {
+		"type": "heal",
+		"value": "10"
+	}, {
+		"type": "arm",
+		"value": "25"
+	}, {
+		"type": "mag",
+		"value": "2"
+	}]
+}
 /* 卡牌的初始化数据 */
 
 CARD1 = {
@@ -258,6 +306,8 @@ CARD8 = {
 
 
 MonList["FIRE_MON"] = FIRE_MON;
+MonList["HAT_MON"] = HAT_MON;
+
 CardList["CARD1"] = CARD1;
 CardList["CARD2"] = CARD2;
 CardList["CARD3"] = CARD3;
@@ -266,3 +316,18 @@ CardList["CARD5"] = CARD5;
 CardList["CARD6"] = CARD6;
 CardList["CARD7"] = CARD7;
 CardList["CARD8"] = CARD8;
+TaskList["task1"] = {
+	"taskname": "test1",
+	"taskcontent": ["HAT_MON", "HAT_MON", "HAT_MON"],
+	"isComplete": "no"
+};
+TaskList["task2"] = {
+	"taskname": "test2",
+	"taskcontent": ["HAT_MON", "FIRE_MON", "HAT_MON"],
+	"isComplete": "no"
+};
+TaskList["task3"] = {
+	"taskname": "test3",
+	"taskcontent": ["FIRE_MON", "FIRE_MON", "FIRE_MON"],
+	"isComplete": "no"
+};

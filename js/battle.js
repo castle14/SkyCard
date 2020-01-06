@@ -146,17 +146,20 @@ function initMonDiv(divid, monData) {
 }
 
 function initMonAndPlayer() {
-	mon1 = MonData.getComInstance(FIRE_MON);
+	let tmptasks = CommonUtil.getTaskState();
+	let monNameList = tmptasks["task2"].taskcontent;
+	
+	mon1 = MonData.getComInstance(MonList[monNameList[0]]);
 	mon1.name = mon1.name + "1";
 	initMonDiv("div1", mon1);
-	mon2 = MonData.getComInstance(FIRE_MON);
+	mon2 = MonData.getComInstance(MonList[monNameList[1]]);
 	mon2.name = mon2.name + "2";
 	initMonDiv("div2", mon2);
-	mon3 = MonData.getComInstance(FIRE_MON);
+	mon3 = MonData.getComInstance(MonList[monNameList[2]]);
 	mon3.name = mon3.name + "3";
 	initMonDiv("div3", mon3);
 
-	player = MonData.getPlayerInstance();
+	player = CommonUtil.getPlayerStorage();
 	Turn.deck = CommonUtil.getDeckStorage().shuffle();
 	for (let i = 0; i < 5; i++) {
 		let tmpcard = Turn.deck.pop();
