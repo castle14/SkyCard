@@ -147,7 +147,7 @@ function initMonDiv(divid, monData) {
 
 function initMonAndPlayer() {
 	let tmptasks = CommonUtil.getTaskState();
-	let monNameList = tmptasks["task2"].taskcontent;
+	let monNameList = tmptasks["task_diamond_8"].taskcontent;
 	
 	mon1 = MonData.getComInstance(MonList[monNameList[0]]);
 	mon1.name = mon1.name + "1";

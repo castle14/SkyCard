@@ -248,6 +248,167 @@ HAT_MON = {
 		"value": "2"
 	}]
 }
+MON_DIAMOND_1 = {
+	"name": "红钻鼠",
+	"maxHp": 25, //最大生命
+	"maxAc": 25, //最大护甲
+	"img": "diamond/2183.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "5"
+	}, {
+		"type": "att",
+		"value": "6"
+	}, {
+		"type": "att",
+		"value": "7"
+	}, {
+		"type": "att",
+		"value": "8"
+	}]
+}
+MON_DIAMOND_2 = {
+	"name": "紫钻猫",
+	"maxHp": 50, //最大生命
+	"maxAc": 25, //最大护甲
+	"img": "diamond/2182.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "5"
+	}, {
+		"type": "att",
+		"value": "8"
+	}, {
+		"type": "att",
+		"value": "10"
+	}, {
+		"type": "att",
+		"value": "12"
+	}]
+}
+MON_DIAMOND_3 = {
+	"name": "蓝钻鹰",
+	"maxHp": 50, //最大生命
+	"maxAc": 10, //最大护甲
+	"img": "diamond/2192.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "10"
+	}, {
+		"type": "att",
+		"value": "12"
+	}, {
+		"type": "att",
+		"value": "15"
+	}, {
+		"type": "att",
+		"value": "18"
+	}]
+}
+
+MON_DIAMOND_4 = {
+	"name": "绿钻龟",
+	"maxHp": 25, //最大生命
+	"maxAc": 50, //最大护甲
+	"img": "diamond/2181.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "10"
+	}, {
+		"type": "arm",
+		"value": "20"
+	}, {
+		"type": "arm",
+		"value": "15"
+	}, {
+		"type": "att",
+		"value": "12"
+	}]
+}
+
+MON_DIAMOND_5 = {
+	"name": "黄钻虎",
+	"maxHp": 50, //最大生命
+	"maxAc": 50, //最大护甲
+	"img": "diamond/2180.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "15"
+	}, {
+		"type": "att",
+		"value": "16"
+	}, {
+		"type": "att",
+		"value": "17"
+	}, {
+		"type": "att",
+		"value": "20"
+	}]
+}
+MON_DIAMOND_6 = {
+	"name": "琥珀猛犸",
+	"maxHp": 100, //最大生命
+	"maxAc": 25, //最大护甲
+	"img": "diamond/2174.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "15"
+	}, {
+		"type": "att",
+		"value": "16"
+	}, {
+		"type": "att",
+		"value": "20"
+	}, {
+		"type": "heal",
+		"value": "40"
+	}]
+}
+MON_DIAMOND_7 = {
+	"name": "青玉天马",
+	"maxHp": 50, //最大生命
+	"maxAc": 50, //最大护甲
+	"img": "diamond/2188.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "15"
+	}, {
+		"type": "mag",
+		"value": "7"
+	}, {
+		"type": "mag",
+		"value": "8"
+	}, {
+		"type": "mag",
+		"value": "15"
+	}]
+}
+
+MON_DIAMOND_8 = {
+	"name": "彩虹龙",
+	"maxHp": 200, //最大生命
+	"maxAc": 200, //最大护甲
+	"img": "diamond/2662.jpg",
+	"actions": [{
+		"type": "att",
+		"value": "20"
+	}, {
+		"type": "att",
+		"value": "25"
+	}, {
+		"type": "mag",
+		"value": "10"
+	}, {
+		"type": "mag",
+		"value": "13"
+	}, {
+		"type": "heal",
+		"value": "75"
+	}, {
+		"type": "arm",
+		"value": "50"
+	}]
+}
 /* 卡牌的初始化数据 */
 
 CARD1 = {
@@ -304,10 +465,21 @@ CARD8 = {
 
 
 
-
+//对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
 MonList["HAT_MON"] = HAT_MON;
+MonList["MON_DIAMOND_1"] = MON_DIAMOND_1;
+MonList["MON_DIAMOND_2"] = MON_DIAMOND_2;
+MonList["MON_DIAMOND_3"] = MON_DIAMOND_3;
+MonList["MON_DIAMOND_4"] = MON_DIAMOND_4;
+MonList["MON_DIAMOND_5"] = MON_DIAMOND_5;
+MonList["MON_DIAMOND_6"] = MON_DIAMOND_6;
+MonList["MON_DIAMOND_7"] = MON_DIAMOND_7;
+MonList["MON_DIAMOND_8"] = MON_DIAMOND_8;
 
+
+
+//对卡牌进行注册
 CardList["CARD1"] = CARD1;
 CardList["CARD2"] = CARD2;
 CardList["CARD3"] = CARD3;
@@ -329,5 +501,46 @@ TaskList["task2"] = {
 TaskList["task3"] = {
 	"taskname": "test3",
 	"taskcontent": ["FIRE_MON", "FIRE_MON", "FIRE_MON"],
+	"isComplete": "no"
+};
+
+TaskList["task_diamond_1"] = {
+	"taskname": "task_diamond_1",
+	"taskcontent": ["MON_DIAMOND_1", "MON_DIAMOND_1", "MON_DIAMOND_1"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_2"] = {
+	"taskname": "task_diamond_2",
+	"taskcontent": ["MON_DIAMOND_1", "MON_DIAMOND_2", "MON_DIAMOND_1"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_3"] = {
+	"taskname": "task_diamond_3",
+	"taskcontent": ["MON_DIAMOND_1", "MON_DIAMOND_3", "MON_DIAMOND_2"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_4"] = {
+	"taskname": "task_diamond_3",
+	"taskcontent": ["MON_DIAMOND_3", "MON_DIAMOND_4", "MON_DIAMOND_2"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_5"] = {
+	"taskname": "task_diamond_3",
+	"taskcontent": ["MON_DIAMOND_3", "MON_DIAMOND_5", "MON_DIAMOND_4"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_6"] = {
+	"taskname": "task_diamond_3",
+	"taskcontent": ["MON_DIAMOND_5", "MON_DIAMOND_6", "MON_DIAMOND_4"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_7"] = {
+	"taskname": "task_diamond_3",
+	"taskcontent": ["MON_DIAMOND_5", "MON_DIAMOND_7", "MON_DIAMOND_6"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_8"] = {
+	"taskname": "task_diamond_3",
+	"taskcontent": ["MON_DIAMOND_7", "MON_DIAMOND_8", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };

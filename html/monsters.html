@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>怪兽图鉴</title>
+		<link type="text/css" rel="styleSheet" href="../css/base.css" />
+		<link type="text/css" rel="styleSheet" href="../css/monters.css" />
+		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
+		<script src="../js/data.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			$(function() {
+				for (i in MonList) {
+					let tmp_mon = MonList[i];
+					let tmp_actions = tmp_mon.actions;
+					let _att_val = "";
+					let _mag_val = "";
+					let _arm_val = "";
+					let _heal_val = "";
+					for (j in tmp_actions) {
+						let tmp_act = tmp_actions[j];
+						if (tmp_act.type == "att") {
+							_att_val = _att_val + tmp_act.value + " "
+						}
+						if (tmp_act.type == "mag") {
+							_mag_val = _mag_val + tmp_act.value + " "
+						}
+						if (tmp_act.type == "arm") {
+							_arm_val = _arm_val + tmp_act.value + " "
+						}
+						if (tmp_act.type == "heal") {
+							_heal_val = _heal_val + tmp_act.value + " "
+						}
+					}
+					let tmp_div_str = '<div class="mon_div">';
+					tmp_div_str += '<div class="left_div">';
+					tmp_div_str = tmp_div_str + '<img src="../img/' + tmp_mon.img + '">';
+					tmp_div_str += '</div>';
+					tmp_div_str += '<div class="right_div"><div class="name_div">';
+					tmp_div_str = tmp_div_str + tmp_mon.name + '</div>';
+					tmp_div_str += '<div class="data_div">';
+					tmp_div_str = tmp_div_str + '<div class="data_div_1">MAXHP</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div_2">' + tmp_mon.maxHp + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div_3">MAXAC</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div_4">' + tmp_mon.maxAc + '</div>';
+					tmp_div_str += '</div>';
+					tmp_div_str += '<div class="actions_div_1">';
+					tmp_div_str = tmp_div_str + '<div class="action_value_1">ATT: ' + _att_val + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="action_value_2">MAG: ' + _mag_val + '</div>';
+					tmp_div_str += '</div>';
+					tmp_div_str += '<div class="actions_div_2">';
+					tmp_div_str = tmp_div_str + '<div class="action_value_3">ARM: ' + _arm_val + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="action_value_4">HEAL: ' + _heal_val + '</div>';
+					tmp_div_str += '</div></div></div>';
+					console.log(tmp_mon);
+					$(tmp_div_str).appendTo($(".content_div"));
+				}
+			});
+		</script>
+	</head>
+	<body>
+		<div class="header_div">怪兽图鉴</div>
+		<div class="content_div">
+			<!-- 			<div class="mon_div">
+				<div class="left_div">
+					<img src="../img/ex_mon.jpg">
+				</div>
+				<div class="right_div">
+					<div class="name_div">--</div>
+					<div class="data_div">
+						<div class="data_div_1">MAXHP</div>
+						<div class="data_div_2">--</div>
+						<div class="data_div_3">MAXAC</div>
+						<div class="data_div_4">--</div>
+					</div>
+					<div class="actions_div_1">
+						<div class="action_value_1">ATT: --</div>
+						<div class="action_value_2">MAG: --</div>
+					</div>
+					<div class="actions_div_2">
+						<div class="action_value_3">ARM: --</div>
+						<div class="action_value_4">HEAL: --</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</body>
+</html>

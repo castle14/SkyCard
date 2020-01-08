@@ -1,0 +1,144 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
+
+.header_div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 20px;
+	border-bottom: lightgrey solid 1px;
+	background-color: black;
+}
+
+.content_div {
+	margin-top: 66px;
+	color: lightgrey;
+}
+
+.mon_div {
+	height: 120px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	border: lightgrey solid 1px;
+}
+
+.left_div {
+	height: 118px;
+	width: 118px;
+	background-color: darkgray;
+	float: left;
+}
+
+.left_div img {
+	height: 118px;
+	width: 118px;
+}
+
+.right_div {
+	height: 118px;
+	width: calc(100% - 118px);
+	/* background-color: ; */
+	float: left;
+}
+
+.name_div {
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	border-bottom: lightgrey solid 1px;
+	padding-left: 3px;
+}
+
+.data_div {
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	border-bottom: lightgrey solid 1px;
+	text-align: center;
+}
+
+.data_div_1 {
+	height: 30px;
+	width: 30%;
+	line-height: 30px;
+	float: left;
+	border-right: lightgrey solid 1px;
+}
+
+.data_div_2 {
+	height: 30px;
+	width: 20%;
+	line-height: 30px;
+	float: left;
+	border-right: lightgrey solid 1px;
+}
+
+.data_div_3 {
+	height: 30px;
+	width: 30%;
+	line-height: 30px;
+	float: left;
+	border-right: lightgrey solid 1px;
+}
+
+.data_div_4 {
+	height: 30px;
+	width: 20%;
+	line-height: 30px;
+	padding-left: 3px;
+	float: left;
+}
+.actions_div_1 {
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	border-bottom: lightgrey solid 1px;
+	padding-left: 3px;
+}
+.actions_div_2 {
+	height: 28px;
+	width: 100%;
+	line-height: 28px;
+	padding-left: 3px;
+}
+
+.action_value_1{
+	height: 30px;
+	width: 50%;
+	line-height: 30px;
+	float: left;
+	border-right: lightgrey solid 1px;
+	padding-left: 3px;
+}
+.action_value_2{
+	height: 30px;
+	width: 50%;
+	line-height: 30px;
+	float: left;
+	padding-left: 3px;
+}
+.action_value_3{
+	height: 28px;
+	width: 50%;
+	line-height: 28px;
+	float: left;
+	border-right: lightgrey solid 1px;
+	padding-left: 3px;
+}
+.action_value_4{
+	height: 28px;
+	width: 50%;
+	line-height: 28px;
+	float: left;
+	padding-left: 3px;
+}
