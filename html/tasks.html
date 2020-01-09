@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>怪兽图鉴</title>
+		<link type="text/css" rel="styleSheet" href="../css/base.css" />
+		<link type="text/css" rel="styleSheet" href="../css/tasks.css" />
+		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
+		<script src="../js/data.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			$(function() {
+				$(".back_div").on("click", function() {
+					history.back();
+				});
+				let tmptasklist = CommonUtil.getTaskState();
+				if (tmptasklist == null) {
+					alert("TaskList is null");
+					return;
+				}
+				for (i in tmptasklist) {
+					let tmp_div_str = '';
+					let mon_arr = tmptasklist[i].taskcontent;
+					let tmp_mon_0 = MonList[mon_arr[0]];
+					let tmp_mon_1 = MonList[mon_arr[1]];
+					let tmp_mon_2 = MonList[mon_arr[2]];
+					tmp_div_str = tmp_div_str + '<div class="task_div" task_name="'+i+'">';
+					tmp_div_str = tmp_div_str + '<div class="task_name_div">' + tmptasklist[i].taskname + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_0.img + '"></div>';
+					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_1.img + '"></div>';
+					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_2.img + '"></div>';
+					tmp_div_str = tmp_div_str + '<div class="task_state_div">' + tmptasklist[i].isComplete + '</div>';
+					tmp_div_str = tmp_div_str + '</div>';
+					$(tmp_div_str).appendTo($(".content_div"));
+				}
+				$(".task_div").on("click",function(){
+					let _url = "battle.html?taskname=" + $(this).attr("task_name");
+					location.href = _url;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="header_div">任务清单</div>
+		<div class="back_div">
+			&lt;-</div>
+		<div class="content_div">
+			<!-- <div class="task_div">
+				<div class="task_name_div">task1</div>
+				<div class="task_img_div"><img src="../img/ex_mon.jpg"></div>
+				<div class="task_img_div"><img src="../img/ex_mon.jpg"></div>
+				<div class="task_img_div"><img src="../img/ex_mon.jpg"></div>
+				<div class="task_state_div">√</div> -->
+			</div>
+		</div>
+	</body>
+</html>

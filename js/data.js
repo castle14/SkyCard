@@ -140,7 +140,9 @@ CommonUtil.randomNum = function(minNum, maxNum) {
 			break;
 	}
 }
-
+CommonUtil.clearStorage = function() {
+	localStorage.clear();
+}
 CommonUtil.getDeckStorage = function() {
 	return JSON.parse(localStorage.getItem("skycard_deck"));
 }
@@ -204,6 +206,19 @@ CommonUtil.getTaskState = function() {
 CommonUtil.initTaskState = function() {
 	return localStorage.setItem("skycard_tasklist", JSON.stringify(TaskList));
 }
+CommonUtil.getRequest = function () {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+} 
+
 CardUtil.getCardInstance = function(obj) {
 	let card = JSON.parse(JSON.stringify(obj));
 	card.id = CommonUtil.getUUID(8);
@@ -414,7 +429,7 @@ MON_DIAMOND_8 = {
 CARD1 = {
 	"name": "传说之剑",
 	"type": "attone",
-	"value": 15,
+	"value": 50,
 	"img": "card/传说之剑.jpg"
 }
 CARD2 = {
@@ -459,11 +474,156 @@ CARD8 = {
 	"value": 10,
 	"img": "card/火炎弹.jpg"
 }
-
-
-
-
-
+CARD9 = {
+	"name": "灵魂之斧",
+	"type": "magone",
+	"value": 20,
+	"img": "card/灵魂之斧.jpg"
+}
+CARD10 = {
+	"name": "麻药",
+	"type": "heal",
+	"value": 20,
+	"img": "card/麻药.jpg"
+}
+CARD11 = {
+	"name": "魔剑",
+	"type": "attone",
+	"value": 5,
+	"img": "card/魔剑.jpg"
+}
+CARD12 = {
+	"name": "破神剑",
+	"type": "attone",
+	"value": 12,
+	"img": "card/破神剑.jpg"
+}
+CARD13 = {
+	"name": "闪电之剑",
+	"type": "attone",
+	"value": 25,
+	"img": "card/闪电之剑.jpg"
+}
+CARD14 = {
+	"name": "圣剑",
+	"type": "attone",
+	"value": 30,
+	"img": "card/圣剑.jpg"
+}
+CARD15 = {
+	"name": "特殊飓风",
+	"type": "magone",
+	"value": 25,
+	"img": "card/特殊飓风.jpg"
+}
+CARD16 = {
+	"name": "天狗羽扇",
+	"type": "attone",
+	"value": 3,
+	"img": "card/天狗羽扇.jpg"
+}
+CARD17 = {
+	"name": "铁斧",
+	"type": "attone",
+	"value": 12,
+	"img": "card/铁斧.jpg"
+}
+CARD18 = {
+	"name": "银之弓矢",
+	"type": "attone",
+	"value": 25,
+	"img": "card/银之弓矢.jpg"
+}
+CARD19 = {
+	"name": "竹光",
+	"type": "attone",
+	"value": 10,
+	"img": "card/竹光.jpg"
+}
+CARD20 = {
+	"name": "宝石爆破",
+	"type": "magone",
+	"value": 24,
+	"img": "card/宝石爆破.jpg"
+}
+CARD21 = {
+	"name": "灼热之枪",
+	"type": "attone",
+	"value": 24,
+	"img": "card/灼热之枪.jpg"
+}
+CARD22 = {
+	"name": "辐射炮",
+	"type": "magone",
+	"value": 30,
+	"img": "card/辐射炮.jpg"
+}
+CARD23 = {
+	"name": "钢铁巨剑",
+	"type": "attone",
+	"value": 11,
+	"img": "card/钢铁巨剑.jpg"
+}
+CARD24 = {
+	"name": "红宝石之光",
+	"type": "heal",
+	"value": 60,
+	"img": "card/红宝石之光.jpg"
+}
+CARD25 = {
+	"name": "卡通锁链",
+	"type": "attone",
+	"value": 7,
+	"img": "card/卡通锁链.jpg"
+}
+CARD26 = {
+	"name": "蓝宝石之光",
+	"type": "heal",
+	"value": 30,
+	"img": "card/蓝宝石之光.jpg"
+}
+CARD27 = {
+	"name": "魔法泡泡",
+	"type": "magone",
+	"value": 8,
+	"img": "card/魔法泡泡.jpg"
+}
+CARD28 = {
+	"name": "魔界之雷",
+	"type": "magone",
+	"value": 18,
+	"img": "card/魔界之雷.jpg"
+}
+CARD29 = {
+	"name": "魔闪光",
+	"type": "magall",
+	"value": 8,
+	"img": "card/魔闪光.jpg"
+}
+CARD30 = {
+	"name": "扰乱三角波",
+	"type": "magone",
+	"value": 25,
+	"img": "card/扰乱三角波.jpg"
+}
+CARD31 = {
+	"name": "神鹰三角波",
+	"type": "magone",
+	"value": 25,
+	"img": "card/神鹰三角波.jpg"
+}
+CARD32 = {
+	"name": "深海锁链",
+	"type": "attone",
+	"value": 8,
+	"img": "card/深海锁链.jpg"
+}
+CARD33 = {
+	"name": "神鹰护甲",
+	"type": "arm",
+	"value": 30,
+	"img": "card/神鹰护甲.jpg"
+}
 
 //对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
@@ -488,18 +648,44 @@ CardList["CARD5"] = CARD5;
 CardList["CARD6"] = CARD6;
 CardList["CARD7"] = CARD7;
 CardList["CARD8"] = CARD8;
+CardList["CARD9"] = CARD9;
+CardList["CARD10"] = CARD10;
+CardList["CARD11"] = CARD11;
+CardList["CARD12"] = CARD12;
+CardList["CARD13"] = CARD13;
+CardList["CARD14"] = CARD14;
+CardList["CARD15"] = CARD15;
+CardList["CARD16"] = CARD16;
+CardList["CARD17"] = CARD17;
+CardList["CARD18"] = CARD18;
+CardList["CARD19"] = CARD19;
+CardList["CARD20"] = CARD20;
+CardList["CARD21"] = CARD21;
+CardList["CARD22"] = CARD22;
+CardList["CARD23"] = CARD23;
+CardList["CARD24"] = CARD24;
+CardList["CARD25"] = CARD25;
+CardList["CARD26"] = CARD26;
+CardList["CARD27"] = CARD27;
+CardList["CARD28"] = CARD28;
+CardList["CARD29"] = CARD29;
+CardList["CARD30"] = CARD30;
+CardList["CARD31"] = CARD31;
+CardList["CARD32"] = CARD32;
+CardList["CARD33"] = CARD33;
+
 TaskList["task1"] = {
-	"taskname": "test1",
+	"taskname": "task1",
 	"taskcontent": ["HAT_MON", "HAT_MON", "HAT_MON"],
 	"isComplete": "no"
 };
 TaskList["task2"] = {
-	"taskname": "test2",
+	"taskname": "task2",
 	"taskcontent": ["HAT_MON", "FIRE_MON", "HAT_MON"],
 	"isComplete": "no"
 };
 TaskList["task3"] = {
-	"taskname": "test3",
+	"taskname": "task3",
 	"taskcontent": ["FIRE_MON", "FIRE_MON", "FIRE_MON"],
 	"isComplete": "no"
 };
@@ -520,27 +706,27 @@ TaskList["task_diamond_3"] = {
 	"isComplete": "no"
 };
 TaskList["task_diamond_4"] = {
-	"taskname": "task_diamond_3",
+	"taskname": "task_diamond_4",
 	"taskcontent": ["MON_DIAMOND_3", "MON_DIAMOND_4", "MON_DIAMOND_2"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_5"] = {
-	"taskname": "task_diamond_3",
+	"taskname": "task_diamond_5",
 	"taskcontent": ["MON_DIAMOND_3", "MON_DIAMOND_5", "MON_DIAMOND_4"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_6"] = {
-	"taskname": "task_diamond_3",
+	"taskname": "task_diamond_6",
 	"taskcontent": ["MON_DIAMOND_5", "MON_DIAMOND_6", "MON_DIAMOND_4"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_7"] = {
-	"taskname": "task_diamond_3",
+	"taskname": "task_diamond_7",
 	"taskcontent": ["MON_DIAMOND_5", "MON_DIAMOND_7", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_8"] = {
-	"taskname": "task_diamond_3",
+	"taskname": "task_diamond_8",
 	"taskcontent": ["MON_DIAMOND_7", "MON_DIAMOND_8", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };

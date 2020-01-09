@@ -10,6 +10,9 @@
 		<script src="../js/data.js" type="application/javascript"></script>
 		<script type="application/javascript">
 			$(function() {
+				$(".back_div").on("click", function() {
+					history.back();
+				});
 				for (i in MonList) {
 					let tmp_mon = MonList[i];
 					let tmp_actions = tmp_mon.actions;
@@ -45,14 +48,14 @@
 					tmp_div_str = tmp_div_str + '<div class="data_div_4">' + tmp_mon.maxAc + '</div>';
 					tmp_div_str += '</div>';
 					tmp_div_str += '<div class="actions_div_1">';
-					tmp_div_str = tmp_div_str + '<div class="action_value_1">ATT: ' + _att_val + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="action_value_2">MAG: ' + _mag_val + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="action_value_1">ATT: ' + (_att_val ? _att_val : '--') + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="action_value_2">MGC: ' + (_mag_val ? _mag_val : '--') + '</div>';
 					tmp_div_str += '</div>';
 					tmp_div_str += '<div class="actions_div_2">';
-					tmp_div_str = tmp_div_str + '<div class="action_value_3">ARM: ' + _arm_val + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="action_value_4">HEAL: ' + _heal_val + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="action_value_3">ARM: ' + (_arm_val ? _arm_val : '--') + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="action_value_4">HEAL: ' + (_heal_val ? _heal_val : '--') + '</div>';
 					tmp_div_str += '</div></div></div>';
-					console.log(tmp_mon);
+					// console.log(tmp_mon);
 					$(tmp_div_str).appendTo($(".content_div"));
 				}
 			});
@@ -60,29 +63,9 @@
 	</head>
 	<body>
 		<div class="header_div">怪兽图鉴</div>
+		<div class="back_div">
+			&lt;-</div>
 		<div class="content_div">
-			<!-- 			<div class="mon_div">
-				<div class="left_div">
-					<img src="../img/ex_mon.jpg">
-				</div>
-				<div class="right_div">
-					<div class="name_div">--</div>
-					<div class="data_div">
-						<div class="data_div_1">MAXHP</div>
-						<div class="data_div_2">--</div>
-						<div class="data_div_3">MAXAC</div>
-						<div class="data_div_4">--</div>
-					</div>
-					<div class="actions_div_1">
-						<div class="action_value_1">ATT: --</div>
-						<div class="action_value_2">MAG: --</div>
-					</div>
-					<div class="actions_div_2">
-						<div class="action_value_3">ARM: --</div>
-						<div class="action_value_4">HEAL: --</div>
-					</div>
-				</div>
-			</div> -->
 		</div>
 	</body>
 </html>

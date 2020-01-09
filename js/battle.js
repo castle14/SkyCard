@@ -113,12 +113,12 @@ function refreshMonDiv(divid, monData) {
 			if (Turn.comCounter == 0) {
 				//todo
 				alert("YOU WIN");
-				location.reload();
+				history.back();
 			}
 		} else if (divid == "player_div") {
 			//todo
 			alert("YOU LOSE!");
-			location.reload();
+			history.back();
 		}
 	}
 }
@@ -147,7 +147,16 @@ function initMonDiv(divid, monData) {
 
 function initMonAndPlayer() {
 	let tmptasks = CommonUtil.getTaskState();
-	let monNameList = tmptasks["task_diamond_8"].taskcontent;
+	console.log(tmptasks);
+	let tmpRequest = CommonUtil.getRequest();
+	console.log(tmpRequest);
+	let tmptaskname = tmpRequest["taskname"]?tmpRequest["taskname"]:"task1";
+	console.log(tmptaskname);
+	console.log(tmptasks[tmptaskname]);
+	if(!tmptasks[tmptaskname]){
+		alert("找不到这个任务");
+	}
+	let monNameList = tmptasks[tmptaskname].taskcontent;
 	
 	mon1 = MonData.getComInstance(MonList[monNameList[0]]);
 	mon1.name = mon1.name + "1";
@@ -223,7 +232,7 @@ function initClick() {
 	$("#btn2").on("click", function() {
 		let r = confirm("你确定要离开这场战斗？");
 		if (r == true) {
-			location.href = "index.html";
+			history.back();
 		} else {
 		
 		}

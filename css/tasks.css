@@ -1,0 +1,77 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
+
+.header_div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 20px;
+	border-bottom: lightgrey solid 1px;
+	background-color: black;
+}
+
+.back_div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.content_div {
+	margin-top: 66px;
+	color: lightgrey;
+	margin-bottom: 10px;
+}
+
+.task_div {
+	height: 74px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	line-height: 74px;
+	background-color: black;
+	color: lightgrey;
+	font-size: 12px;
+	border: lightgrey solid 1px;
+}
+
+.task_name_div {
+	height: 74px;
+	line-height: 74px;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: left;
+}
+
+.task_img_div {
+	margin-top: 9px;
+	margin-right: 8px;
+	height: 54px;
+	width: 54px;
+	background-color: #008000;
+	float: left;
+}
+.task_img_div img{
+	height: 54px;
+	width: 54px;
+}
+.task_state_div {
+	height: 74px;
+	line-height: 74px;
+	margin-left: 5px;
+	float: left;
+}
