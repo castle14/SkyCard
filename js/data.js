@@ -150,10 +150,12 @@ CommonUtil.getPlayerStorage = function() {
 	return JSON.parse(localStorage.getItem("skycard_player"));
 }
 CommonUtil.saveDeckStorage = function(dck) {
+	localStorage.removeItem('skycard_deck');
 	localStorage.setItem("skycard_deck", JSON.stringify(dck));
 }
 CommonUtil.savePlayerStorage = function(ply) {
-	localStorage.setItem("skycard_deck", JSON.stringify(ply));
+	localStorage.removeItem('skycard_player');
+	localStorage.setItem("skycard_player", JSON.stringify(ply));
 }
 
 CommonUtil.initDeckStorage = function() {
@@ -198,6 +200,7 @@ CommonUtil.initPlayerStorage = function() {
 	return mon;
 }
 CommonUtil.saveTaskState = function(tsklst) {
+	localStorage.removeItem('skycard_tasklist');
 	localStorage.setItem("skycard_tasklist", JSON.stringify(tsklst));
 }
 CommonUtil.getTaskState = function() {

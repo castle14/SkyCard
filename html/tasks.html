@@ -29,7 +29,8 @@
 					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_0.img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_1.img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_2.img + '"></div>';
-					tmp_div_str = tmp_div_str + '<div class="task_state_div">' + tmptasklist[i].isComplete + '</div>';
+					let tml_color_class = tmptasklist[i].isComplete=="yes"?"background_green":"background_red";
+					tmp_div_str = tmp_div_str + '<div class="task_state_div"><span class="'+tml_color_class+'">' + tmptasklist[i].isComplete + '</span></div>';
 					tmp_div_str = tmp_div_str + '</div>';
 					$(tmp_div_str).appendTo($(".content_div"));
 				}

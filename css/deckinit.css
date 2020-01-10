@@ -1,0 +1,138 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
+
+.header_div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 20px;
+	border-bottom: lightgrey solid 1px;
+	background-color: black;
+}
+
+.back_div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.content_div {
+	position: fixed;
+	top: 56px;
+	left: 0px;
+	right: 0px;
+	bottom: 56px;
+	width: 100%;
+	color: lightgrey;
+	overflow:auto
+}
+
+.choice_div {
+	width: 100%;
+	height: 190px;
+	border-bottom: lightgrey dashed 1px;
+}
+
+.card_div {
+	height: 180px;
+	width: 120px;
+	margin-left: calc(25% - 90px);
+	margin-top: 5px;
+	float: left;
+}
+
+.img_div {
+	height: 120px;
+	width: 120px;
+	border: lightgrey solid 1px;
+}
+
+.img_div img {
+	height: 118px;
+	width: 118px;
+}
+
+.name_div,
+.data_div {
+	width: 120px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	border-bottom: lightgrey solid 1px;
+	border-left: lightgrey solid 1px;
+	border-right: lightgrey solid 1px;
+	background-color: darkslategrey;
+}
+
+.info_div {
+	width: 120px;
+	height: 20px;
+	line-height: 20px;
+
+}
+
+.number_div {
+	width: 80px;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+}
+
+.operation_div {
+	width: 40px;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 5px;
+	float: left;
+	text-decoration: underline;
+	text-align: right;
+}
+
+.pick_result_div {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	font-size: 20px;
+	border-top: lightgrey double 1px;
+	background-color: black;
+}
+.checked_div {
+	/* border: yellow solid 1px; */
+	background-color: yellow;
+}
+.checked_div div{
+	border-color: yellow;
+}
+#checked_number_div{
+	width: 75%;
+	height: 56px;
+	padding-left: 10px;
+	float: left;
+}
+#save_deck_btn {
+	width: 25%;
+	height: 56px;
+	float: left;
+	text-align: center;
+	text-decoration: underline;
+	border-left: lightgrey double 1px;
+}

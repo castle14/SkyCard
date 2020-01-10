@@ -16,11 +16,17 @@
 					$("#todeck").hide();
 					$("#totask").hide();
 				}
+				if(deck == null && player!=null){
+					$("#todeck").show();
+				}
+				if(deck != null && player!=null){
+					$("#todeck").hide();
+				}
 				$("#restart").on("click", function() {
 					let r = confirm("你确定要初始化游戏？");
 					if (r == true) {
 						CommonUtil.clearStorage();
-						CommonUtil.initDeckStorage();
+						// CommonUtil.initDeckStorage();
 						CommonUtil.initPlayerStorage();
 						CommonUtil.initTaskState();
 						location.reload();
@@ -37,12 +43,15 @@
 				$("#tocard").on("click", function() {
 					location.href = "cards.html";
 				});
+				$("#todeck").on("click", function() {
+					location.href = "deckinit.html";
+				});
 			});
 		</script>
 	</head>
 	<body>
 		<div class="title">SKY CARD</div>
-		<div class="menu_item" id="todeck">卡 组</div>
+		<div class="menu_item" id="todeck">卡 组 初 始 化</div>
 		<div class="menu_item" id="totask">任 务</div>
 		
 		<div class="menu_item" id="tocard">卡 牌 图 鉴</div>

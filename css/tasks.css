@@ -75,3 +75,10 @@ body {
 	margin-left: 5px;
 	float: left;
 }
+.background_green{
+	background-color: darkgreen;
+}
+
+.background_red{
+	background-color: darkred;
+}

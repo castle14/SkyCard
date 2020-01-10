@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>卡组初始化</title>
+		<link type="text/css" rel="styleSheet" href="../css/base.css" />
+		<link type="text/css" rel="styleSheet" href="../css/deckinit.css" />
+		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
+		<script src="../js/data.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			$(function() {
+				$(".back_div").on("click", function() {
+					history.back();
+				});
+				let tmp_cardtype_number = 33;
+				let tmp_deck_cardnumber = 20;
+				let tmp_cardlist_prototype = [];
+				for (i in CardList) {
+					tmp_cardlist_prototype.push(CardList[i]);
+				}
+				let tmp_cardlist_1 = JSON.parse(JSON.stringify(tmp_cardlist_prototype)).shuffle();
+				let tmp_cardlist_2 = JSON.parse(JSON.stringify(tmp_cardlist_prototype)).shuffle();
+				let tmp_cardlist_3 = JSON.parse(JSON.stringify(tmp_cardlist_prototype)).shuffle();
+				for (let i = 0; i < tmp_deck_cardnumber; i++) {
+
+					let tmp_class_name = "choice_" + i;
+					let tmp_div_str = "";
+					tmp_div_str = tmp_div_str + '<div class="choice_div">';
+
+					let tmp_card_1 = tmp_cardlist_1.shift();
+					let tmp_card_2 = tmp_cardlist_2.shift();
+					let tmp_card_3 = tmp_cardlist_3.shift();
+					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\''+JSON.stringify(tmp_card_1)+'\'>';
+					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_1.img + '"></div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_1.name + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div">' + tmp_card_1.type + ': ' + tmp_card_1.value + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="info_div">';
+					tmp_div_str = tmp_div_str + '</div></div>';
+
+					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\''+JSON.stringify(tmp_card_2)+'\'>';
+					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_2.img + '"></div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_2.name + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div">' + tmp_card_2.type + ': ' + tmp_card_2.value + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="info_div">';
+					tmp_div_str = tmp_div_str + '</div></div>';
+
+					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\''+JSON.stringify(tmp_card_3)+'\'>';
+					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_3.img + '"></div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_3.name + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div">' + tmp_card_3.type + ': ' + tmp_card_3.value + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="info_div">';
+					tmp_div_str = tmp_div_str + '</div></div>';
+					tmp_div_str = tmp_div_str + '</div>';
+					$(tmp_div_str).appendTo($(".content_div"));
+
+					$("." + tmp_class_name).on("click", function() {
+						$("." + tmp_class_name).removeClass("checked_div");
+						$(this).addClass("checked_div");
+						$("#checked_number_div span").text($(".checked_div").length);
+					});
+				}
+				
+				$("#save_deck_btn").on("click",function(){
+					if($(".checked_div").length != 20){
+						alert("卡组不足20张，不能保存！");
+					}else{
+						let tmp_deck = [];
+						$(".checked_div").each(function(i,o){
+							let tmp_card = JSON.parse($(this).attr("card_info"));
+							tmp_deck.push(tmp_card);
+							
+						});
+						console.log(tmp_deck);
+						CommonUtil.saveDeckStorage(tmp_deck);
+						alert("保存卡组成功！");
+						history.back();
+					}
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div class="header_div">卡组初始化</div>
+		<div class="back_div">
+			&lt;-</div>
+		<div class="content_div">
+			<!-- <div class="choice_div">
+				<div class="card_div">
+					<div class="img_div"><img src="../img/card/电击鞭.jpg"></div>
+					<div class="name_div">电击鞭</div>
+					<div class="data_div">attall: 8</div>
+					<div class="info_div">
+					</div>
+				</div>
+				<div class="card_div">
+					<div class="img_div"><img src="../img/card/电击鞭.jpg"></div>
+					<div class="name_div">电击鞭</div>
+					<div class="data_div">attall: 8</div>
+					<div class="info_div">
+					</div>
+				</div>
+				<div class="card_div">
+					<div class="img_div"><img src="../img/card/电击鞭.jpg"></div>
+					<div class="name_div">电击鞭</div>
+					<div class="data_div">attall: 8</div>
+					<div class="info_div">
+					</div>
+				</div> 
+			</div> -->
+		</div>
+		<div class="pick_result_div">
+			<div id="checked_number_div">已选择卡牌：<span>--</span> 张</div>
+			<div id="save_deck_btn">保存</div>
+		</div>
+		</div>
+	</body>
+</html>

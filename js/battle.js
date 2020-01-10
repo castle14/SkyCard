@@ -3,6 +3,9 @@ var mon2 = null;
 var mon3 = null;
 var player = null;
 var checkedCardInfo = null;
+var tmptasks = CommonUtil.getTaskState();
+var tmpRequest = CommonUtil.getRequest();
+var tmptaskname = tmpRequest["taskname"] ? tmpRequest["taskname"] : "task1";
 
 function comMonBeHurt(divid) {
 	if ($("#" + divid).css('display') == "none") {
@@ -48,10 +51,10 @@ function comMonBeHurt(divid) {
 }
 
 function playerAttAll() {
-	if(checkedCardInfo==null){
+	if (checkedCardInfo == null) {
 		return;
 	}
-	
+
 	Turn.addAnim(function() {
 		Anim.playerGoAct("player_div", function() {
 			Turn.nextAnim();
@@ -105,13 +108,15 @@ function refreshMonDiv(divid, monData) {
 	let tmpdiv = $("#" + divid);
 	tmpdiv.find(".hp_number").css("width", hpPct + "%");
 	tmpdiv.find(".shield_number").css("width", acPct + "%");
+	tmpdiv.find(".state_bar").text(monData.name);
 	if (monData.hp == 0) {
 		if (divid == "div1" || divid == "div2" || divid == "div3") {
 			$("#" + divid).removeClass("mon_checked");
 			$("#" + divid).hide();
 			Turn.comCounter -= 1;
 			if (Turn.comCounter == 0) {
-				//todo
+				tmptasks[tmptaskname].isComplete="yes";
+				CommonUtil.saveTaskState(tmptasks);
 				alert("YOU WIN");
 				history.back();
 			}
@@ -146,18 +151,13 @@ function initMonDiv(divid, monData) {
 }
 
 function initMonAndPlayer() {
-	let tmptasks = CommonUtil.getTaskState();
-	console.log(tmptasks);
-	let tmpRequest = CommonUtil.getRequest();
-	console.log(tmpRequest);
-	let tmptaskname = tmpRequest["taskname"]?tmpRequest["taskname"]:"task1";
-	console.log(tmptaskname);
-	console.log(tmptasks[tmptaskname]);
-	if(!tmptasks[tmptaskname]){
+
+
+	if (!tmptasks[tmptaskname]) {
 		alert("找不到这个任务");
 	}
 	let monNameList = tmptasks[tmptaskname].taskcontent;
-	
+
 	mon1 = MonData.getComInstance(MonList[monNameList[0]]);
 	mon1.name = mon1.name + "1";
 	initMonDiv("div1", mon1);
@@ -192,9 +192,9 @@ function initClick() {
 		if (checkedCardInfo == null) {
 			return;
 		}
-		if(checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall"){
-			playerAttAll();		
-		}else if(checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal"){
+		if (checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall") {
+			playerAttAll();
+		} else if (checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal") {
 			Turn.addAnim(function() {
 				Anim.playerGoAct("player_div", function() {
 					Turn.nextAnim();
@@ -202,7 +202,7 @@ function initClick() {
 			});
 			comMonBeHurt("player_div");
 			Turn.nextAnim();
-		}else{
+		} else {
 			if (playerAttOne() == 0) { //没有目标怪兽
 				return;
 			}
@@ -234,7 +234,7 @@ function initClick() {
 		if (r == true) {
 			history.back();
 		} else {
-		
+
 		}
 	});
 
