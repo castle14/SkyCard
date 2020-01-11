@@ -117,12 +117,21 @@ function refreshMonDiv(divid, monData) {
 			if (Turn.comCounter == 0) {
 				tmptasks[tmptaskname].isComplete="yes";
 				CommonUtil.saveTaskState(tmptasks);
-				alert("YOU WIN");
+				let gmif = CommonUtil.getGameInfo();
+				gmif.win_counter += 1;
+				gmif.opportunity_counter +=1;
+				let random_card = CardUtil.getRandomCard();
+				gmif.extra_cards.push(random_card);
+				CommonUtil.saveGameInfo(gmif);
+				
+				alert("^_^挑战成功!\n你获得了卡片["+random_card.name+"]");
 				history.back();
 			}
 		} else if (divid == "player_div") {
-			//todo
-			alert("YOU LOSE!");
+			let gmif = CommonUtil.getGameInfo();
+			gmif.lose_counter += 1;
+			CommonUtil.saveGameInfo(gmif);
+			alert("o(╥﹏╥)o挑战失败!");
 			history.back();
 		}
 	}

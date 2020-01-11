@@ -4,7 +4,7 @@ var CardUtil = {};
 var MonList = {};
 var CardList = {};
 var TaskList = {};
-
+var GameInfo = {};
 Array.prototype.shuffle = function() {
 	var array = this;
 	var m = array.length,
@@ -209,24 +209,51 @@ CommonUtil.getTaskState = function() {
 CommonUtil.initTaskState = function() {
 	return localStorage.setItem("skycard_tasklist", JSON.stringify(TaskList));
 }
-CommonUtil.getRequest = function () {
-    var url = location.search; //获取url中"?"符后的字串
-    var theRequest = new Object();
-    if (url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        strs = str.split("&");
-        for(var i = 0; i < strs.length; i ++) {
-            theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
-        }
-    }
-    return theRequest;
-} 
+
+CommonUtil.saveGameInfo = function(gmif) {
+	localStorage.removeItem('skycard_game_info');
+	localStorage.setItem("skycard_game_info", JSON.stringify(gmif));
+}
+CommonUtil.getGameInfo = function() {
+	let gmif = JSON.parse(localStorage.getItem("skycard_game_info"));
+	if (gmif) {
+		return gmif;
+	} else {
+		return GameInfo;
+	}
+
+}
+
+
+CommonUtil.getRequest = function() {
+	var url = location.search; //获取url中"?"符后的字串
+	var theRequest = new Object();
+	if (url.indexOf("?") != -1) {
+		var str = url.substr(1);
+		strs = str.split("&");
+		for (var i = 0; i < strs.length; i++) {
+			theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+		}
+	}
+	return theRequest;
+}
 
 CardUtil.getCardInstance = function(obj) {
 	let card = JSON.parse(JSON.stringify(obj));
 	card.id = CommonUtil.getUUID(8);
 	return card;
 }
+CardUtil.getRandomCard = function() {
+	let tmpcards = [];
+	for (i in CardList) {
+		tmpcards.push(CardList[i]);
+	}
+	tmpcards.shuffle();
+	tmpcards.shuffle();
+	tmpcards.shuffle();
+	return CardUtil.getCardInstance(tmpcards.pop());
+}
+
 /* 怪兽的初始化数据 */
 FIRE_MON = {
 	"name": "火球怪",
@@ -235,16 +262,16 @@ FIRE_MON = {
 	"img": "fire_mon.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "10"
+		"value": 10
 	}, {
 		"type": "heal",
-		"value": "20"
+		"value": 20
 	}, {
 		"type": "arm",
-		"value": "15"
+		"value": 15
 	}, {
 		"type": "mag",
-		"value": "5"
+		"value": 5
 	}]
 }
 HAT_MON = {
@@ -254,16 +281,16 @@ HAT_MON = {
 	"img": "hat_mon.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "5"
+		"value": 5
 	}, {
 		"type": "heal",
-		"value": "10"
+		"value": 10
 	}, {
 		"type": "arm",
-		"value": "25"
+		"value": 25
 	}, {
 		"type": "mag",
-		"value": "2"
+		"value": 2
 	}]
 }
 MON_DIAMOND_1 = {
@@ -273,16 +300,16 @@ MON_DIAMOND_1 = {
 	"img": "diamond/2183.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "5"
+		"value": 5
 	}, {
 		"type": "att",
-		"value": "6"
+		"value": 6
 	}, {
 		"type": "att",
-		"value": "7"
+		"value": 7
 	}, {
 		"type": "att",
-		"value": "8"
+		"value": 8
 	}]
 }
 MON_DIAMOND_2 = {
@@ -292,16 +319,16 @@ MON_DIAMOND_2 = {
 	"img": "diamond/2182.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "5"
+		"value": 5
 	}, {
 		"type": "att",
-		"value": "8"
+		"value": 8
 	}, {
 		"type": "att",
-		"value": "10"
+		"value": 10
 	}, {
 		"type": "att",
-		"value": "12"
+		"value": 12
 	}]
 }
 MON_DIAMOND_3 = {
@@ -311,16 +338,16 @@ MON_DIAMOND_3 = {
 	"img": "diamond/2192.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "10"
+		"value": 10
 	}, {
 		"type": "att",
-		"value": "12"
+		"value": 12
 	}, {
 		"type": "att",
-		"value": "15"
+		"value": 15
 	}, {
 		"type": "att",
-		"value": "18"
+		"value": 18
 	}]
 }
 
@@ -331,16 +358,16 @@ MON_DIAMOND_4 = {
 	"img": "diamond/2181.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "10"
+		"value": 10
 	}, {
 		"type": "arm",
-		"value": "20"
+		"value": 20
 	}, {
 		"type": "arm",
-		"value": "15"
+		"value": 15
 	}, {
 		"type": "att",
-		"value": "12"
+		"value": 12
 	}]
 }
 
@@ -351,16 +378,16 @@ MON_DIAMOND_5 = {
 	"img": "diamond/2180.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "15"
+		"value": 15
 	}, {
 		"type": "att",
-		"value": "16"
+		"value": 16
 	}, {
 		"type": "att",
-		"value": "17"
+		"value": 17
 	}, {
 		"type": "att",
-		"value": "20"
+		"value": 20
 	}]
 }
 MON_DIAMOND_6 = {
@@ -370,16 +397,16 @@ MON_DIAMOND_6 = {
 	"img": "diamond/2174.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "15"
+		"value": 15
 	}, {
 		"type": "att",
-		"value": "16"
+		"value": 16
 	}, {
 		"type": "att",
-		"value": "20"
+		"value": 20
 	}, {
 		"type": "heal",
-		"value": "40"
+		"value": 40
 	}]
 }
 MON_DIAMOND_7 = {
@@ -389,16 +416,16 @@ MON_DIAMOND_7 = {
 	"img": "diamond/2188.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "15"
+		"value": 15
 	}, {
 		"type": "mag",
-		"value": "7"
+		"value": 7
 	}, {
 		"type": "mag",
-		"value": "8"
+		"value": 8
 	}, {
 		"type": "mag",
-		"value": "15"
+		"value": 15
 	}]
 }
 
@@ -409,22 +436,22 @@ MON_DIAMOND_8 = {
 	"img": "diamond/2662.jpg",
 	"actions": [{
 		"type": "att",
-		"value": "20"
+		"value": 20
 	}, {
 		"type": "att",
-		"value": "25"
+		"value": 25
 	}, {
 		"type": "mag",
-		"value": "10"
+		"value": 10
 	}, {
 		"type": "mag",
-		"value": "13"
+		"value": 13
 	}, {
 		"type": "heal",
-		"value": "75"
+		"value": 75
 	}, {
 		"type": "arm",
-		"value": "50"
+		"value": 50
 	}]
 }
 /* 卡牌的初始化数据 */
@@ -479,8 +506,8 @@ CARD8 = {
 }
 CARD9 = {
 	"name": "灵魂之斧",
-	"type": "magone",
-	"value": 20,
+	"type": "attone",
+	"value": 28,
 	"img": "card/灵魂之斧.jpg"
 }
 CARD10 = {
@@ -516,7 +543,7 @@ CARD14 = {
 CARD15 = {
 	"name": "特殊飓风",
 	"type": "magone",
-	"value": 25,
+	"value": 18,
 	"img": "card/特殊飓风.jpg"
 }
 CARD16 = {
@@ -582,7 +609,7 @@ CARD25 = {
 CARD26 = {
 	"name": "蓝宝石之光",
 	"type": "heal",
-	"value": 30,
+	"value": 40,
 	"img": "card/蓝宝石之光.jpg"
 }
 CARD27 = {
@@ -676,6 +703,13 @@ CardList["CARD30"] = CARD30;
 CardList["CARD31"] = CARD31;
 CardList["CARD32"] = CARD32;
 CardList["CARD33"] = CARD33;
+
+GameInfo = {
+	win_counter: 0,
+	lose_counter: 0,
+	opportunity_counter: 0,
+	extra_cards: [CardUtil.getCardInstance(CARD1), CardUtil.getCardInstance(CARD2)]
+}
 
 TaskList["task1"] = {
 	"taskname": "task1",

@@ -45,9 +45,10 @@ body {
 
 .left_div {
 	height: 118px;
-	width: 118px;
+	width: 119px;
 	background-color: darkgray;
 	float: left;
+	border-right: lightgrey solid 1px;
 }
 
 .left_div img {
@@ -57,7 +58,7 @@ body {
 
 .right_div {
 	height: 118px;
-	width: calc(100% - 118px);
+	width: calc(100% - 119px);
 	/* background-color: ; */
 	float: left;
 }

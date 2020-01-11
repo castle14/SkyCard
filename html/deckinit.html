@@ -9,6 +9,17 @@
 		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
 		<script src="../js/data.js" type="application/javascript"></script>
 		<script type="application/javascript">
+			function getTxColor(atttype) {
+				if (atttype.indexOf("att") != -1) {
+					return "att_color";
+				} else if (atttype.indexOf("mag") != -1) {
+					return "mag_color";
+				} else if (atttype.indexOf("heal") != -1) {
+					return "heal_color";
+				} else {
+					return "arm_color";
+				}
+			}
 			$(function() {
 				$(".back_div").on("click", function() {
 					history.back();
@@ -31,24 +42,33 @@
 					let tmp_card_1 = tmp_cardlist_1.shift();
 					let tmp_card_2 = tmp_cardlist_2.shift();
 					let tmp_card_3 = tmp_cardlist_3.shift();
-					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\''+JSON.stringify(tmp_card_1)+'\'>';
+					let tmp_tx_color_1 = getTxColor(tmp_card_1.type);
+					let tmp_tx_color_2 = getTxColor(tmp_card_2.type);
+					let tmp_tx_color_3 = getTxColor(tmp_card_3.type);
+					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\'' + JSON.stringify(
+						tmp_card_1) + '\'>';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_1.img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_1.name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div">' + tmp_card_1.type + ': ' + tmp_card_1.value + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color_1 + '">' + tmp_card_1.type +
+						': ' + tmp_card_1.value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 					tmp_div_str = tmp_div_str + '</div></div>';
 
-					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\''+JSON.stringify(tmp_card_2)+'\'>';
+					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\'' + JSON.stringify(
+						tmp_card_2) + '\'>';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_2.img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_2.name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div">' + tmp_card_2.type + ': ' + tmp_card_2.value + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"> <span class="' + tmp_tx_color_2 + '">' + tmp_card_2.type +
+						': ' + tmp_card_2.value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 					tmp_div_str = tmp_div_str + '</div></div>';
 
-					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\''+JSON.stringify(tmp_card_3)+'\'>';
+					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\'' + JSON.stringify(
+						tmp_card_3) + '\'>';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_3.img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_3.name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div">' + tmp_card_3.type + ': ' + tmp_card_3.value + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color_3 + '">' + tmp_card_3.type +
+						': ' + tmp_card_3.value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 					tmp_div_str = tmp_div_str + '</div></div>';
 					tmp_div_str = tmp_div_str + '</div>';
@@ -60,16 +80,17 @@
 						$("#checked_number_div span").text($(".checked_div").length);
 					});
 				}
-				
-				$("#save_deck_btn").on("click",function(){
-					if($(".checked_div").length != 20){
+
+				$("#save_deck_btn").on("click", function() {
+					if ($(".checked_div").length != 20) {
 						alert("卡组不足20张，不能保存！");
-					}else{
+					} else {
 						let tmp_deck = [];
-						$(".checked_div").each(function(i,o){
+						$(".checked_div").each(function(i, o) {
 							let tmp_card = JSON.parse($(this).attr("card_info"));
+							tmp_card.id = CommonUtil.getUUID(8);
 							tmp_deck.push(tmp_card);
-							
+
 						});
 						console.log(tmp_deck);
 						CommonUtil.saveDeckStorage(tmp_deck);
@@ -77,7 +98,7 @@
 						history.back();
 					}
 				});
-				
+
 			});
 		</script>
 	</head>

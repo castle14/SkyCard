@@ -33,6 +33,11 @@ Turn = {
 		this.playerTurnStart();
 	},
 	comTurnStart: function() {
+		if(this.index > 10){
+			mon1.actions[0].value += 1;
+			mon2.actions[0].value += 1;
+			mon3.actions[0].value += 1;
+		}
 		this.turnOwner = "COMPUTER";
 		this.index = this.index + 1;
 		$(".turn_info_div").text("TURN " + this.index);

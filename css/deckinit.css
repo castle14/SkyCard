@@ -39,7 +39,7 @@ body {
 	bottom: 56px;
 	width: 100%;
 	color: lightgrey;
-	overflow:auto
+	overflow:auto;
 }
 
 .choice_div {
@@ -135,4 +135,27 @@ body {
 	text-align: center;
 	text-decoration: underline;
 	border-left: lightgrey double 1px;
+}
+.att_color {
+	background-color: forestgreen;
+	display: inline-block;
+	line-height: 18px;
+}
+
+.mag_color {
+	background-color: darkmagenta;
+	line-height: 18px;
+	display: inline-block;
+}
+
+.heal_color {
+	background-color: darkred;
+	line-height: 18px;
+	display: inline-block;
+}
+
+.arm_color {
+	background-color: darkblue;
+	line-height: 18px;
+	display: inline-block;
 }

@@ -12,16 +12,18 @@
 			$(function() {
 				let deck = CommonUtil.getDeckStorage();
 				let player = CommonUtil.getPlayerStorage();
-				if (deck == null || player==null) {
+				if (deck == null || player == null) {
 					$("#todeck").hide();
 					$("#totask").hide();
+					$("#todeckadjust").hide();
 				}
-				if(deck == null && player!=null){
+				if (deck == null && player != null) {
 					$("#todeck").show();
 				}
-				if(deck != null && player!=null){
+				if (deck != null && player != null) {
 					$("#todeck").hide();
 				}
+
 				$("#restart").on("click", function() {
 					let r = confirm("你确定要初始化游戏？");
 					if (r == true) {
@@ -46,14 +48,18 @@
 				$("#todeck").on("click", function() {
 					location.href = "deckinit.html";
 				});
+				$("#todeckadjust").on("click", function() {
+					location.href = "deckadjust.html";
+				});
 			});
 		</script>
 	</head>
 	<body>
 		<div class="title">SKY CARD</div>
 		<div class="menu_item" id="todeck">卡 组 初 始 化</div>
+		<div class="menu_item" id="todeckadjust">卡 组 调 整</div>
 		<div class="menu_item" id="totask">任 务</div>
-		
+
 		<div class="menu_item" id="tocard">卡 牌 图 鉴</div>
 		<div class="menu_item" id="tomonster">怪 兽 图 鉴</div>
 		<div class="menu_item" id="restart">重 新 开 始</div>

@@ -31,20 +31,59 @@ body {
 	margin-left: 10px;
 }
 
+.info_div_1 {
+	position: fixed;
+	top: 57px;
+	left: 0px;
+	right: 50%;
+	height: 20px;
+	line-height: 20px;
+	color: lightgrey;
+	text-align: center;
+	border-bottom: lightgrey solid 1px;
+	background-color: black;
+	border-right: lightgrey solid 1px;
+}
+
+.info_div_2 {
+	position: fixed;
+	top: 57px;
+	left: 50%;
+	right: 0%;
+	height: 20px;
+	line-height: 20px;
+	color: lightgrey;
+	text-align: center;
+	border-bottom: lightgrey solid 1px;
+	background-color: black;
+}
+
 .content_div_1,
 .content_div_2 {
-	margin-top: 80px;
+	margin-top: 77px;
 	width: 50%;
 	color: lightgrey;
 	margin-bottom: 10px;
 	float: left;
+	height: calc(100% - 77px - 57px);
+	overflow: auto;
+}
+
+.content_div_1 {
+	border-right: lightgrey solid 1px;
+}
+
+.info_div {
+	width: 100%;
+	height: 10px;
+	text-align: center;
 }
 
 .card_div {
 	height: 160px;
 	width: 120px;
 	margin-left: calc(50% - 60px);
-	margin-bottom: 20px;
+	margin-top: 20px;
 	background-color: #006400;
 }
 
@@ -71,30 +110,41 @@ body {
 	background-color: darkslategrey;
 }
 
-.info_div {
-	width: 120px;
-	height: 20px;
-	line-height: 20px;
-
+.pick_result_div {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	font-size: 20px;
+	border-top: lightgrey double 1px;
+	background-color: black;
 }
 
-.number_div {
-	width: 80px;
-	height: 20px;
-	line-height: 20px;
+#checked_number_div {
+	width: 75%;
+	height: 56px;
+	padding-left: 10px;
 	float: left;
 }
 
-.operation_div {
-	width: 40px;
-	height: 20px;
-	line-height: 20px;
-	padding-left: 5px;
+#save_deck_btn {
+	width: 25%;
+	height: 56px;
 	float: left;
+	text-align: center;
 	text-decoration: underline;
-	text-align: right;
+	border-left: lightgrey double 1px;
 }
-
+.checked_div {
+	/* border: yellow solid 1px; */
+	background-color: yellow;
+}
+.checked_div div{
+	border-color: yellow;
+}
 .att_color {
 	background-color: forestgreen;
 	display: inline-block;

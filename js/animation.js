@@ -102,7 +102,7 @@ Anim.showValue = function(divid,text,fn){
 			if (fn != null && fn != undefined) {
 				fn();
 			}
-		}, 350);
+		}, 400);
 	}, 150);
 }
 /* 

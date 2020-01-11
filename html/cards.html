@@ -9,31 +9,42 @@
 		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
 		<script src="../js/data.js" type="application/javascript"></script>
 		<script type="application/javascript">
+			function getTxColor(atttype) {
+				if (atttype.indexOf("att") != -1) {
+					return "att_color";
+				} else if (atttype.indexOf("mag") != -1) {
+					return "mag_color";
+				} else if (atttype.indexOf("heal") != -1) {
+					return "heal_color";
+				} else {
+					return "arm_color";
+				}
+			}
 			$(function() {
 				$(".back_div").on("click", function() {
 					history.back();
 				});
+
 				let cntr = 0;
 				for (i in CardList) {
+					let tmp_tx_color = getTxColor(CardList[i].type);
 					cntr++;
 					let tmp_div_str = '<div class="card_div">';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + CardList[i].img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="name_div">' + CardList[i].name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div">' + CardList[i].type +': '+ CardList[i].value + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="'+tmp_tx_color+'">' + CardList[i].type + ': ' + CardList[i].value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
-					tmp_div_str = tmp_div_str + '<div class="number_div">已拥有: -</div>';
-					tmp_div_str = tmp_div_str + '<div class="operation_div" card_name="'+CardList[i].name+'">分解</div>';
+
 					tmp_div_str = tmp_div_str + '</div></div>';
 					// console.log(tmp_mon);
-					if(cntr%2 == 1){
+					if (cntr % 2 == 1) {
 						$(tmp_div_str).appendTo($(".content_div_1"));
-					}else{
+					} else {
 						$(tmp_div_str).appendTo($(".content_div_2"));
 					}
+					
+					
 				}
-				$(".operation_div").on("click",function(){
-					alert($(this).attr("card_name"));
-				});
 			});
 		</script>
 	</head>
@@ -42,10 +53,10 @@
 		<div class="back_div">
 			&lt;-</div>
 		<div class="content_div_1">
-			
+
 		</div>
 		<div class="content_div_2">
-			
+
 		</div>
 	</body>
 </html>
