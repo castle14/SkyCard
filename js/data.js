@@ -268,6 +268,26 @@ FIRE_MON = {
 	"img": "fire_mon.jpg",
 	"actions": [{
 		"type": "att",
+		"value": 15
+	}, {
+		"type": "heal",
+		"value": 30
+	}, {
+		"type": "arm",
+		"value": 20
+	}, {
+		"type": "mag",
+		"value": 8
+	}]
+}
+HAT_MON = {
+	"name": "帽子怪",
+	"maxHp": 25, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 2,
+	"img": "hat_mon.jpg",
+	"actions": [{
+		"type": "att",
 		"value": 10
 	}, {
 		"type": "heal",
@@ -280,26 +300,6 @@ FIRE_MON = {
 		"value": 5
 	}]
 }
-HAT_MON = {
-	"name": "帽子怪",
-	"maxHp": 25, //最大生命
-	"maxAc": 75, //最大护甲
-	"star": 2,
-	"img": "hat_mon.jpg",
-	"actions": [{
-		"type": "att",
-		"value": 5
-	}, {
-		"type": "heal",
-		"value": 10
-	}, {
-		"type": "arm",
-		"value": 25
-	}, {
-		"type": "mag",
-		"value": 2
-	}]
-}
 MON_DIAMOND_1 = {
 	"name": "红钻鼠",
 	"maxHp": 25, //最大生命
@@ -308,16 +308,16 @@ MON_DIAMOND_1 = {
 	"img": "diamond/2183.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 5
+		"value": 10
 	}, {
 		"type": "att",
-		"value": 6
+		"value": 9
 	}, {
 		"type": "att",
-		"value": 7
+		"value": 11
 	}, {
 		"type": "att",
-		"value": 8
+		"value": 20
 	}]
 }
 MON_DIAMOND_2 = {
@@ -328,13 +328,13 @@ MON_DIAMOND_2 = {
 	"img": "diamond/2182.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 5
+		"value": 15
 	}, {
 		"type": "att",
-		"value": 8
+		"value": 14
 	}, {
 		"type": "att",
-		"value": 10
+		"value": 13
 	}, {
 		"type": "att",
 		"value": 12
@@ -348,13 +348,13 @@ MON_DIAMOND_3 = {
 	"img": "diamond/2192.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 10
-	}, {
-		"type": "att",
-		"value": 12
-	}, {
-		"type": "att",
 		"value": 15
+	}, {
+		"type": "att",
+		"value": 16
+	}, {
+		"type": "att",
+		"value": 17
 	}, {
 		"type": "att",
 		"value": 18
@@ -369,16 +369,16 @@ MON_DIAMOND_4 = {
 	"img": "diamond/2181.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 10
-	}, {
-		"type": "arm",
 		"value": 20
 	}, {
 		"type": "arm",
-		"value": 15
+		"value": 30
+	}, {
+		"type": "arm",
+		"value": 25
 	}, {
 		"type": "att",
-		"value": 12
+		"value": 18
 	}]
 }
 
@@ -390,16 +390,16 @@ MON_DIAMOND_5 = {
 	"img": "diamond/2180.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 15
-	}, {
-		"type": "att",
-		"value": 16
-	}, {
-		"type": "att",
-		"value": 17
-	}, {
-		"type": "att",
 		"value": 20
+	}, {
+		"type": "att",
+		"value": 21
+	}, {
+		"type": "att",
+		"value": 22
+	}, {
+		"type": "att",
+		"value": 23
 	}]
 }
 MON_DIAMOND_6 = {
@@ -410,13 +410,13 @@ MON_DIAMOND_6 = {
 	"img": "diamond/2174.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 15
-	}, {
-		"type": "att",
-		"value": 16
-	}, {
-		"type": "att",
 		"value": 20
+	}, {
+		"type": "att",
+		"value": 21
+	}, {
+		"type": "att",
+		"value": 22
 	}, {
 		"type": "heal",
 		"value": 40
@@ -430,43 +430,43 @@ MON_DIAMOND_7 = {
 	"img": "diamond/2188.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 20
+		"value": 25
 	}, {
 		"type": "mag",
-		"value": 10
+		"value": 12
 	}, {
 		"type": "mag",
-		"value": 11
+		"value": 13
 	}, {
 		"type": "mag",
-		"value": 15
+		"value": 14
 	}]
 }
 
 MON_DIAMOND_8 = {
 	"name": "彩虹龙",
-	"maxHp": 200, //最大生命
-	"maxAc": 200, //最大护甲
-	"star": 8,
+	"maxHp": 300, //最大生命
+	"maxAc": 300, //最大护甲
+	"star": 12,
 	"img": "diamond/2662.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 20
-	}, {
-		"type": "att",
-		"value": 25
-	}, {
-		"type": "mag",
-		"value": 10
-	}, {
-		"type": "mag",
-		"value": 13
-	}, {
-		"type": "heal",
 		"value": 75
 	}, {
+		"type": "att",
+		"value": 74
+	}, {
+		"type": "mag",
+		"value": 30
+	}, {
+		"type": "mag",
+		"value": 25
+	}, {
+		"type": "heal",
+		"value": 150
+	}, {
 		"type": "arm",
-		"value": 50
+		"value": 120
 	}]
 }
 MON_ALIEN_1 = {
@@ -491,30 +491,169 @@ MON_ALIEN_1 = {
 }
 MON_ALIEN_2 = {
 	"name": "熔岩外星人",
-	"maxHp": 150, //最大生命
-	"maxAc": 150, //最大护甲
+	"maxHp": 200, //最大生命
+	"maxAc": 110, //最大护甲
 	"star": 6,
 	"img": "alien/熔岩外星人.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 28
+		"value": 40
 	}, {
 		"type": "mag",
-		"value": 14
+		"value": 20
 	}, {
 		"type": "mag",
-		"value": 16
+		"value": 18
 	}, {
 		"type": "att",
-		"value": 32
+		"value": 38
 	}, {
 		"type": "heal",
-		"value": 50
+		"value": 80
 	}, {
 		"type": "arm",
 		"value": 70
 	}]
 }
+MON_ALIEN_3 = {
+	"name": "骷髅外星人",
+	"maxHp": 100, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 2,
+	"img": "alien/骷髅外星人.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 15
+	}, {
+		"type": "att",
+		"value": 14
+	}, {
+		"type": "att",
+		"value": 16
+	}, {
+		"type": "att",
+		"value": 17
+	}, {
+		"type": "heal",
+		"value": 30
+	}]
+}
+MON_ALIEN_4 = {
+	"name": "念力外星人",
+	"maxHp": 100, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 2,
+	"img": "alien/念力外星人.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 10
+	}, {
+		"type": "mag",
+		"value": 9
+	}, {
+		"type": "mag",
+		"value": 8
+	}, {
+		"type": "mag",
+		"value": 7
+	}, {
+		"type": "heal",
+		"value": 30
+	}]
+}
+MON_ALIEN_5 = {
+	"name": "外星催眠师",
+	"maxHp": 25, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 2,
+	"img": "alien/外星催眠师.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 10
+	}, {
+		"type": "mag",
+		"value": 9
+	}, {
+		"type": "mag",
+		"value": 8
+	}, {
+		"type": "mag",
+		"value": 7
+	}, {
+		"type": "arm",
+		"value": 20
+	}]
+}
+MON_ALIEN_6 = {
+	"name": "外星复仇者",
+	"maxHp": 150, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 5,
+	"img": "alien/外星复仇者.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 35
+	}, {
+		"type": "att",
+		"value": 30
+	}, {
+		"type": "att",
+		"value": 32
+	}, {
+		"type": "heal",
+		"value": 70
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_ALIEN_7 = {
+	"name": "外星菊石",
+	"maxHp": 80, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 1,
+	"img": "alien/外星菊石.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 15
+	}, {
+		"type": "att",
+		"value": 12
+	}, {
+		"type": "att",
+		"value": 10
+	}, {
+		"type": "att",
+		"value": 10
+	}, {
+		"type": "heal",
+		"value": 50
+	}]
+}
+MON_ALIEN_8 = {
+	"name": "外星狂战士",
+	"maxHp": 250, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 5,
+	"img": "alien/外星狂战士.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 35
+	}, {
+		"type": "att",
+		"value": 34
+	}, {
+		"type": "att",
+		"value": 33
+	}, {
+		"type": "att",
+		"value": 20
+	}, {
+		"type": "att",
+		"value": 55
+	}]
+}
+
 
 
 /* 卡牌的初始化数据 */
@@ -808,7 +947,12 @@ MonList["MON_DIAMOND_7"] = MON_DIAMOND_7;
 MonList["MON_DIAMOND_8"] = MON_DIAMOND_8;
 MonList["MON_ALIEN_1"] = MON_ALIEN_1;
 MonList["MON_ALIEN_2"] = MON_ALIEN_2;
-
+MonList["MON_ALIEN_3"] = MON_ALIEN_3;
+MonList["MON_ALIEN_4"] = MON_ALIEN_4;
+MonList["MON_ALIEN_5"] = MON_ALIEN_5;
+MonList["MON_ALIEN_6"] = MON_ALIEN_6;
+MonList["MON_ALIEN_7"] = MON_ALIEN_7;
+MonList["MON_ALIEN_8"] = MON_ALIEN_8;
 //对卡牌进行注册
 CardList["CARD1"] = CARD1;
 CardList["CARD2"] = CARD2;
@@ -933,12 +1077,57 @@ TaskList["task_alien_2"] = {
 };
 TaskList["task_alien_3"] = {
 	"taskname": "task_alien_3",
-	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_1", "MON_ALIEN_1"],
+	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_1", "MON_ALIEN_2"],
 	"isComplete": "no"
 };
 TaskList["task_alien_4"] = {
 	"taskname": "task_alien_4",
 	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_2", "MON_ALIEN_2"],
+	"isComplete": "no"
+};
+TaskList["task_alien_5"] = {
+	"taskname": "task_alien_5",
+	"taskcontent": ["MON_ALIEN_3", "MON_ALIEN_2", "MON_ALIEN_3"],
+	"isComplete": "no"
+};
+TaskList["task_alien_6"] = {
+	"taskname": "task_alien_6",
+	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_3", "MON_ALIEN_4"],
+	"isComplete": "no"
+};
+TaskList["task_alien_7"] = {
+	"taskname": "task_alien_7",
+	"taskcontent": ["MON_ALIEN_4", "MON_ALIEN_3", "MON_ALIEN_4"],
+	"isComplete": "no"
+};
+TaskList["task_alien_8"] = {
+	"taskname": "task_alien_8",
+	"taskcontent": ["MON_ALIEN_5", "MON_ALIEN_2", "MON_ALIEN_5"],
+	"isComplete": "no"
+};
+TaskList["task_alien_9"] = {
+	"taskname": "task_alien_9",
+	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_2", "MON_ALIEN_6"],
+	"isComplete": "no"
+};
+TaskList["task_alien_10"] = {
+	"taskname": "task_alien_10",
+	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_6", "MON_ALIEN_6"],
+	"isComplete": "no"
+};
+TaskList["task_alien_11"] = {
+	"taskname": "task_alien_11",
+	"taskcontent": ["MON_ALIEN_7", "MON_ALIEN_7", "MON_ALIEN_7"],
+	"isComplete": "no"
+};
+TaskList["task_alien_12"] = {
+	"taskname": "task_alien_12",
+	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_7", "MON_ALIEN_8"],
+	"isComplete": "no"
+};
+TaskList["task_alien_13"] = {
+	"taskname": "task_alien_13",
+	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_6", "MON_ALIEN_8"],
 	"isComplete": "no"
 };
 
