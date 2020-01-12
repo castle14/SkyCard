@@ -1,0 +1,184 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
+
+.header_div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 20px;
+	border-bottom: lightgrey solid 1px;
+	background-color: black;
+}
+
+.back_div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 56px;
+	line-height: 56px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.player_div {
+	height: 120px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: lightgrey solid 1px;
+	margin-top: 66px;
+	color: lightgrey;
+}
+
+.left_div {
+	height: 118px;
+	width: 119px;
+	background-color: darkgray;
+	float: left;
+	border-right: lightgrey solid 1px;
+}
+
+.left_div img {
+	height: 118px;
+	width: 118px;
+}
+
+.right_div {
+	height: 118px;
+	width: calc(100% - 119px);
+	/* background-color: ; */
+	float: left;
+}
+
+.name_div {
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	border-bottom: lightgrey solid 1px;
+	padding-left: 3px;
+}
+
+.data_div {
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	border-bottom: lightgrey solid 1px;
+	text-align: center;
+}
+
+#data_div_lst {
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+	text-align: center;
+	font-size: 20px;
+	color: yellow;
+	font-weight: bolder;
+}
+
+.data_div_1 {
+	height: 30px;
+	width: 25%;
+	line-height: 30px;
+	float: left;
+	border-right: lightgrey solid 1px;
+}
+
+.data_div_2 {
+	height: 30px;
+	width: 25%;
+	line-height: 30px;
+	float: left;
+	border-right: lightgrey solid 1px;
+}
+
+.data_div_3 {
+	height: 30px;
+	width: 25%;
+	line-height: 30px;
+	float: left;
+	border-right: lightgrey solid 1px;
+}
+
+.data_div_4 {
+	height: 30px;
+	width: 25%;
+	line-height: 30px;
+	padding-left: 3px;
+	float: left;
+}
+
+#name_div_1 {
+	height: 30px;
+	width: 50%;
+	line-height: 30px;
+	float: left;
+	text-align: left;
+	padding-left: 5px;
+	border-right: lightgrey solid 1px;
+	text-decoration: underline;
+	color: yellow;
+
+}
+
+#star_div_2 {
+	height: 30px;
+	width: 50%;
+	line-height: 30px;
+	float: left;
+	text-align: left;
+	padding-left: 5px;
+}
+
+.game_info_div {
+	height: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	/* border: lightgrey solid 1px; */
+	/* margin-top: 5px; */
+	color: lightgrey;
+	margin-bottom: 10px;
+	line-height: 30px;
+}
+
+.info_left_div {
+	height: 30px;
+	width: 119px;
+	float: left;
+}
+
+.info_right_div {}
+
+select {
+	color: lightgrey;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: underline;
+	color: yellow;
+	background-color: #000000;
+}
+.game_info_div2{
+	color: lightgrey;
+	text-align: center;
+}
+#save_info{
+	color: lightgrey;
+	text-align: center;
+	margin: 10px;
+	border: lightgrey solid 1px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	border-radius: 5px;
+	/* width: 100%; */
+}

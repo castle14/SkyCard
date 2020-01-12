@@ -5,6 +5,12 @@ var MonList = {};
 var CardList = {};
 var TaskList = {};
 var GameInfo = {};
+var GameSTD = {
+	StarCostMaxHp: 5,
+	StarCostHp: 3,
+	StarCostMaxAc: 3,
+	StarCostAc: 2
+};
 Array.prototype.shuffle = function() {
 	var array = this;
 	var m = array.length,
@@ -17,7 +23,6 @@ Array.prototype.shuffle = function() {
 	}
 	return array;
 };
-
 
 
 MonData.getComInstance = function(obj) {
@@ -259,6 +264,7 @@ FIRE_MON = {
 	"name": "火球怪",
 	"maxHp": 50, //最大生命
 	"maxAc": 50, //最大护甲
+	"star": 2,
 	"img": "fire_mon.jpg",
 	"actions": [{
 		"type": "att",
@@ -278,6 +284,7 @@ HAT_MON = {
 	"name": "帽子怪",
 	"maxHp": 25, //最大生命
 	"maxAc": 75, //最大护甲
+	"star": 2,
 	"img": "hat_mon.jpg",
 	"actions": [{
 		"type": "att",
@@ -297,6 +304,7 @@ MON_DIAMOND_1 = {
 	"name": "红钻鼠",
 	"maxHp": 25, //最大生命
 	"maxAc": 25, //最大护甲
+	"star": 1,
 	"img": "diamond/2183.jpg",
 	"actions": [{
 		"type": "att",
@@ -316,6 +324,7 @@ MON_DIAMOND_2 = {
 	"name": "紫钻猫",
 	"maxHp": 50, //最大生命
 	"maxAc": 25, //最大护甲
+	"star": 1,
 	"img": "diamond/2182.jpg",
 	"actions": [{
 		"type": "att",
@@ -334,7 +343,8 @@ MON_DIAMOND_2 = {
 MON_DIAMOND_3 = {
 	"name": "蓝钻鹰",
 	"maxHp": 50, //最大生命
-	"maxAc": 10, //最大护甲
+	"maxAc": 50, //最大护甲
+	"star": 2,
 	"img": "diamond/2192.jpg",
 	"actions": [{
 		"type": "att",
@@ -354,7 +364,8 @@ MON_DIAMOND_3 = {
 MON_DIAMOND_4 = {
 	"name": "绿钻龟",
 	"maxHp": 25, //最大生命
-	"maxAc": 50, //最大护甲
+	"maxAc": 100, //最大护甲
+	"star": 2,
 	"img": "diamond/2181.jpg",
 	"actions": [{
 		"type": "att",
@@ -373,8 +384,9 @@ MON_DIAMOND_4 = {
 
 MON_DIAMOND_5 = {
 	"name": "黄钻虎",
-	"maxHp": 50, //最大生命
-	"maxAc": 50, //最大护甲
+	"maxHp": 75, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 3,
 	"img": "diamond/2180.jpg",
 	"actions": [{
 		"type": "att",
@@ -392,8 +404,9 @@ MON_DIAMOND_5 = {
 }
 MON_DIAMOND_6 = {
 	"name": "琥珀猛犸",
-	"maxHp": 100, //最大生命
+	"maxHp": 150, //最大生命
 	"maxAc": 25, //最大护甲
+	"star": 3,
 	"img": "diamond/2174.jpg",
 	"actions": [{
 		"type": "att",
@@ -411,18 +424,19 @@ MON_DIAMOND_6 = {
 }
 MON_DIAMOND_7 = {
 	"name": "青玉天马",
-	"maxHp": 50, //最大生命
-	"maxAc": 50, //最大护甲
+	"maxHp": 100, //最大生命
+	"maxAc": 100, //最大护甲
+	"star": 4,
 	"img": "diamond/2188.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 15
+		"value": 20
 	}, {
 		"type": "mag",
-		"value": 7
+		"value": 10
 	}, {
 		"type": "mag",
-		"value": 8
+		"value": 11
 	}, {
 		"type": "mag",
 		"value": 15
@@ -433,6 +447,7 @@ MON_DIAMOND_8 = {
 	"name": "彩虹龙",
 	"maxHp": 200, //最大生命
 	"maxAc": 200, //最大护甲
+	"star": 8,
 	"img": "diamond/2662.jpg",
 	"actions": [{
 		"type": "att",
@@ -454,36 +469,84 @@ MON_DIAMOND_8 = {
 		"value": 50
 	}]
 }
+MON_ALIEN_1 = {
+	"name": "灰色外星人",
+	"maxHp": 25, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 1,
+	"img": "alien/灰色外星人.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 10
+	}, {
+		"type": "mag",
+		"value": 10
+	}, {
+		"type": "mag",
+		"value": 12
+	}, {
+		"type": "att",
+		"value": 15
+	}]
+}
+MON_ALIEN_2 = {
+	"name": "熔岩外星人",
+	"maxHp": 150, //最大生命
+	"maxAc": 150, //最大护甲
+	"star": 6,
+	"img": "alien/熔岩外星人.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 28
+	}, {
+		"type": "mag",
+		"value": 14
+	}, {
+		"type": "mag",
+		"value": 16
+	}, {
+		"type": "att",
+		"value": 32
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 70
+	}]
+}
+
+
 /* 卡牌的初始化数据 */
 
 CARD1 = {
 	"name": "传说之剑",
 	"type": "attone",
-	"value": 50,
+	"value": 100,
 	"img": "card/传说之剑.jpg"
 }
 CARD2 = {
 	"name": "电击鞭",
 	"type": "attall",
-	"value": 8,
+	"value": 18,
 	"img": "card/电击鞭.jpg"
 }
 CARD3 = {
 	"name": "恶魔之斧",
 	"type": "attone",
-	"value": 20,
+	"value": 25,
 	"img": "card/恶魔之斧.jpg"
 }
 CARD4 = {
 	"name": "凤凰刃",
 	"type": "attone",
-	"value": 12,
+	"value": 20,
 	"img": "card/凤凰刃.jpg"
 }
 CARD5 = {
 	"name": "钢甲壳",
 	"type": "arm",
-	"value": 20,
+	"value": 40,
 	"img": "card/钢甲壳.jpg"
 }
 CARD6 = {
@@ -507,7 +570,7 @@ CARD8 = {
 CARD9 = {
 	"name": "灵魂之斧",
 	"type": "attone",
-	"value": 28,
+	"value": 35,
 	"img": "card/灵魂之斧.jpg"
 }
 CARD10 = {
@@ -525,25 +588,25 @@ CARD11 = {
 CARD12 = {
 	"name": "破神剑",
 	"type": "attone",
-	"value": 12,
+	"value": 20,
 	"img": "card/破神剑.jpg"
 }
 CARD13 = {
 	"name": "闪电之剑",
 	"type": "attone",
-	"value": 25,
+	"value": 28,
 	"img": "card/闪电之剑.jpg"
 }
 CARD14 = {
 	"name": "圣剑",
 	"type": "attone",
-	"value": 30,
+	"value": 32,
 	"img": "card/圣剑.jpg"
 }
 CARD15 = {
 	"name": "特殊飓风",
 	"type": "magone",
-	"value": 18,
+	"value": 15,
 	"img": "card/特殊飓风.jpg"
 }
 CARD16 = {
@@ -555,13 +618,13 @@ CARD16 = {
 CARD17 = {
 	"name": "铁斧",
 	"type": "attone",
-	"value": 12,
+	"value": 18,
 	"img": "card/铁斧.jpg"
 }
 CARD18 = {
 	"name": "银之弓矢",
 	"type": "attone",
-	"value": 25,
+	"value": 30,
 	"img": "card/银之弓矢.jpg"
 }
 CARD19 = {
@@ -573,7 +636,7 @@ CARD19 = {
 CARD20 = {
 	"name": "宝石爆破",
 	"type": "magone",
-	"value": 24,
+	"value": 20,
 	"img": "card/宝石爆破.jpg"
 }
 CARD21 = {
@@ -585,13 +648,13 @@ CARD21 = {
 CARD22 = {
 	"name": "辐射炮",
 	"type": "magone",
-	"value": 30,
+	"value": 25,
 	"img": "card/辐射炮.jpg"
 }
 CARD23 = {
 	"name": "钢铁巨剑",
 	"type": "attone",
-	"value": 11,
+	"value": 15,
 	"img": "card/钢铁巨剑.jpg"
 }
 CARD24 = {
@@ -602,8 +665,8 @@ CARD24 = {
 }
 CARD25 = {
 	"name": "卡通锁链",
-	"type": "attone",
-	"value": 7,
+	"type": "attall",
+	"value": 10,
 	"img": "card/卡通锁链.jpg"
 }
 CARD26 = {
@@ -633,28 +696,105 @@ CARD29 = {
 CARD30 = {
 	"name": "扰乱三角波",
 	"type": "magone",
-	"value": 25,
+	"value": 24,
 	"img": "card/扰乱三角波.jpg"
 }
 CARD31 = {
 	"name": "神鹰三角波",
 	"type": "magone",
-	"value": 25,
+	"value": 24,
 	"img": "card/神鹰三角波.jpg"
 }
 CARD32 = {
 	"name": "深海锁链",
-	"type": "attone",
-	"value": 8,
+	"type": "attall",
+	"value": 20,
 	"img": "card/深海锁链.jpg"
 }
 CARD33 = {
 	"name": "神鹰护甲",
 	"type": "arm",
-	"value": 30,
+	"value": 60,
 	"img": "card/神鹰护甲.jpg"
 }
-
+CARD34 = {
+	"name": "暗之假面",
+	"type": "arm",
+	"value": 90,
+	"img": "card/暗之假面.jpg"
+}
+CARD35 = {
+	"name": "二重旋风",
+	"type": "magall",
+	"value": 11,
+	"img": "card/二重旋风.jpg"
+}
+CARD36 = {
+	"name": "炽焰飞腾",
+	"type": "magall",
+	"value": 14,
+	"img": "card/炽焰飞腾.jpg"
+}
+CARD37 = {
+	"name": "毁灭之焰",
+	"type": "magall",
+	"value": 17,
+	"img": "card/毁灭之焰.jpg"
+}
+CARD38 = {
+	"name": "雷击",
+	"type": "magone",
+	"value": 28,
+	"img": "card/雷击.jpg"
+}
+CARD39 = {
+	"name": "女神的圣弓",
+	"type": "attone",
+	"value": 40,
+	"img": "card/女神的圣弓.jpg"
+}
+CARD40 = {
+	"name": "闪电漩涡",
+	"type": "magall",
+	"value": 20,
+	"img": "card/闪电漩涡.jpg"
+}
+CARD41 = {
+	"name": "草薙剑",
+	"type": "attone",
+	"value": 42,
+	"img": "card/草薙剑.jpg"
+}
+CARD42 = {
+	"name": "地碎",
+	"type": "attone",
+	"value": 45,
+	"img": "card/地碎.jpg"
+}
+CARD43 = {
+	"name": "电子黑恶爪",
+	"type": "attone",
+	"value": 38,
+	"img": "card/电子黑恶爪.jpg"
+}
+CARD44 = {
+	"name": "旋风回力镖",
+	"type": "attall",
+	"value": 25,
+	"img": "card/旋风回力镖.jpg"
+}
+CARD45 = {
+	"name": "旋风剑",
+	"type": "attall",
+	"value": 30,
+	"img": "card/旋风剑.jpg"
+}
+CARD46 = {
+	"name": "打火石",
+	"type": "attall",
+	"value": 35,
+	"img": "card/打火石.jpg"
+}
 //对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
 MonList["HAT_MON"] = HAT_MON;
@@ -666,8 +806,8 @@ MonList["MON_DIAMOND_5"] = MON_DIAMOND_5;
 MonList["MON_DIAMOND_6"] = MON_DIAMOND_6;
 MonList["MON_DIAMOND_7"] = MON_DIAMOND_7;
 MonList["MON_DIAMOND_8"] = MON_DIAMOND_8;
-
-
+MonList["MON_ALIEN_1"] = MON_ALIEN_1;
+MonList["MON_ALIEN_2"] = MON_ALIEN_2;
 
 //对卡牌进行注册
 CardList["CARD1"] = CARD1;
@@ -703,11 +843,25 @@ CardList["CARD30"] = CARD30;
 CardList["CARD31"] = CARD31;
 CardList["CARD32"] = CARD32;
 CardList["CARD33"] = CARD33;
+CardList["CARD34"] = CARD34;
+CardList["CARD35"] = CARD35;
+CardList["CARD36"] = CARD36;
+CardList["CARD37"] = CARD37;
+CardList["CARD38"] = CARD38;
+CardList["CARD39"] = CARD39;
+CardList["CARD40"] = CARD40;
+CardList["CARD41"] = CARD41;
+CardList["CARD42"] = CARD42;
+CardList["CARD43"] = CARD43;
+CardList["CARD44"] = CARD44;
+CardList["CARD45"] = CARD45;
+CardList["CARD46"] = CARD46;
 
 GameInfo = {
 	win_counter: 0,
 	lose_counter: 0,
 	opportunity_counter: 0,
+	star_counter: 0,
 	extra_cards: [CardUtil.getCardInstance(CARD1), CardUtil.getCardInstance(CARD2)]
 }
 
@@ -767,3 +921,24 @@ TaskList["task_diamond_8"] = {
 	"taskcontent": ["MON_DIAMOND_7", "MON_DIAMOND_8", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };
+TaskList["task_alien_1"] = {
+	"taskname": "task_alien_1",
+	"taskcontent": ["MON_ALIEN_1", "MON_ALIEN_1", "MON_ALIEN_1"],
+	"isComplete": "no"
+};
+TaskList["task_alien_2"] = {
+	"taskname": "task_alien_2",
+	"taskcontent": ["MON_ALIEN_1", "MON_ALIEN_2", "MON_ALIEN_1"],
+	"isComplete": "no"
+};
+TaskList["task_alien_3"] = {
+	"taskname": "task_alien_3",
+	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_1", "MON_ALIEN_1"],
+	"isComplete": "no"
+};
+TaskList["task_alien_4"] = {
+	"taskname": "task_alien_4",
+	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_2", "MON_ALIEN_2"],
+	"isComplete": "no"
+};
+

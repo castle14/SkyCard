@@ -64,10 +64,11 @@ body {
 	width: 54px;
 	background-color: #008000;
 	float: left;
+	border:lightgrey solid 1px;
 }
 .task_img_div img{
-	height: 54px;
-	width: 54px;
+	height: 52px;
+	width: 52px;
 }
 .task_state_div {
 	height: 74px;

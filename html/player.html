@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>玩家信息</title>
+		<link type="text/css" rel="styleSheet" href="../css/base.css" />
+		<link type="text/css" rel="styleSheet" href="../css/player.css" />
+		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
+		<script src="../js/data.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			var player = CommonUtil.getPlayerStorage();
+			var gameinfo = CommonUtil.getGameInfo();
+
+			function refreshPage() {
+				$(".left_div img").attr("src", "../img/" + player.img);
+				$("#name_div_1").text(player.name);
+				$("#star_div_2 span").text(gameinfo.star_counter);
+				$("#data_div_data .data_div_1").text(player.maxHp);
+				$("#data_div_data .data_div_2").text(player.hp);
+				$("#data_div_data .data_div_3").text(player.maxAc);
+				$("#data_div_data .data_div_4").text(player.ac);
+				$("#win_counter_span").text(gameinfo.win_counter);
+				$("#lose_counter_span").text(gameinfo.lose_counter);
+				$(".game_info_div2").html("说明<br>·升级MAXHP：" + GameSTD.StarCostMaxHp + "★" +
+					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·升级HP：" + GameSTD.StarCostHp + "★" +
+					"<br>·升级MAXAC：" + GameSTD.StarCostMaxAc + "★" +
+					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·升级AC：" + GameSTD.StarCostAc + "★");
+			}
+			$(function() {
+
+				refreshPage();
+				$(".back_div").on("click", function() {
+					history.back();
+				});
+				$("#data_div_lst .data_div_1").on("click", function() {
+					if (gameinfo.star_counter >= GameSTD.StarCostMaxHp) {
+						gameinfo.star_counter -= GameSTD.StarCostMaxHp;
+						player.maxHp += 1;
+						refreshPage();
+					} else {
+						alert("剩余star不足！");
+					}
+				});
+				$("#data_div_lst .data_div_2").on("click", function() {
+					if (gameinfo.star_counter >= GameSTD.StarCostHp) {
+						if (player.hp < player.maxHp) {
+							gameinfo.star_counter -= GameSTD.StarCostHp;
+							player.hp += 1;
+							refreshPage();
+						}
+					} else {
+						alert("剩余star不足！");
+					}
+				});
+				$("#data_div_lst .data_div_3").on("click", function() {
+					if (gameinfo.star_counter >= GameSTD.StarCostMaxAc) {
+						gameinfo.star_counter -= GameSTD.StarCostMaxAc;
+						player.maxAc += 1;
+						refreshPage();
+					} else {
+						alert("剩余star不足！");
+					}
+				});
+				$("#data_div_lst .data_div_4").on("click", function() {
+					if (gameinfo.star_counter >= GameSTD.StarCostAc) {
+						if (player.ac < player.maxAc) {
+							gameinfo.star_counter -= GameSTD.StarCostAc;
+							player.ac += 1;
+							refreshPage();
+						}
+					} else {
+						alert("剩余star不足！");
+					}
+				});
+				$("#photo_picker").change(function(data) {
+					var imgname = $("#photo_picker option:selected").attr("value");
+					var imgurl = "player/" + imgname + ".jpg";
+					player.img = imgurl;
+					refreshPage();
+				});
+				$("#name_div_1").on("click", function() {
+					let tmp_name_value = prompt('输入你的名字：', 'PLAYER');
+					if (tmp_name_value == null) {
+						alert('你取消了输入！');
+					} else if (tmp_name_value == '') {
+						alert('姓名输入为空，请重新输入！');
+					} else if(tmp_name_value.length > 10){
+						alert('姓名输入过长，请重新输入！');
+					}else {
+						player.name = tmp_name_value;
+						refreshPage();
+					}
+
+				});
+				$("#save_info").on("click", function() {
+					CommonUtil.saveGameInfo(gameinfo);
+					CommonUtil.savePlayerStorage(player);
+					alert("保存成功！");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="header_div">玩家信息</div>
+		<div class="back_div">&lt;-</div>
+
+		<div class="player_div">
+			<div class="left_div"><img src="../img/ex_mon.jpg"></div>
+			<div class="right_div">
+				<div class="data_div data_div_info">
+					<div id="name_div_1">-----</div>
+					<div id="star_div_2">★-LEFT: <span>--</span></div>
+				</div>
+				<div class="data_div">
+					<div class="data_div_1">MAXHP</div>
+					<div class="data_div_2">HP</div>
+					<div class="data_div_3">MAXAC</div>
+					<div class="data_div_4">AC</div>
+				</div>
+				<div class="data_div " id="data_div_data">
+					<div class="data_div_1">--</div>
+					<div class="data_div_2">--</div>
+					<div class="data_div_3">--</div>
+					<div class="data_div_4">--</div>
+				</div>
+				<div id="data_div_lst">
+					<div class="data_div_1">＋</div>
+					<div class="data_div_2">+</div>
+					<div class="data_div_3">+</div>
+					<div class="data_div_4">+</div>
+				</div>
+			</div>
+		</div>
+		<div class="game_info_div">
+			<div class="info_left_div">
+				<form>
+					<select id="photo_picker">
+						<option value="1599">1599</option>
+						<option value="1600">1600</option>
+						<option value="1601">1601</option>
+						<option value="1602">1602</option>
+						<option value="3618">3618</option>
+						<option value="英雄小子" selected="selected">英雄小子</option>
+					</select>
+				</form>
+			</div>
+			<div class="info_right_div">
+				胜利场次：<span id="win_counter_span">--</span> &nbsp;&nbsp;&nbsp;&nbsp;
+				失败场次：<span id="lose_counter_span">--</span>
+			</div>
+		</div>
+		<div class="game_info_div2">
+			------
+		</div>
+		<div id="save_info">
+			保 存
+		</div>
+	</body>
+</html>

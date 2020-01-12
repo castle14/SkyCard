@@ -124,14 +124,22 @@ body {
 }
 
 #checked_number_div {
-	width: 75%;
+	width: 60%;
 	height: 56px;
 	padding-left: 10px;
 	float: left;
 }
 
 #save_deck_btn {
-	width: 25%;
+	width: 20%;
+	height: 56px;
+	float: left;
+	text-align: center;
+	text-decoration: underline;
+	border-left: lightgrey double 1px;
+}
+#decompose_card_btn{
+	width: 20%;
 	height: 56px;
 	float: left;
 	text-align: center;

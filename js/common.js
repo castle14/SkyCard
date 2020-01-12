@@ -53,6 +53,7 @@ Turn = {
 		this.index = this.index + 1;
 		$(".turn_info_div").text("TURN " + this.index);
 		$(".owner_info_div").text(this.turnOwner);
+		$("#btn1").show();
 	}
 }
 

@@ -20,19 +20,37 @@
 					return "arm_color";
 				}
 			}
+
+			function card_compare(c1, c2) {
+				if ((c1.value - c2.value) != 0) {
+					return c1.value - c2.value;
+				} else {
+					return c1.name.localeCompare(c2.name, "zh");
+				}
+			};
+
+			function get_cards_from_deck() {
+				let tmp_card_arr = [];
+				for (i in CardList) {
+					tmp_card_arr.push(CardList[i]);
+				}
+				return tmp_card_arr.sort(card_compare);
+			}
 			$(function() {
 				$(".back_div").on("click", function() {
 					history.back();
 				});
 
 				let cntr = 0;
-				for (i in CardList) {
-					let tmp_tx_color = getTxColor(CardList[i].type);
+				let cardlist = get_cards_from_deck();
+				for (let i=0;i<cardlist.length;i++) {
+					let tmp_tx_color = getTxColor(cardlist[i].type);
 					cntr++;
 					let tmp_div_str = '<div class="card_div">';
-					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + CardList[i].img + '"></div>';
-					tmp_div_str = tmp_div_str + '<div class="name_div">' + CardList[i].name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="'+tmp_tx_color+'">' + CardList[i].type + ': ' + CardList[i].value + '</span></div>';
+					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + cardlist[i].img + '"></div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + cardlist[i].type +
+						': ' + cardlist[i].value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 
 					tmp_div_str = tmp_div_str + '</div></div>';
@@ -42,8 +60,8 @@
 					} else {
 						$(tmp_div_str).appendTo($(".content_div_2"));
 					}
-					
-					
+
+
 				}
 			});
 		</script>

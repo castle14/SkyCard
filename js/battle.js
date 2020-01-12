@@ -122,9 +122,11 @@ function refreshMonDiv(divid, monData) {
 				gmif.opportunity_counter +=1;
 				let random_card = CardUtil.getRandomCard();
 				gmif.extra_cards.push(random_card);
+				let tmp_star_number = mon1.star + mon2.star + mon3.star;
+				gmif.star_counter += tmp_star_number;
 				CommonUtil.saveGameInfo(gmif);
 				
-				alert("^_^挑战成功!\n你获得了卡片["+random_card.name+"]");
+				alert("^_^挑战成功!STAR+"+tmp_star_number+"!\n你获得了卡片["+random_card.name+"]");
 				history.back();
 			}
 		} else if (divid == "player_div") {
@@ -235,6 +237,7 @@ function initClick() {
 				}
 			});
 		});
+		$(this).hide();
 		// refreshHandCardsDiv(Turn.handCardList);
 
 	});

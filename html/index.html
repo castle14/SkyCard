@@ -16,9 +16,11 @@
 					$("#todeck").hide();
 					$("#totask").hide();
 					$("#todeckadjust").hide();
+					$("#toplayer").hide();
 				}
 				if (deck == null && player != null) {
 					$("#todeck").show();
+					$("#toplayer").show();
 				}
 				if (deck != null && player != null) {
 					$("#todeck").hide();
@@ -51,11 +53,15 @@
 				$("#todeckadjust").on("click", function() {
 					location.href = "deckadjust.html";
 				});
+				$("#toplayer").on("click", function() {
+					location.href = "player.html";
+				});
 			});
 		</script>
 	</head>
 	<body>
 		<div class="title">SKY CARD</div>
+		<div class="menu_item" id="toplayer">玩 家 信 息</div>
 		<div class="menu_item" id="todeck">卡 组 初 始 化</div>
 		<div class="menu_item" id="todeckadjust">卡 组 调 整</div>
 		<div class="menu_item" id="totask">任 务</div>

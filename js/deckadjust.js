@@ -9,8 +9,6 @@ function card_compare(c1, c2) {
 	} else {
 		return c1.name.localeCompare(c2.name, "zh");
 	}
-
-
 };
 
 function getTxColor(atttype) {
@@ -77,10 +75,28 @@ $(function() {
 		$(".deck_card_div").removeClass("checked_div");
 		$(this).addClass("checked_div");
 	});
+	$("#decompose_card_btn").on("click", function() {
+		let card_in_extra_id = $(".content_div_1 .checked_div").attr("card_info");
+		if (card_in_extra_id) {
+			let r = confirm("你确定分解这张卡片？");
+			if (r == true) {
+				extra_cards.forEach(function(item, index, arr) {
+					if (item.id == card_in_extra_id) {
+						tmpdeck.push(item);
+						arr.splice(index, 1);
+					}
+				});
+				tmp_gameinfo.star_counter += 1;
+				CommonUtil.saveGameInfo(tmp_gameinfo);
+				location.reload();
+			}
+		}
+	});
 	$("#save_deck_btn").on("click", function() {
 		if (CommonUtil.getGameInfo().opportunity_counter <= 0) {
 			alert("调整卡组的次数不足!");
 		} else {
+
 			let card_in_extra_id = $(".content_div_1 .checked_div").attr("card_info");
 			let card_in_deck_id = $(".content_div_2 .checked_div").attr("card_info");
 			console.log(card_in_extra_id);

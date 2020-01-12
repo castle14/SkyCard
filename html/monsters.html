@@ -9,6 +9,13 @@
 		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
 		<script src="../js/data.js" type="application/javascript"></script>
 		<script type="application/javascript">
+			function getStarStr(n) {
+				let str = "";
+				for (let i = 0; i < n; i++) {
+					str += "★";
+				}
+				return str;
+			}
 			$(function() {
 				$(".back_div").on("click", function() {
 					history.back();
@@ -40,7 +47,7 @@
 					tmp_div_str = tmp_div_str + '<img src="../img/' + tmp_mon.img + '">';
 					tmp_div_str += '</div>';
 					tmp_div_str += '<div class="right_div"><div class="name_div">';
-					tmp_div_str = tmp_div_str + tmp_mon.name + '</div>';
+					tmp_div_str = tmp_div_str + tmp_mon.name + " " + getStarStr(tmp_mon.star) + '</div>';
 					tmp_div_str += '<div class="data_div">';
 					tmp_div_str = tmp_div_str + '<div class="data_div_1">MAXHP</div>';
 					tmp_div_str = tmp_div_str + '<div class="data_div_2">' + tmp_mon.maxHp + '</div>';
