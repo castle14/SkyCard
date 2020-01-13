@@ -209,7 +209,11 @@ CommonUtil.saveTaskState = function(tsklst) {
 	localStorage.setItem("skycard_tasklist", JSON.stringify(tsklst));
 }
 CommonUtil.getTaskState = function() {
-	return JSON.parse(localStorage.getItem("skycard_tasklist"));
+	let tmp_tasklist = JSON.parse(localStorage.getItem("skycard_tasklist"));
+	for (let i in tmp_tasklist) {
+		TaskList[i] = tmp_tasklist[i];
+	}
+	return TaskList;
 }
 CommonUtil.initTaskState = function() {
 	return localStorage.setItem("skycard_tasklist", JSON.stringify(TaskList));
@@ -632,28 +636,272 @@ MON_ALIEN_7 = {
 }
 MON_ALIEN_8 = {
 	"name": "外星狂战士",
-	"maxHp": 250, //最大生命
+	"maxHp": 125, //最大生命
 	"maxAc": 1, //最大护甲
 	"star": 5,
 	"img": "alien/外星狂战士.jpg",
 	"actions": [{
 		"type": "att",
+		"value": 70
+	}, {
+		"type": "att",
+		"value": 60
+	}, {
+		"type": "att",
+		"value": 50
+	}, {
+		"type": "att",
+		"value": 40
+	}, {
+		"type": "heal",
+		"value": 30
+	}]
+}
+MON_ALIEN_9 = {
+	"name": "外星母舰",
+	"maxHp": 600, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 12,
+	"img": "alien/外星利维坦.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 72
+	}, {
+		"type": "mag",
+		"value": 36
+	}, {
+		"type": "mag",
 		"value": 35
 	}, {
-		"type": "att",
-		"value": 34
-	}, {
-		"type": "att",
-		"value": 33
-	}, {
-		"type": "att",
+		"type": "mag",
 		"value": 20
+	}, {
+		"type": "heal",
+		"value": 150
+	}]
+}
+MON_ALIEN_10 = {
+	"name": "外星侵略者",
+	"maxHp": 120, //最大生命
+	"maxAc": 80, //最大护甲
+	"star": 4,
+	"img": "alien/外星侵略者.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 28
+	}, {
+		"type": "mag",
+		"value": 14
+	}, {
+		"type": "att",
+		"value": 30
+	}, {
+		"type": "mag",
+		"value": 12
+	}, {
+		"type": "heal",
+		"value": 55
+	}, {
+		"type": "arm",
+		"value": 31
+	}]
+}
+MON_ALIEN_11 = {
+	"name": "外星犬",
+	"maxHp": 50, //最大生命
+	"maxAc": 100, //最大护甲
+	"star": 3,
+	"img": "alien/外星犬.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 24
+	}, {
+		"type": "arm",
+		"value": 33
+	}]
+}
+MON_ALIEN_12 = {
+	"name": "外星人飞船",
+	"maxHp": 200, //最大生命
+	"maxAc": 250, //最大护甲
+	"star": 9,
+	"img": "alien/外星人飞船.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 60
+	}, {
+		"type": "arm",
+		"value": 100
+	}, {
+		"type": "mag",
+		"value": 30
 	}, {
 		"type": "att",
 		"value": 55
+	}, {
+		"type": "arm",
+		"value": 50
+	}, {
+		"type": "mag",
+		"value": 28
 	}]
 }
-
+MON_ALIEN_13 = {
+	"name": "外星人猎手",
+	"maxHp": 200, //最大生命
+	"maxAc": 100, //最大护甲
+	"star": 7,
+	"img": "alien/外星人猎手.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 75
+	}, {
+		"type": "att",
+		"value": 70
+	}, {
+		"type": "att",
+		"value": 65
+	}, {
+		"type": "att",
+		"value": 60
+	}, {
+		"type": "mag",
+		"value": 25
+	}, {
+		"type": "heal",
+		"value": 150
+	}]
+}
+MON_ALIEN_14 = {
+	"name": "外星人母后",
+	"maxHp": 500, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 10,
+	"img": "alien/外星人母后.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 60
+	}, {
+		"type": "att",
+		"value": 65
+	}, {
+		"type": "att",
+		"value": 63
+	}, {
+		"type": "att",
+		"value": 58
+	}, {
+		"type": "heal",
+		"value": 120
+	}, {
+		"type": "heal",
+		"value": 100
+	}]
+}
+MON_ALIEN_15 = {
+	"name": "外星人士兵",
+	"maxHp": 100, //最大生命
+	"maxAc": 100, //最大护甲
+	"star": 4,
+	"img": "alien/外星人士兵.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 30
+	}, {
+		"type": "att",
+		"value": 28
+	}, {
+		"type": "att",
+		"value": 26
+	}, {
+		"type": "att",
+		"value": 24
+	}, {
+		"type": "arm",
+		"value": 40
+	}, {
+		"type": "heal",
+		"value": 60
+	}]
+}
+MON_ALIEN_16 = {
+	"name": "外星人小孩",
+	"maxHp": 25, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 1,
+	"img": "alien/外星人小孩.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 15
+	}, {
+		"type": "att",
+		"value": 14
+	}, {
+		"type": "att",
+		"value": 13
+	}, {
+		"type": "att",
+		"value": 12
+	}, {
+		"type": "arm",
+		"value": 25
+	}, {
+		"type": "heal",
+		"value": 25
+	}]
+}
+MON_ALIEN_17 = {
+	"name": "外星人长老",
+	"maxHp": 100, //最大生命
+	"maxAc": 300, //最大护甲
+	"star": 8,
+	"img": "alien/外星人长老.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 25
+	}, {
+		"type": "mag",
+		"value": 26
+	}, {
+		"type": "mag",
+		"value": 27
+	}, {
+		"type": "att",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 75
+	}, {
+		"type": "heal",
+		"value": 100
+	}]
+}
+MON_ALIEN_18 = {
+	"name": "外星人之王",
+	"maxHp": 250, //最大生命
+	"maxAc": 200, //最大护甲
+	"star": 11,
+	"img": "alien/外星人之王.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 70
+	}, {
+		"type": "att",
+		"value": 65
+	}, {
+		"type": "mag",
+		"value": 35
+	}, {
+		"type": "mag",
+		"value": 33
+	}, {
+		"type": "arm",
+		"value": 100
+	}, {
+		"type": "heal",
+		"value": 150
+	}]
+}
 
 
 /* 卡牌的初始化数据 */
@@ -953,6 +1201,16 @@ MonList["MON_ALIEN_5"] = MON_ALIEN_5;
 MonList["MON_ALIEN_6"] = MON_ALIEN_6;
 MonList["MON_ALIEN_7"] = MON_ALIEN_7;
 MonList["MON_ALIEN_8"] = MON_ALIEN_8;
+MonList["MON_ALIEN_9"] = MON_ALIEN_9;
+MonList["MON_ALIEN_10"] = MON_ALIEN_10;
+MonList["MON_ALIEN_11"] = MON_ALIEN_11;
+MonList["MON_ALIEN_12"] = MON_ALIEN_12;
+MonList["MON_ALIEN_13"] = MON_ALIEN_13;
+MonList["MON_ALIEN_14"] = MON_ALIEN_14;
+MonList["MON_ALIEN_15"] = MON_ALIEN_15;
+MonList["MON_ALIEN_16"] = MON_ALIEN_16;
+MonList["MON_ALIEN_17"] = MON_ALIEN_17;
+MonList["MON_ALIEN_18"] = MON_ALIEN_18;
 //对卡牌进行注册
 CardList["CARD1"] = CARD1;
 CardList["CARD2"] = CARD2;
@@ -1130,4 +1388,53 @@ TaskList["task_alien_13"] = {
 	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_6", "MON_ALIEN_8"],
 	"isComplete": "no"
 };
-
+TaskList["task_alien_14"] = {
+	"taskname": "task_alien_14",
+	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_9", "MON_ALIEN_6"],
+	"isComplete": "no"
+};
+TaskList["task_alien_15"] = {
+	"taskname": "task_alien_15",
+	"taskcontent": ["MON_ALIEN_8", "MON_ALIEN_9", "MON_ALIEN_8"],
+	"isComplete": "no"
+};
+TaskList["task_alien_16"] = {
+	"taskname": "task_alien_16",
+	"taskcontent": ["MON_ALIEN_10", "MON_ALIEN_9", "MON_ALIEN_10"],
+	"isComplete": "no"
+};
+TaskList["task_alien_17"] = {
+	"taskname": "task_alien_17",
+	"taskcontent": ["MON_ALIEN_12", "MON_ALIEN_9", "MON_ALIEN_12"],
+	"isComplete": "no"
+};
+TaskList["task_alien_18"] = {
+	"taskname": "task_alien_18",
+	"taskcontent": ["MON_ALIEN_11", "MON_ALIEN_13", "MON_ALIEN_11"],
+	"isComplete": "no"
+};
+TaskList["task_alien_19"] = {
+	"taskname": "task_alien_19",
+	"taskcontent": ["MON_ALIEN_15", "MON_ALIEN_12", "MON_ALIEN_15"],
+	"isComplete": "no"
+};
+TaskList["task_alien_20"] = {
+	"taskname": "task_alien_20",
+	"taskcontent": ["MON_ALIEN_15", "MON_ALIEN_14", "MON_ALIEN_16"],
+	"isComplete": "no"
+};
+TaskList["task_alien_21"] = {
+	"taskname": "task_alien_21",
+	"taskcontent": ["MON_ALIEN_15", "MON_ALIEN_17", "MON_ALIEN_15"],
+	"isComplete": "no"
+};
+TaskList["task_alien_22"] = {
+	"taskname": "task_alien_22",
+	"taskcontent": ["MON_ALIEN_17", "MON_ALIEN_18", "MON_ALIEN_15"],
+	"isComplete": "no"
+};
+TaskList["task_alien_23"] = {
+	"taskname": "task_alien_23",
+	"taskcontent": ["MON_ALIEN_18", "MON_ALIEN_9", "MON_ALIEN_14"],
+	"isComplete": "no"
+};
