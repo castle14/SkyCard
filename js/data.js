@@ -1182,6 +1182,33 @@ CARD46 = {
 	"value": 35,
 	"img": "card/打火石.jpg"
 }
+
+CARD47 = {
+	"name": "混沌护盾",
+	"type": "arm",
+	"value": 120,
+	"img": "card/混沌护盾.jpg"
+}
+CARD48 = {
+	"name": "终极护甲",
+	"type": "arm",
+	"value": 999,
+	"img": "card/终极护甲.jpg"
+}
+CARD49 = {
+	"name": "圣光治疗",
+	"type": "heal",
+	"value": 999,
+	"img": "card/圣光治疗.jpg"
+}
+CARD50 = {
+	"name": "宝石治疗",
+	"type": "heal",
+	"value": 120,
+	"img": "card/宝石治疗.jpg"
+}
+
+
 //对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
 MonList["HAT_MON"] = HAT_MON;
@@ -1258,7 +1285,10 @@ CardList["CARD43"] = CARD43;
 CardList["CARD44"] = CARD44;
 CardList["CARD45"] = CARD45;
 CardList["CARD46"] = CARD46;
-
+CardList["CARD47"] = CARD47;
+CardList["CARD48"] = CARD48;
+CardList["CARD49"] = CARD49;
+CardList["CARD50"] = CARD50;
 GameInfo = {
 	win_counter: 0,
 	lose_counter: 0,
