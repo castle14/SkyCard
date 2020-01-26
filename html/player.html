@@ -31,7 +31,7 @@
 
 				refreshPage();
 				$(".back_div").on("click", function() {
-					history.back();
+					location.href = "index.html";
 				});
 				$("#data_div_lst .data_div_1").on("click", function() {
 					if (gameinfo.star_counter >= GameSTD.StarCostMaxHp) {
@@ -110,7 +110,7 @@
 			<div class="right_div">
 				<div class="data_div data_div_info">
 					<div id="name_div_1">-----</div>
-					<div id="star_div_2">★-LEFT: <span>--</span></div>
+					<div id="star_div_2">★ : <span>--</span></div>
 				</div>
 				<div class="data_div">
 					<div class="data_div_1">MAXHP</div>

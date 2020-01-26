@@ -32,7 +32,7 @@ function refresh_extra_card_div() {
 			'\'>';
 		tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card.img + '"></div>';
 		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '</div>';
-		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + tmp_card.type + ': ' +
+		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(tmp_card.type) + '·' +
 			tmp_card.value + '</span></div>';
 		tmp_div_str = tmp_div_str + '<div class="info_div">';
 		tmp_div_str = tmp_div_str + '</div></div>';
@@ -49,7 +49,7 @@ function refresh_deck_card_div() {
 			'\'>';
 		tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card.img + '"></div>';
 		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '</div>';
-		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + tmp_card.type + ': ' +
+		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(tmp_card.type) + '·' +
 			tmp_card.value + '</span></div>';
 		tmp_div_str = tmp_div_str + '<div class="info_div">';
 		tmp_div_str = tmp_div_str + '</div></div>';
@@ -60,13 +60,13 @@ function refresh_deck_card_div() {
 
 $(function() {
 	$(".back_div").on("click", function() {
-		history.back();
+		location.href = "index.html";
 	});
 
 	// console.log(extra_cards);
 	refresh_extra_card_div();
 	refresh_deck_card_div();
-	$("#checked_number_div span").text(CommonUtil.getGameInfo().opportunity_counter);
+	$("#checked_number_div span").text(Math.floor(CommonUtil.getGameInfo().star_counter / 10));
 	$(".extra_card_div").on("click", function() {
 		$(".extra_card_div").removeClass("checked_div");
 		$(this).addClass("checked_div");
@@ -93,7 +93,7 @@ $(function() {
 		}
 	});
 	$("#save_deck_btn").on("click", function() {
-		if (CommonUtil.getGameInfo().opportunity_counter <= 0) {
+		if (Math.floor(CommonUtil.getGameInfo().star_counter / 10) <= 0) {
 			alert("调整卡组的次数不足!");
 		} else {
 
@@ -116,7 +116,7 @@ $(function() {
 				});
 				console.log(tmp_gameinfo);
 				console.log(tmpdeck);
-				tmp_gameinfo.opportunity_counter -= 1;
+				tmp_gameinfo.star_counter -= 10;
 				CommonUtil.saveDeckStorage(tmpdeck.shuffle());
 				CommonUtil.saveGameInfo(tmp_gameinfo);
 				location.reload();

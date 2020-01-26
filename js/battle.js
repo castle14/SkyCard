@@ -119,7 +119,7 @@ function refreshMonDiv(divid, monData) {
 				CommonUtil.saveTaskState(tmptasks);
 				let gmif = CommonUtil.getGameInfo();
 				gmif.win_counter += 1;
-				gmif.opportunity_counter +=1;
+				// gmif.opportunity_counter +=1;
 				let random_card = CardUtil.getRandomCard();
 				gmif.extra_cards.push(random_card);
 				let tmp_star_number = mon1.star + mon2.star + mon3.star;
@@ -127,14 +127,14 @@ function refreshMonDiv(divid, monData) {
 				CommonUtil.saveGameInfo(gmif);
 				
 				alert("^_^挑战成功!STAR+"+tmp_star_number+"!\n你获得了卡片["+random_card.name+"]");
-				history.back();
+				location.href = "tasks.html";
 			}
 		} else if (divid == "player_div") {
 			let gmif = CommonUtil.getGameInfo();
 			gmif.lose_counter += 1;
 			CommonUtil.saveGameInfo(gmif);
 			alert("o(╥﹏╥)o挑战失败!");
-			history.back();
+			location.href = "tasks.html";
 		}
 	}
 }
@@ -146,7 +146,7 @@ function refreshHandCardsDiv(handcards) {
 			"value", handcards[index].value);
 		$(this).find("img").attr("src", "../img/" + handcards[index].img);
 		$(this).find(".card_name_div").text(handcards[index].name);
-		$(this).find(".card_desc_div").text(handcards[index].type + ":" + handcards[index].value);
+		$(this).find(".card_desc_div").text(CommonUtil.getAtkType(handcards[index].type) + "·" + handcards[index].value);
 	});
 	$("#deck_info").text("DECK:" + Turn.deck.length + " UESD:" + Turn.discardList.length);
 	checkedCardInfo = null;
@@ -193,8 +193,8 @@ function refreshAttInfoBar() {
 	if (checkedCardInfo == null) {
 		$("#att_info").text("----");
 	} else {
-		$("#att_info").text(checkedCardInfo.name + "*" + checkedCardInfo.counter +
-			" " + checkedCardInfo.type + ":" + checkedCardInfo.value);
+		$("#att_info").html("「"+checkedCardInfo.name + "」×" + checkedCardInfo.counter +
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + CommonUtil.getAtkType(checkedCardInfo.type) + "·" + checkedCardInfo.value);
 	}
 }
 

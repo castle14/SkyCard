@@ -31,9 +31,18 @@ body {
 	margin-left: 10px;
 }
 
+.content_div {
+	position: fixed;
+	top: 56px;
+	left: 0px;
+	right: 0px;
+	bottom: 56px;
+	overflow: auto;
+}
+
 .content_div_1,
 .content_div_2 {
-	margin-top: 80px;
+	margin-top: 10px;
 	width: 50%;
 	color: lightgrey;
 	margin-bottom: 10px;
@@ -117,4 +126,31 @@ body {
 	background-color: darkblue;
 	line-height: 18px;
 	display: inline-block;
+}
+
+.footer_div {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 56px;
+
+	color: lightgrey;
+	text-align: center;
+	border-top: lightgrey solid 1px;
+	background-color: black;
+}
+
+.choice {
+	height: 20px;
+	margin-top: 5px;
+	width: 18%;
+	margin-left: 1.6%;
+	float: left;
+	line-height: 20px;
+	border: lightgrey solid 1px;
+}
+
+.checked {
+	border-color: yellow;
 }

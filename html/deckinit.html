@@ -22,7 +22,7 @@
 			}
 			$(function() {
 				$(".back_div").on("click", function() {
-					history.back();
+					location.href = "index.html";
 				});
 				let tmp_deck_cardnumber = 20;
 				let tmp_cardlist_prototype = [];
@@ -94,7 +94,7 @@
 						console.log(tmp_deck);
 						CommonUtil.saveDeckStorage(tmp_deck);
 						alert("保存卡组成功！");
-						history.back();
+						location.href = "index.html";
 					}
 				});
 

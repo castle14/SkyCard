@@ -36,21 +36,38 @@
 				}
 				return tmp_card_arr.sort(card_compare);
 			}
-			$(function() {
-				$(".back_div").on("click", function() {
-					history.back();
+			function checkIfInList(tp,lst){
+				let rtn = false;
+				for(let i=0;i<lst.length;i++){
+					if(lst[i] == tp){
+						rtn = true;
+					}
+				}
+				return rtn;
+			}
+			function initList() {
+				$(".content_div_1").html("");
+				$(".content_div_2").html("");
+				let type_list = [];
+				$(".checked").each(function(i,e){
+					type_list.push($(this).attr("type"));
 				});
-
+				// console.log(type_list);
 				let cntr = 0;
 				let cardlist = get_cards_from_deck();
-				for (let i=0;i<cardlist.length;i++) {
+				for (let i = 0; i < cardlist.length; i++) {
+					if(!checkIfInList(cardlist[i].type,type_list)){
+						continue;
+					}
+					
 					let tmp_tx_color = getTxColor(cardlist[i].type);
 					cntr++;
 					let tmp_div_str = '<div class="card_div">';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + cardlist[i].img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + cardlist[i].type +
-						': ' + cardlist[i].value + '</span></div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(
+							cardlist[i].type) +
+						'·' + cardlist[i].value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 
 					tmp_div_str = tmp_div_str + '</div></div>';
@@ -60,9 +77,24 @@
 					} else {
 						$(tmp_div_str).appendTo($(".content_div_2"));
 					}
-
-
 				}
+			}
+			$(function() {
+				$(".back_div").on("click", function() {
+					location.href = "index.html";
+				});
+				$(".choice").on("click", function() {
+					if ($(this).hasClass("checked")) {
+						$(this).removeClass("checked");
+					} else {
+						$(this).addClass("checked");
+					}
+					initList();
+				});
+
+				initList();
+
+
 			});
 		</script>
 	</head>
@@ -70,11 +102,19 @@
 		<div class="header_div">卡牌图鉴</div>
 		<div class="back_div">
 			&lt;-</div>
-		<div class="content_div_1">
-
+		<div class="content_div">
+			<div class="content_div_1">
+			</div>
+			<div class="content_div_2">
+			</div>
 		</div>
-		<div class="content_div_2">
-
+		<div class="footer_div">
+			<div class="choice checked" type="attone">物·单</div>
+			<div class="choice checked" type="attall">物·全</div>
+			<div class="choice checked" type="magone">魔·单</div>
+			<div class="choice checked" type="magall">魔·全</div>
+			<div class="choice checked" type="heal">治疗</div>
+			<div class="choice checked" type="arm">护盾</div>
 		</div>
 	</body>
 </html>

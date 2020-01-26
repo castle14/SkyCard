@@ -51,7 +51,7 @@ body {
 
 .task_name_div {
 	height: 74px;
-	line-height: 74px;
+	line-height: 18px; 
 	margin-left: 10px;
 	margin-right: 10px;
 	float: left;

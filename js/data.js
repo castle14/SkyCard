@@ -247,6 +247,33 @@ CommonUtil.getRequest = function() {
 	return theRequest;
 }
 
+CommonUtil.getAtkType = function(tp) {
+	let rtn = "";
+	switch (tp) {
+		case "magone":
+			rtn = "魔·单";
+			break;
+		case "magall":
+			rtn = "魔·全";
+			break;
+		case "attone":
+			rtn = "物·单";
+			break;
+		case "attall":
+			rtn = "物·全";
+			break;
+		case "heal":
+			rtn = "治疗";
+			break;
+		case "arm":
+			rtn = "护盾";
+			break;
+		default:
+			rtn = tp;
+	}
+	return rtn;
+}
+
 CardUtil.getCardInstance = function(obj) {
 	let card = JSON.parse(JSON.stringify(obj));
 	card.id = CommonUtil.getUUID(8);
