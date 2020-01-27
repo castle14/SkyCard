@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>怪兽图鉴</title>
+		<link type="text/css" rel="styleSheet" href="../css/base.css" />
+		<link type="text/css" rel="styleSheet" href="../css/tasklist.css" />
+		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
+		<script src="../js/data.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			$(function() {
+				$(".back_div").on("click", function() {
+					location.href = "index.html";
+				});
+				$(".task_div").on("click", function() {
+					location.href = "tasks.html?type=" + $(this).attr("task_type");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="header_div">任务清单</div>
+		<div class="back_div">
+			&lt;-</div>
+		<div class="content_div">
+			<div class="task_div" task_type="test">测试</div>
+			<div class="task_div" task_type="diamond">宝玉兽的试炼</div>
+			<div class="task_div" task_type="alien">外星袭击</div>
+		</div>
+		</div>
+	</body>
+</html>

@@ -27,8 +27,11 @@
 				let tmp_deck_cardnumber = 20;
 				let tmp_cardlist_prototype = [];
 				for (i in CardList) {
-					tmp_cardlist_prototype.push(CardList[i]);
+					if(CardList[i].star <= CommonUtil.getGameInfo().card_star_level){
+						tmp_cardlist_prototype.push(CardList[i]);
+					}
 				}
+				console.log(tmp_cardlist_prototype);
 				let tmp_cardlist_1 = JSON.parse(JSON.stringify(tmp_cardlist_prototype)).shuffle();
 				let tmp_cardlist_2 = JSON.parse(JSON.stringify(tmp_cardlist_prototype)).shuffle();
 				let tmp_cardlist_3 = JSON.parse(JSON.stringify(tmp_cardlist_prototype)).shuffle();
@@ -47,27 +50,27 @@
 					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\'' + JSON.stringify(
 						tmp_card_1) + '\'>';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_1.img + '"></div>';
-					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_1.name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color_1 + '">' + tmp_card_1.type +
-						': ' + tmp_card_1.value + '</span></div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_1.name +'·'+ tmp_card_1.star+'☆'+ '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color_1 + '">' + CommonUtil.getAtkType(tmp_card_1.type) +
+						'·' + tmp_card_1.value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 					tmp_div_str = tmp_div_str + '</div></div>';
 
 					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\'' + JSON.stringify(
 						tmp_card_2) + '\'>';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_2.img + '"></div>';
-					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_2.name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div"> <span class="' + tmp_tx_color_2 + '">' + tmp_card_2.type +
-						': ' + tmp_card_2.value + '</span></div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_2.name +'·'+ tmp_card_2.star+'☆'+ '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"> <span class="' + tmp_tx_color_2 + '">' + CommonUtil.getAtkType(tmp_card_2.type) +
+						'·' + tmp_card_2.value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 					tmp_div_str = tmp_div_str + '</div></div>';
 
 					tmp_div_str = tmp_div_str + '<div class="card_div ' + tmp_class_name + '" card_info=\'' + JSON.stringify(
 						tmp_card_3) + '\'>';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card_3.img + '"></div>';
-					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_3.name + '</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color_3 + '">' + tmp_card_3.type +
-						': ' + tmp_card_3.value + '</span></div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card_3.name +'·'+ tmp_card_3.star+'☆'+ '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color_3 + '">' + CommonUtil.getAtkType(tmp_card_3.type) +
+						'·' + tmp_card_3.value + '</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 					tmp_div_str = tmp_div_str + '</div></div>';
 					tmp_div_str = tmp_div_str + '</div>';

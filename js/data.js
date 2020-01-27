@@ -500,6 +500,32 @@ MON_DIAMOND_8 = {
 		"value": 120
 	}]
 }
+MON_DIAMOND_9 = {
+	"name": "宝石龙",
+	"maxHp": 150, //最大生命
+	"maxAc": 150, //最大护甲
+	"star": 6,
+	"img": "diamond/10172.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 45
+	}, {
+		"type": "att",
+		"value": 40
+	}, {
+		"type": "mag",
+		"value": 20
+	}, {
+		"type": "mag",
+		"value": 22
+	}, {
+		"type": "heal",
+		"value": 90
+	}, {
+		"type": "arm",
+		"value": 75
+	}]
+}
 MON_ALIEN_1 = {
 	"name": "灰色外星人",
 	"maxHp": 25, //最大生命
@@ -937,276 +963,322 @@ CARD1 = {
 	"name": "传说之剑",
 	"type": "attone",
 	"value": 100,
+	"star": 10,
 	"img": "card/传说之剑.jpg"
 }
 CARD2 = {
 	"name": "电击鞭",
 	"type": "attall",
 	"value": 18,
+	"star": 3,
 	"img": "card/电击鞭.jpg"
 }
 CARD3 = {
 	"name": "恶魔之斧",
 	"type": "attone",
 	"value": 25,
+	"star": 3,
 	"img": "card/恶魔之斧.jpg"
 }
 CARD4 = {
 	"name": "凤凰刃",
 	"type": "attone",
 	"value": 20,
+	"star": 2,
 	"img": "card/凤凰刃.jpg"
 }
 CARD5 = {
 	"name": "钢甲壳",
 	"type": "arm",
 	"value": 40,
+	"star": 3,
 	"img": "card/钢甲壳.jpg"
 }
 CARD6 = {
 	"name": "红色药剂",
 	"type": "heal",
 	"value": 30,
+	"star": 2,
 	"img": "card/红色药剂.jpg"
 }
 CARD7 = {
 	"name": "火球",
 	"type": "magall",
 	"value": 5,
+	"star": 3,
 	"img": "card/火球.jpg"
 }
 CARD8 = {
 	"name": "火炎弹",
 	"type": "magone",
 	"value": 10,
+	"star": 1,
 	"img": "card/火炎弹.jpg"
 }
 CARD9 = {
 	"name": "灵魂之斧",
 	"type": "attone",
 	"value": 35,
+	"star": 4,
 	"img": "card/灵魂之斧.jpg"
 }
 CARD10 = {
 	"name": "麻药",
 	"type": "heal",
 	"value": 20,
+	"star": 1,
 	"img": "card/麻药.jpg"
 }
 CARD11 = {
 	"name": "魔剑",
 	"type": "attone",
 	"value": 5,
+	"star": 1,
 	"img": "card/魔剑.jpg"
 }
 CARD12 = {
 	"name": "破神剑",
 	"type": "attone",
 	"value": 20,
+	"star": 2,
 	"img": "card/破神剑.jpg"
 }
 CARD13 = {
 	"name": "闪电之剑",
 	"type": "attone",
 	"value": 28,
+	"star": 3,
 	"img": "card/闪电之剑.jpg"
 }
 CARD14 = {
 	"name": "圣剑",
 	"type": "attone",
 	"value": 32,
+	"star": 4,
 	"img": "card/圣剑.jpg"
 }
 CARD15 = {
 	"name": "特殊飓风",
 	"type": "magone",
 	"value": 15,
+	"star": 3,
 	"img": "card/特殊飓风.jpg"
 }
 CARD16 = {
 	"name": "天狗羽扇",
 	"type": "attone",
 	"value": 3,
+	"star": 1,
 	"img": "card/天狗羽扇.jpg"
 }
 CARD17 = {
 	"name": "铁斧",
 	"type": "attone",
 	"value": 18,
+	"star": 2,
 	"img": "card/铁斧.jpg"
 }
 CARD18 = {
 	"name": "银之弓矢",
 	"type": "attone",
 	"value": 30,
+	"star": 3,
 	"img": "card/银之弓矢.jpg"
 }
 CARD19 = {
 	"name": "竹光",
 	"type": "attone",
 	"value": 10,
+	"star": 1,
 	"img": "card/竹光.jpg"
 }
 CARD20 = {
 	"name": "宝石爆破",
 	"type": "magone",
 	"value": 20,
+	"star": 3,
 	"img": "card/宝石爆破.jpg"
 }
 CARD21 = {
 	"name": "灼热之枪",
 	"type": "attone",
 	"value": 24,
+	"star": 3,
 	"img": "card/灼热之枪.jpg"
 }
 CARD22 = {
 	"name": "辐射炮",
 	"type": "magone",
 	"value": 25,
+	"star": 4,
 	"img": "card/辐射炮.jpg"
 }
 CARD23 = {
 	"name": "钢铁巨剑",
 	"type": "attone",
 	"value": 15,
+	"star": 2,
 	"img": "card/钢铁巨剑.jpg"
 }
 CARD24 = {
 	"name": "红宝石之光",
 	"type": "heal",
 	"value": 60,
+	"star": 3,
 	"img": "card/红宝石之光.jpg"
 }
 CARD25 = {
 	"name": "卡通锁链",
 	"type": "attall",
 	"value": 10,
+	"star": 2,
 	"img": "card/卡通锁链.jpg"
 }
 CARD26 = {
 	"name": "蓝宝石之光",
 	"type": "heal",
 	"value": 40,
+	"star": 2,
 	"img": "card/蓝宝石之光.jpg"
 }
 CARD27 = {
 	"name": "魔法泡泡",
 	"type": "magone",
 	"value": 8,
+	"star": 2,
 	"img": "card/魔法泡泡.jpg"
 }
 CARD28 = {
 	"name": "魔界之雷",
 	"type": "magone",
 	"value": 18,
+	"star": 3,
 	"img": "card/魔界之雷.jpg"
 }
 CARD29 = {
 	"name": "魔闪光",
 	"type": "magall",
 	"value": 8,
+	"star": 2,
 	"img": "card/魔闪光.jpg"
 }
 CARD30 = {
 	"name": "扰乱三角波",
 	"type": "magone",
 	"value": 24,
+	"star": 4,
 	"img": "card/扰乱三角波.jpg"
 }
 CARD31 = {
 	"name": "神鹰三角波",
 	"type": "magone",
 	"value": 24,
+	"star": 4,
 	"img": "card/神鹰三角波.jpg"
 }
 CARD32 = {
 	"name": "深海锁链",
 	"type": "attall",
 	"value": 20,
+	"star": 3,
 	"img": "card/深海锁链.jpg"
 }
 CARD33 = {
 	"name": "神鹰护甲",
 	"type": "arm",
 	"value": 60,
+	"star": 4,
 	"img": "card/神鹰护甲.jpg"
 }
 CARD34 = {
 	"name": "暗之假面",
 	"type": "arm",
 	"value": 90,
+	"star": 5,
 	"img": "card/暗之假面.jpg"
 }
 CARD35 = {
 	"name": "二重旋风",
 	"type": "magall",
 	"value": 11,
+	"star": 4,
 	"img": "card/二重旋风.jpg"
 }
 CARD36 = {
 	"name": "炽焰飞腾",
 	"type": "magall",
 	"value": 14,
+	"star": 4,
 	"img": "card/炽焰飞腾.jpg"
 }
 CARD37 = {
 	"name": "毁灭之焰",
 	"type": "magall",
 	"value": 17,
+	"star": 4,
 	"img": "card/毁灭之焰.jpg"
 }
 CARD38 = {
 	"name": "雷击",
 	"type": "magone",
 	"value": 28,
+	"star": 4,
 	"img": "card/雷击.jpg"
 }
 CARD39 = {
 	"name": "女神的圣弓",
 	"type": "attone",
 	"value": 40,
+	"star": 4,
 	"img": "card/女神的圣弓.jpg"
 }
 CARD40 = {
 	"name": "闪电漩涡",
 	"type": "magall",
 	"value": 20,
+	"star": 5,
 	"img": "card/闪电漩涡.jpg"
 }
 CARD41 = {
 	"name": "草薙剑",
 	"type": "attone",
 	"value": 42,
+	"star": 5,
 	"img": "card/草薙剑.jpg"
 }
 CARD42 = {
 	"name": "地碎",
 	"type": "attone",
 	"value": 45,
+	"star": 5,
 	"img": "card/地碎.jpg"
 }
 CARD43 = {
 	"name": "电子黑恶爪",
 	"type": "attone",
 	"value": 38,
+	"star": 4,
 	"img": "card/电子黑恶爪.jpg"
 }
 CARD44 = {
 	"name": "旋风回力镖",
 	"type": "attall",
 	"value": 25,
+	"star": 5,
 	"img": "card/旋风回力镖.jpg"
 }
 CARD45 = {
 	"name": "旋风剑",
 	"type": "attall",
 	"value": 30,
+	"star": 4,
 	"img": "card/旋风剑.jpg"
 }
 CARD46 = {
 	"name": "打火石",
 	"type": "attall",
 	"value": 35,
+	"star": 5,
 	"img": "card/打火石.jpg"
 }
 
@@ -1214,24 +1286,28 @@ CARD47 = {
 	"name": "混沌护盾",
 	"type": "arm",
 	"value": 120,
+	"star": 7,
 	"img": "card/混沌护盾.jpg"
 }
 CARD48 = {
 	"name": "终极护甲",
 	"type": "arm",
 	"value": 999,
+	"star": 99,
 	"img": "card/终极护甲.jpg"
 }
 CARD49 = {
 	"name": "圣光治疗",
 	"type": "heal",
 	"value": 999,
+	"star": 99,
 	"img": "card/圣光治疗.jpg"
 }
 CARD50 = {
 	"name": "宝石治疗",
 	"type": "heal",
 	"value": 120,
+	"star": 6,
 	"img": "card/宝石治疗.jpg"
 }
 
@@ -1247,6 +1323,7 @@ MonList["MON_DIAMOND_5"] = MON_DIAMOND_5;
 MonList["MON_DIAMOND_6"] = MON_DIAMOND_6;
 MonList["MON_DIAMOND_7"] = MON_DIAMOND_7;
 MonList["MON_DIAMOND_8"] = MON_DIAMOND_8;
+MonList["MON_DIAMOND_9"] = MON_DIAMOND_9;
 MonList["MON_ALIEN_1"] = MON_ALIEN_1;
 MonList["MON_ALIEN_2"] = MON_ALIEN_2;
 MonList["MON_ALIEN_3"] = MON_ALIEN_3;
@@ -1321,21 +1398,22 @@ GameInfo = {
 	lose_counter: 0,
 	opportunity_counter: 0,
 	star_counter: 0,
+	card_star_level:3,
 	extra_cards: [CardUtil.getCardInstance(CARD1), CardUtil.getCardInstance(CARD2)]
 }
 
-TaskList["task1"] = {
-	"taskname": "task1",
+TaskList["task_test_1"] = {
+	"taskname": "task_test_1",
 	"taskcontent": ["HAT_MON", "HAT_MON", "HAT_MON"],
 	"isComplete": "no"
 };
-TaskList["task2"] = {
-	"taskname": "task2",
+TaskList["task_test_2"] = {
+	"taskname": "task_test_2",
 	"taskcontent": ["HAT_MON", "FIRE_MON", "HAT_MON"],
 	"isComplete": "no"
 };
-TaskList["task3"] = {
-	"taskname": "task3",
+TaskList["task_test_3"] = {
+	"taskname": "task_test_3",
 	"taskcontent": ["FIRE_MON", "FIRE_MON", "FIRE_MON"],
 	"isComplete": "no"
 };
@@ -1380,6 +1458,28 @@ TaskList["task_diamond_8"] = {
 	"taskcontent": ["MON_DIAMOND_7", "MON_DIAMOND_8", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };
+TaskList["task_diamond_9"] = {
+	"taskname": "task_diamond_9",
+	"taskcontent": ["MON_DIAMOND_7", "MON_DIAMOND_9", "MON_DIAMOND_6"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_10"] = {
+	"taskname": "task_diamond_10",
+	"taskcontent": ["MON_DIAMOND_9", "MON_DIAMOND_9", "MON_DIAMOND_9"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_11"] = {
+	"taskname": "task_diamond_11",
+	"taskcontent": ["MON_DIAMOND_9", "MON_DIAMOND_8", "MON_DIAMOND_9"],
+	"isComplete": "no"
+};
+TaskList["task_diamond_12"] = {
+	"taskname": "task_diamond_12",
+	"taskcontent": ["MON_DIAMOND_8", "MON_DIAMOND_8", "MON_DIAMOND_8"],
+	"isComplete": "no"
+};
+
+
 TaskList["task_alien_1"] = {
 	"taskname": "task_alien_1",
 	"taskcontent": ["MON_ALIEN_1", "MON_ALIEN_1", "MON_ALIEN_1"],

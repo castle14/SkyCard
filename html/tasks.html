@@ -11,14 +11,20 @@
 		<script type="application/javascript">
 			$(function() {
 				$(".back_div").on("click", function() {
-					location.href = "index.html";
+					location.href = "tasklist.html";
 				});
+				
+				let tsktype = CommonUtil.getRequest()["type"];
+				
 				let tmptasklist = CommonUtil.getTaskState();
 				if (tmptasklist == null) {
 					alert("TaskList is null");
 					return;
 				}
 				for (i in tmptasklist) {
+					if( tmptasklist[i].taskname.indexOf(tsktype) == -1){
+						continue;
+					}
 					let tmp_div_str = '';
 					let mon_arr = tmptasklist[i].taskcontent;
 					let tmp_mon_0 = MonList[mon_arr[0]];

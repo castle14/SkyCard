@@ -127,14 +127,14 @@ function refreshMonDiv(divid, monData) {
 				CommonUtil.saveGameInfo(gmif);
 				
 				alert("^_^挑战成功!STAR+"+tmp_star_number+"!\n你获得了卡片["+random_card.name+"]");
-				location.href = "tasks.html";
+				location.href = "tasklist.html";
 			}
 		} else if (divid == "player_div") {
 			let gmif = CommonUtil.getGameInfo();
 			gmif.lose_counter += 1;
 			CommonUtil.saveGameInfo(gmif);
 			alert("o(╥﹏╥)o挑战失败!");
-			location.href = "tasks.html";
+			location.href = "tasklist.html";
 		}
 	}
 }

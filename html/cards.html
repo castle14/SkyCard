@@ -36,35 +36,37 @@
 				}
 				return tmp_card_arr.sort(card_compare);
 			}
-			function checkIfInList(tp,lst){
+
+			function checkIfInList(tp, lst) {
 				let rtn = false;
-				for(let i=0;i<lst.length;i++){
-					if(lst[i] == tp){
+				for (let i = 0; i < lst.length; i++) {
+					if (lst[i] == tp) {
 						rtn = true;
 					}
 				}
 				return rtn;
 			}
+
 			function initList() {
 				$(".content_div_1").html("");
 				$(".content_div_2").html("");
 				let type_list = [];
-				$(".checked").each(function(i,e){
+				$(".checked").each(function(i, e) {
 					type_list.push($(this).attr("type"));
 				});
 				// console.log(type_list);
 				let cntr = 0;
 				let cardlist = get_cards_from_deck();
 				for (let i = 0; i < cardlist.length; i++) {
-					if(!checkIfInList(cardlist[i].type,type_list)){
+					if (!checkIfInList(cardlist[i].type, type_list)) {
 						continue;
 					}
-					
+
 					let tmp_tx_color = getTxColor(cardlist[i].type);
 					cntr++;
 					let tmp_div_str = '<div class="card_div">';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + cardlist[i].img + '"></div>';
-					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '·' +cardlist[i].star + '☆' +'</div>';
 					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(
 							cardlist[i].type) +
 						'·' + cardlist[i].value + '</span></div>';
