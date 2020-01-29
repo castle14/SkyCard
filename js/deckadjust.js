@@ -31,7 +31,7 @@ function refresh_extra_card_div() {
 		tmp_div_str = tmp_div_str + '<div class="card_div extra_card_div" card_info=\'' + tmp_card.id +
 			'\'>';
 		tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card.img + '"></div>';
-		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '</div>';
+		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '·' +tmp_card.star + '☆'+ '</div>';
 		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(tmp_card.type) + '·' +
 			tmp_card.value + '</span></div>';
 		tmp_div_str = tmp_div_str + '<div class="info_div">';
@@ -48,7 +48,7 @@ function refresh_deck_card_div() {
 		tmp_div_str = tmp_div_str + '<div class="card_div deck_card_div" card_info=\'' + tmp_card.id +
 			'\'>';
 		tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card.img + '"></div>';
-		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '</div>';
+		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '·' +tmp_card.star + '☆'+ '</div>';
 		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(tmp_card.type) + '·' +
 			tmp_card.value + '</span></div>';
 		tmp_div_str = tmp_div_str + '<div class="info_div">';
@@ -66,7 +66,7 @@ $(function() {
 	// console.log(extra_cards);
 	refresh_extra_card_div();
 	refresh_deck_card_div();
-	$("#checked_number_div span").text(Math.floor(CommonUtil.getGameInfo().star_counter / 10));
+	$("#checked_number_div span").text(CommonUtil.getGameInfo().star_counter);
 	$(".extra_card_div").on("click", function() {
 		$(".extra_card_div").removeClass("checked_div");
 		$(this).addClass("checked_div");
@@ -77,16 +77,18 @@ $(function() {
 	});
 	$("#decompose_card_btn").on("click", function() {
 		let card_in_extra_id = $(".content_div_1 .checked_div").attr("card_info");
+		let card_star = 0;
 		if (card_in_extra_id) {
 			let r = confirm("你确定分解这张卡片？");
 			if (r == true) {
 				extra_cards.forEach(function(item, index, arr) {
 					if (item.id == card_in_extra_id) {
+						card_star = item.star;
 						tmpdeck.push(item);
 						arr.splice(index, 1);
 					}
 				});
-				tmp_gameinfo.star_counter += 1;
+				tmp_gameinfo.star_counter += card_star;
 				CommonUtil.saveGameInfo(tmp_gameinfo);
 				location.reload();
 			}
@@ -94,7 +96,7 @@ $(function() {
 	});
 	$("#save_deck_btn").on("click", function() {
 		if (Math.floor(CommonUtil.getGameInfo().star_counter / 10) <= 0) {
-			alert("调整卡组的次数不足!");
+			alert("★不足!");
 		} else {
 
 			let card_in_extra_id = $(".content_div_1 .checked_div").attr("card_info");
