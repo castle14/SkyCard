@@ -165,7 +165,33 @@ body {
 	background-color: darkred;
 	border-radius: 30px;
 }
-
+#btn3 {
+	height: 60px;
+	width: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	border: darkred solid 1px;
+	position: absolute;
+	right: 5px;
+	top: calc(100% - 255px);
+	color: lightgrey;
+	text-align: center;
+	font-weight: bold;
+	background-color: darkred;
+	border-radius: 30px;
+}
+#energy_info {
+	height: 20px;
+	width: 60px;
+	line-height: 20px;
+	font-size: 12px;
+	position: absolute;
+	right: 5px;
+	top: calc(100% - 255px);
+	color: lightgrey;
+	text-align: center;
+	font-weight: bold;
+}
 #att_info {
 	height: 20px;
 	line-height: 20px;

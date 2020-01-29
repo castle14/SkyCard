@@ -1,5 +1,6 @@
 Turn = {
 	comCounter: 3,
+	chainCounter:6,
 	index: 1,
 	turnOwner: "PLAYER",
 	deck:[],
@@ -26,6 +27,7 @@ Turn = {
 	playTurnEnd: function() {
 		console.log("【TURN " + this.index + " END】");
 		refreshHandCardsDiv(this.handCardList);
+		refreshEnergyInfo();
 		this.comTurnStart();
 	},
 	comTurnEnd: function() {
@@ -54,6 +56,9 @@ Turn = {
 		$(".turn_info_div").text("TURN " + this.index);
 		$(".owner_info_div").text(this.turnOwner);
 		$("#btn1").show();
+		$("#btn3").show();
+		$("#energy_info").show();
+		
 	}
 }
 

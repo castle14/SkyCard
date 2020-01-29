@@ -140,14 +140,14 @@ body {
 	padding-left: 5px;
 }
 
-.game_info_div {
+.game_info_div ,.effect_info_div{
 	height: 30px;
 	margin-left: 10px;
 	margin-right: 10px;
 	/* border: lightgrey solid 1px; */
 	/* margin-top: 5px; */
 	color: lightgrey;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 	line-height: 30px;
 }
 
@@ -170,6 +170,7 @@ select {
 .game_info_div2{
 	color: lightgrey;
 	text-align: center;
+	margin-top: 30px;
 }
 #save_info{
 	color: lightgrey;

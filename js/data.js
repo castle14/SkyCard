@@ -201,6 +201,7 @@ CommonUtil.initPlayerStorage = function() {
 	mon.hp = mon.maxHp;
 	mon.ac = mon.maxAc;
 	mon.img = "player/英雄小子.jpg";
+	mon.effect = "英雄小子";
 	localStorage.setItem("skycard_player", JSON.stringify(mon));
 	return mon;
 }

@@ -84,7 +84,7 @@ function getMonObjFromDivID(divid) {
 function playerAttOne() {
 	let tmpdivs = $(".mon_checked");
 	if (tmpdivs.length == 0) {
-		console.log("no Mon is checked!");
+		alert("你需要选择一个目标!");
 		return 0;
 	} else if (tmpdivs.length == 1) {
 		let divid = $(tmpdivs[0]).attr("id");
@@ -115,7 +115,7 @@ function refreshMonDiv(divid, monData) {
 			$("#" + divid).hide();
 			Turn.comCounter -= 1;
 			if (Turn.comCounter == 0) {
-				tmptasks[tmptaskname].isComplete="yes";
+				tmptasks[tmptaskname].isComplete = "yes";
 				CommonUtil.saveTaskState(tmptasks);
 				let gmif = CommonUtil.getGameInfo();
 				gmif.win_counter += 1;
@@ -125,8 +125,8 @@ function refreshMonDiv(divid, monData) {
 				let tmp_star_number = mon1.star + mon2.star + mon3.star;
 				gmif.star_counter += tmp_star_number;
 				CommonUtil.saveGameInfo(gmif);
-				
-				alert("^_^挑战成功!STAR+"+tmp_star_number+"!\n你获得了卡片["+random_card.name+"]");
+
+				alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
 				location.href = "tasklist.html";
 			}
 		} else if (divid == "player_div") {
@@ -186,6 +186,7 @@ function initMonAndPlayer() {
 		Turn.handCardList.push(tmpcard);
 	}
 	refreshHandCardsDiv(Turn.handCardList);
+	refreshEnergyInfo();
 	initMonDiv("player_div", player);
 }
 
@@ -193,9 +194,13 @@ function refreshAttInfoBar() {
 	if (checkedCardInfo == null) {
 		$("#att_info").text("----");
 	} else {
-		$("#att_info").html("「"+checkedCardInfo.name + "」×" + checkedCardInfo.counter +
+		$("#att_info").html("「" + checkedCardInfo.name + "」×" + checkedCardInfo.counter +
 			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + CommonUtil.getAtkType(checkedCardInfo.type) + "·" + checkedCardInfo.value);
 	}
+}
+
+function refreshEnergyInfo() {
+	$("#energy_info span").text(Turn.chainCounter);
 }
 
 function initClick() {
@@ -219,6 +224,8 @@ function initClick() {
 			}
 		}
 		let tmplist = Turn.handCardList;
+		let _chainCounter = $(".card_checked").length - 1;
+		Turn.chainCounter += _chainCounter;
 		$(".card_checked").each(function(index) {
 			let tmpid = $(this).attr("id");
 			tmplist.forEach(function(item, index, arr) {
@@ -238,9 +245,12 @@ function initClick() {
 			});
 		});
 		$(this).hide();
+		$("#btn3").hide();
+		$("#energy_info").hide();
 		// refreshHandCardsDiv(Turn.handCardList);
 
 	});
+
 	$("#btn2").on("click", function() {
 		let r = confirm("你确定要离开这场战斗？");
 		if (r == true) {
@@ -248,6 +258,46 @@ function initClick() {
 		} else {
 
 		}
+	});
+
+	$("#btn3").on("click", function() {
+		let effect_name = player.effect;
+		if (!RoleEffect[effect_name]) {
+			alert("这个角色没有技能!");
+			return;
+		}
+		if (RoleEffect[effect_name].type == "attone" || RoleEffect[effect_name].type == "magone") {
+			let tmpdivs = $(".mon_checked");
+			if (tmpdivs.length == 0 || tmpdivs.length > 1) {
+				alert("你需要选择一个目标!");
+				return;
+			}
+		}
+
+		if (Turn.chainCounter < 6) {
+			alert("你的连击能量不足!");
+			return;
+		}
+		Turn.chainCounter = 0;
+		checkedCardInfo = RoleEffect[effect_name].effect(player);
+		if (checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall") {
+			playerAttAll();
+		} else if (checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal") {
+			Turn.addAnim(function() {
+				Anim.playerGoAct("player_div", function() {
+					Turn.nextAnim();
+				});
+			});
+			comMonBeHurt("player_div");
+			Turn.nextAnim();
+		} else {
+			playerAttOne()
+		}
+		refreshMonDiv("player_div", player);
+		refreshEnergyInfo();
+		$("#btn1").hide();
+		$("#energy_info").hide();
+		$(this).hide();
 	});
 
 	$(".mon").on("click", function() {

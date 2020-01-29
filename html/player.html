@@ -8,6 +8,7 @@
 		<link type="text/css" rel="styleSheet" href="../css/player.css" />
 		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
 		<script src="../js/data.js" type="application/javascript"></script>
+		<script src="../js/special_effect.js" type="application/javascript"></script>
 		<script type="application/javascript">
 			var player = CommonUtil.getPlayerStorage();
 			var gameinfo = CommonUtil.getGameInfo();
@@ -22,10 +23,11 @@
 				$("#data_div_data .data_div_4").text(player.ac);
 				$("#win_counter_span").text(gameinfo.win_counter);
 				$("#lose_counter_span").text(gameinfo.lose_counter);
-				$(".game_info_div2").html("说明<br>·升级MAXHP：" + GameSTD.StarCostMaxHp + "★" +
+				$(".game_info_div2").html("[说明]<br>·升级MAXHP：" + GameSTD.StarCostMaxHp + "★" +
 					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·升级HP：" + GameSTD.StarCostHp + "★" +
 					"<br>·升级MAXAC：" + GameSTD.StarCostMaxAc + "★" +
 					"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·升级AC：" + GameSTD.StarCostAc + "★");
+				$(".effect_info_div span").text(RoleEffect[player.effect].desc);
 			}
 			$(function() {
 
@@ -77,6 +79,7 @@
 					var imgname = $("#photo_picker option:selected").attr("value");
 					var imgurl = "player/" + imgname + ".jpg";
 					player.img = imgurl;
+					player.effect = imgname + "";
 					refreshPage();
 				});
 				$("#name_div_1").on("click", function() {
@@ -85,9 +88,9 @@
 						alert('你取消了输入！');
 					} else if (tmp_name_value == '') {
 						alert('姓名输入为空，请重新输入！');
-					} else if(tmp_name_value.length > 10){
+					} else if (tmp_name_value.length > 10) {
 						alert('姓名输入过长，请重新输入！');
-					}else {
+					} else {
 						player.name = tmp_name_value;
 						refreshPage();
 					}
@@ -132,15 +135,16 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="game_info_div">
 			<div class="info_left_div">
 				<form>
 					<select id="photo_picker">
-						<option value="1599">1599</option>
-						<option value="1600">1600</option>
-						<option value="1601">1601</option>
-						<option value="1602">1602</option>
-						<option value="3618">3618</option>
+						<option value="1599">土灵师</option>
+						<option value="1600">水灵师</option>
+						<option value="1601">火灵师</option>
+						<option value="1602">风灵师</option>
+						<option value="3618">冰凌侠</option>
 						<option value="英雄小子" selected="selected">英雄小子</option>
 					</select>
 				</form>
@@ -150,6 +154,7 @@
 				失败场次：<span id="lose_counter_span">--</span>
 			</div>
 		</div>
+		<div class="effect_info_div">技能：<span>--</span></div>
 		<div class="game_info_div2">
 			------
 		</div>
