@@ -1159,7 +1159,7 @@ CARD29 = {
 	"name": "魔闪光",
 	"type": "magall",
 	"value": 8,
-	"star": 2,
+	"star": 3,
 	"img": "card/魔闪光.jpg"
 }
 CARD30 = {
