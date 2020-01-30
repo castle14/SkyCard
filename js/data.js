@@ -1110,7 +1110,7 @@ CARD21 = {
 CARD22 = {
 	"name": "辐射炮",
 	"type": "magone",
-	"value": 25,
+	"value": 28,
 	"star": 4,
 	"img": "card/辐射炮.jpg"
 }
@@ -1208,22 +1208,22 @@ CARD35 = {
 CARD36 = {
 	"name": "炽焰飞腾",
 	"type": "magall",
-	"value": 14,
+	"value": 17,
 	"star": 4,
 	"img": "card/炽焰飞腾.jpg"
 }
 CARD37 = {
 	"name": "毁灭之焰",
 	"type": "magall",
-	"value": 17,
-	"star": 4,
+	"value": 32,
+	"star": 7,
 	"img": "card/毁灭之焰.jpg"
 }
 CARD38 = {
 	"name": "雷击",
 	"type": "magone",
-	"value": 28,
-	"star": 4,
+	"value": 30,
+	"star": 5,
 	"img": "card/雷击.jpg"
 }
 CARD39 = {
@@ -1311,8 +1311,34 @@ CARD50 = {
 	"star": 6,
 	"img": "card/宝石治疗.jpg"
 }
-
-
+CARD51 = {
+	"name": "闪电风暴",
+	"type": "magone",
+	"value": 50,
+	"star": 9,
+	"img": "card/闪电风暴.jpg"
+}
+CARD52 = {
+	"name": "无限雷击",
+	"type": "magall",
+	"value": 26,
+	"star": 6,
+	"img": "card/无限雷击.jpg"
+}
+CARD53 = {
+	"name": "燃烧大地",
+	"type": "magall",
+	"value": 14,
+	"star": 4,
+	"img": "card/燃烧大地.jpg"
+}
+CARD54 = {
+	"name": "转生爆炎",
+	"type": "magone",
+	"value": 34,
+	"star": 6,
+	"img": "card/转生爆炎.jpg"
+}
 //对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
 MonList["HAT_MON"] = HAT_MON;
@@ -1394,6 +1420,11 @@ CardList["CARD47"] = CARD47;
 CardList["CARD48"] = CARD48;
 CardList["CARD49"] = CARD49;
 CardList["CARD50"] = CARD50;
+CardList["CARD51"] = CARD51;
+CardList["CARD52"] = CARD52;
+CardList["CARD53"] = CARD53;
+CardList["CARD54"] = CARD54;
+
 GameInfo = {
 	win_counter: 0,
 	lose_counter: 0,
