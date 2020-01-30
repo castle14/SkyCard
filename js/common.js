@@ -1,6 +1,6 @@
 Turn = {
 	comCounter: 3,
-	chainCounter:6,
+	chainCounter:3,
 	index: 1,
 	turnOwner: "PLAYER",
 	deck:[],

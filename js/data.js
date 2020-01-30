@@ -1087,7 +1087,7 @@ CARD18 = {
 	"img": "card/银之弓矢.jpg"
 }
 CARD19 = {
-	"name": "竹光",
+	"name": "吸魂竹光",
 	"type": "attone",
 	"value": 10,
 	"star": 1,
