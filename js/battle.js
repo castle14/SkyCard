@@ -93,7 +93,16 @@ function playerAttOne() {
 				Turn.nextAnim();
 			});
 		});
+		if (checkedCardInfo && checkedCardInfo.type == "effect") {
+			let _mon = getMonObjFromDivID(divid);
+			let _effect = checkedCardInfo.effect;
+			let _counter = checkedCardInfo.counter;
+			checkedCardInfo = CardEffect[_effect].effect(player, _mon, Turn, _counter);
+
+		}
 		comMonBeHurt(divid);
+
+
 		Turn.nextAnim();
 		return 1;
 	} else {
@@ -142,8 +151,11 @@ function refreshMonDiv(divid, monData) {
 function refreshHandCardsDiv(handcards) {
 	$(".card").each(function(index) {
 		$(this).removeClass("card_checked");
-		$(this).attr("id", handcards[index].id).attr("name", handcards[index].name).attr("type", handcards[index].type).attr(
-			"value", handcards[index].value);
+		$(this).attr("id", handcards[index].id)
+			.attr("name", handcards[index].name)
+			.attr("type", handcards[index].type)
+			.attr("value", handcards[index].value)
+			.attr("effect", handcards[index].effect);
 		$(this).find("img").attr("src", "../img/" + handcards[index].img);
 		$(this).find(".card_name_div").text(handcards[index].name);
 		$(this).find(".card_desc_div").text(CommonUtil.getAtkType(handcards[index].type) + "·" + handcards[index].value);
@@ -194,8 +206,9 @@ function refreshAttInfoBar() {
 	if (checkedCardInfo == null) {
 		$("#att_info").text("----");
 	} else {
+		let _value = checkedCardInfo.type == "effect" ? "?" : checkedCardInfo.value;
 		$("#att_info").html("「" + checkedCardInfo.name + "」×" + checkedCardInfo.counter +
-			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + CommonUtil.getAtkType(checkedCardInfo.type) + "·" + checkedCardInfo.value);
+			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + CommonUtil.getAtkType(checkedCardInfo.type) + "·" + _value);
 	}
 }
 
@@ -318,6 +331,7 @@ function initClick() {
 				checkedCardInfo = {};
 				checkedCardInfo.name = $(this).attr("name");
 				checkedCardInfo.type = $(this).attr("type");
+				checkedCardInfo.effect = $(this).attr("effect");
 				checkedCardInfo.value = parseInt($(this).attr("value"));
 				checkedCardInfo.counter = 1;
 				$(".card").removeClass("card_checked");

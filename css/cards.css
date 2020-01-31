@@ -127,7 +127,11 @@ body {
 	line-height: 18px;
 	display: inline-block;
 }
-
+.effect_color {
+	background-color: darkolivegreen;
+	line-height: 18px;
+	display: inline-block;
+}
 .footer_div {
 	position: fixed;
 	bottom: 0px;

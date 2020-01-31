@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>内部工具</title>
+		<link type="text/css" rel="styleSheet" href="../css/base.css" />
+		<link type="text/css" rel="styleSheet" href="../css/tool.css" />
+		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
+		<script src="../js/data.js" type="application/javascript"></script>
+		<script src="../js/common.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			$(function() {
+				$("#star_form .button_class").on("click", function() {
+					let gameinfo = CommonUtil.getGameInfo();
+					let star_counter = $("#star_form .input_class").val();
+					if (star_counter && star_counter.length <= 3) {
+						gameinfo.star_counter += parseInt(star_counter);
+						if (gameinfo.star_counter < 0) {
+							alert("输入不合法，值过小！");
+						} else {
+							CommonUtil.saveGameInfo(gameinfo);
+							alert("修改星点成功！");
+						}
+					} else {
+						alert("输入不合法！");
+					}
+					$("#star_form .input_class").val("")
+				});
+				$("#card_form .button_class").on("click", function() {
+					let gameinfo = CommonUtil.getGameInfo();
+					let cardcode = $("#card_form .input_class").val();
+					if (cardcode && cardcode.length <= 10) {
+						let cardclass = CardList[cardcode];
+						if(cardclass){
+							let tmpcard = CardUtil.getCardInstance(cardclass);
+							gameinfo.extra_cards.push(tmpcard);
+							CommonUtil.saveGameInfo(gameinfo);
+							alert("添加成功！");
+						}else{
+							alert("卡牌CODE不存在！");
+						}
+						
+					} else {
+						alert("输入不合法！");
+					}
+					$("#card_form .input_class").val("")
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="header_div">内部工具</div>
+		<div class="content_div">
+			<form id="star_form">
+				<fieldset>
+					<legend>星点</legend>
+					<input type="number" placeholder="请输入要增加的星点数,最大999" class="input_class" /><br />
+					<input type="button" value="确认" class="button_class" />
+				</fieldset>
+			</form>
+			<form id="card_form">
+				<fieldset>
+					<legend>卡牌</legend>
+					<input type="text" placeholder="请输入要添加的卡牌CODE" class="input_class" /><br />
+					<input type="button" value="确认" class="button_class" />
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

@@ -269,6 +269,9 @@ CommonUtil.getAtkType = function(tp) {
 		case "arm":
 			rtn = "护盾";
 			break;
+		case "effect":
+			rtn = "效果";
+			break;
 		default:
 			rtn = tp;
 	}
@@ -1339,6 +1342,15 @@ CARD54 = {
 	"star": 6,
 	"img": "card/转生爆炎.jpg"
 }
+CARD55 = {
+	"name": "死灵咒",
+	"type": "effect",
+	"value": 0,
+	"star": 10,
+	"effect": "死灵咒",
+	"img": "card/死灵咒.jpg"
+}
+
 //对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
 MonList["HAT_MON"] = HAT_MON;
@@ -1424,13 +1436,14 @@ CardList["CARD51"] = CARD51;
 CardList["CARD52"] = CARD52;
 CardList["CARD53"] = CARD53;
 CardList["CARD54"] = CARD54;
+CardList["CARD55"] = CARD55;
 
 GameInfo = {
 	win_counter: 0,
 	lose_counter: 0,
 	opportunity_counter: 0,
 	star_counter: 0,
-	card_star_level:3,
+	card_star_level: 3,
 	extra_cards: [CardUtil.getCardInstance(CARD1), CardUtil.getCardInstance(CARD2)]
 }
 

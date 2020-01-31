@@ -1,4 +1,5 @@
-var RoleEffect = {}
+var RoleEffect = {};
+var CardEffect = {};
 
 
 RoleEffect["1599"] = {
@@ -96,6 +97,22 @@ RoleEffect["英雄小子"] = {
 
 		plyr.ac = plyr.maxAc;
 		plyr.hp = plyr.maxHp;
+		return chkd_cd_inf;
+	}
+}
+/*-----------------------------------------------------------------------*/
+CardEffect["死灵咒"] = {
+	"desc": "给与目标已损失护甲数值一半的魔法攻击.",
+	"type": "magone",
+	"effect": function(plyr, com, turn, counter) {
+		let t = Math.floor((com.maxAc - com.ac) / 2);
+
+		let = chkd_cd_inf = {};
+		chkd_cd_inf.name = "死灵咒";
+		chkd_cd_inf.type = "magone";
+		chkd_cd_inf.counter = counter;
+		chkd_cd_inf.value = t * counter;
+
 		return chkd_cd_inf;
 	}
 }

@@ -16,8 +16,10 @@
 					return "mag_color";
 				} else if (atttype.indexOf("heal") != -1) {
 					return "heal_color";
-				} else {
+				} else if (atttype.indexOf("arm") != -1) {
 					return "arm_color";
+				} else {
+					return "effect_color";
 				}
 			}
 
@@ -63,13 +65,14 @@
 					}
 
 					let tmp_tx_color = getTxColor(cardlist[i].type);
+					let _value = cardlist[i].type == "effect" ? "?" : cardlist[i].value;
 					cntr++;
 					let tmp_div_str = '<div class="card_div">';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + cardlist[i].img + '"></div>';
-					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '·' +cardlist[i].star + '☆' +'</div>';
-					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(
+					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '·' + cardlist[i].star + '☆' + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">&nbsp;' + CommonUtil.getAtkType(
 							cardlist[i].type) +
-						'·' + cardlist[i].value + '</span></div>';
+						'·' + _value + '&nbsp;</span></div>';
 					tmp_div_str = tmp_div_str + '<div class="info_div">';
 
 					tmp_div_str = tmp_div_str + '</div></div>';
@@ -117,6 +120,7 @@
 			<div class="choice checked" type="magall">魔·全</div>
 			<div class="choice checked" type="heal">治疗</div>
 			<div class="choice checked" type="arm">护盾</div>
+			<div class="choice checked" type="effect">效果</div>
 		</div>
 	</body>
 </html>

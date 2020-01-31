@@ -124,7 +124,7 @@ body {
 }
 
 #checked_number_div {
-	width: 30%;
+	width: 35%;
 	height: 56px;
 	padding-left: 10px;
 	float: left;
@@ -139,7 +139,7 @@ body {
 	border-left: lightgrey double 1px;
 }
 #decompose_card_btn{
-	width: 35%;
+	width: 30%;
 	height: 56px;
 	float: left;
 	text-align: center;
@@ -173,6 +173,11 @@ body {
 
 .arm_color {
 	background-color: darkblue;
+	line-height: 18px;
+	display: inline-block;
+}
+.effect_color {
+	background-color: darkolivegreen;
 	line-height: 18px;
 	display: inline-block;
 }

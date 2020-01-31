@@ -18,8 +18,10 @@ function getTxColor(atttype) {
 		return "mag_color";
 	} else if (atttype.indexOf("heal") != -1) {
 		return "heal_color";
-	} else {
+	} else if (atttype.indexOf("arm") != -1) {
 		return "arm_color";
+	} else {
+		return "effect_color";
 	}
 }
 
@@ -28,12 +30,14 @@ function refresh_extra_card_div() {
 		let tmp_tx_color = getTxColor(extra_cards[i].type);
 		let tmp_card = extra_cards[i];
 		let tmp_div_str = "";
+		let _value = tmp_card.type == "effect" ? "?" : tmp_card.value;
 		tmp_div_str = tmp_div_str + '<div class="card_div extra_card_div" card_info=\'' + tmp_card.id +
 			'\'>';
 		tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card.img + '"></div>';
-		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '·' +tmp_card.star + '☆'+ '</div>';
-		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(tmp_card.type) + '·' +
-			tmp_card.value + '</span></div>';
+		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '·' + tmp_card.star + '☆' + '</div>';
+		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">&nbsp;' + CommonUtil.getAtkType(
+				tmp_card.type) + '·' +
+			_value + '&nbsp;</span></div>';
 		tmp_div_str = tmp_div_str + '<div class="info_div">';
 		tmp_div_str = tmp_div_str + '</div></div>';
 		$(tmp_div_str).appendTo($(".content_div_1"));
@@ -45,12 +49,14 @@ function refresh_deck_card_div() {
 		let tmp_tx_color = getTxColor(tmpdeck[j].type);
 		let tmp_card = tmpdeck[j];
 		let tmp_div_str = "";
+		let _value = tmp_card.type == "effect" ? "?" : tmp_card.value;
 		tmp_div_str = tmp_div_str + '<div class="card_div deck_card_div" card_info=\'' + tmp_card.id +
 			'\'>';
 		tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + tmp_card.img + '"></div>';
-		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '·' +tmp_card.star + '☆'+ '</div>';
-		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">' + CommonUtil.getAtkType(tmp_card.type) + '·' +
-			tmp_card.value + '</span></div>';
+		tmp_div_str = tmp_div_str + '<div class="name_div">' + tmp_card.name + '·' + tmp_card.star + '☆' + '</div>';
+		tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">&nbsp;' + CommonUtil.getAtkType(
+				tmp_card.type) + '·' +
+			_value + '&nbsp;</span></div>';
 		tmp_div_str = tmp_div_str + '<div class="info_div">';
 		tmp_div_str = tmp_div_str + '</div></div>';
 		$(tmp_div_str).appendTo($(".content_div_2"));
