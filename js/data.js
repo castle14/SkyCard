@@ -1350,7 +1350,22 @@ CARD55 = {
 	"effect": "死灵咒",
 	"img": "card/死灵咒.jpg"
 }
-
+CARD56 = {
+	"name": "DD炸弹",
+	"type": "effect",
+	"value": 0,
+	"star": 10,
+	"effect": "DD炸弹",
+	"img": "card/DD炸弹.jpg"
+}
+CARD57 = {
+	"name": "活命水",
+	"type": "effect",
+	"value": 0,
+	"star": 10,
+	"effect": "活命水",
+	"img": "card/活命水.jpg"
+}
 //对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
 MonList["HAT_MON"] = HAT_MON;
@@ -1437,6 +1452,8 @@ CardList["CARD52"] = CARD52;
 CardList["CARD53"] = CARD53;
 CardList["CARD54"] = CARD54;
 CardList["CARD55"] = CARD55;
+CardList["CARD56"] = CARD56;
+CardList["CARD57"] = CARD57;
 
 GameInfo = {
 	win_counter: 0,

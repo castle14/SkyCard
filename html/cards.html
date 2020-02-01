@@ -8,6 +8,7 @@
 		<link type="text/css" rel="styleSheet" href="../css/cards.css" />
 		<script src="../js/jquery-3.4.1.js" type="application/javascript"></script>
 		<script src="../js/data.js" type="application/javascript"></script>
+		<script src="../js/special_effect.js" type="application/javascript"></script>
 		<script type="application/javascript">
 			function getTxColor(atttype) {
 				if (atttype.indexOf("att") != -1) {
@@ -67,7 +68,7 @@
 					let tmp_tx_color = getTxColor(cardlist[i].type);
 					let _value = cardlist[i].type == "effect" ? "?" : cardlist[i].value;
 					cntr++;
-					let tmp_div_str = '<div class="card_div">';
+					let tmp_div_str = '<div class="card_div" effect="'+ cardlist[i].effect +'">';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + cardlist[i].img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '·' + cardlist[i].star + '☆' + '</div>';
 					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">&nbsp;' + CommonUtil.getAtkType(
@@ -99,6 +100,17 @@
 
 				initList();
 
+				$(".card_div").on("click", function() {
+					$(".card_div").removeClass("checked");
+					$(this).addClass("checked");
+					let effect_name = $(this).attr("effect");
+					if(effect_name && effect_name!="undefined"){
+						let desc = CardEffect[effect_name].desc;
+						$(".effect_div span").text(desc);
+					}else{
+						$(".effect_div span").text("无");
+					}
+				});
 
 			});
 		</script>
@@ -107,6 +119,9 @@
 		<div class="header_div">卡牌图鉴</div>
 		<div class="back_div">
 			&lt;-</div>
+		<div class="effect_div">
+			效果：<span>无</span>
+		</div>
 		<div class="content_div">
 			<div class="content_div_1">
 			</div>

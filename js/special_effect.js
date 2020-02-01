@@ -116,3 +116,36 @@ CardEffect["死灵咒"] = {
 		return chkd_cd_inf;
 	}
 }
+CardEffect["DD炸弹"] = {
+	"desc": "给与目标当前HP一半的物理攻击.",
+	"type": "attone",
+	"effect": function(plyr, com, turn, counter) {
+		let t = Math.floor(com.hp / 2);
+
+		let = chkd_cd_inf = {};
+		chkd_cd_inf.name = "DD炸弹";
+		chkd_cd_inf.type = "attone";
+		chkd_cd_inf.counter = counter;
+		chkd_cd_inf.value = t * counter;
+
+		return chkd_cd_inf;
+	}
+}
+CardEffect["活命水"] = {
+	"desc": "恢复自身HP最大值的25%,若当前HP不大于最大值的25%,则恢复HP至最大.",
+	"type": "heal",
+	"effect": function(plyr, com, turn, counter) {
+		let t = Math.floor(plyr.maxHp / 4);
+		if (plyr.hp <= (plyr.maxHp / 4)) {
+			t = plyr.maxHp - plyr.hp;
+		}
+
+		let = chkd_cd_inf = {};
+		chkd_cd_inf.name = "活命水";
+		chkd_cd_inf.type = "heal";
+		chkd_cd_inf.counter = counter;
+		chkd_cd_inf.value = t * counter;
+
+		return chkd_cd_inf;
+	}
+}
