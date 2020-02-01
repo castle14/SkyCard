@@ -160,7 +160,7 @@ function refreshHandCardsDiv(handcards) {
 		$(this).find(".card_name_div").text(handcards[index].name);
 		$(this).find(".card_desc_div").text(CommonUtil.getAtkType(handcards[index].type) + "·" + handcards[index].value);
 	});
-	$("#deck_info").text("DECK:" + Turn.deck.length + " UESD:" + Turn.discardList.length);
+	$("#deck_info").text("DECK=" + Turn.deck.length + " UESD=" + Turn.discardList.length);
 	checkedCardInfo = null;
 	refreshAttInfoBar();
 
@@ -316,6 +316,9 @@ function initClick() {
 	$(".mon").on("click", function() {
 		$(".mon").removeClass("mon_checked");
 		$(this).addClass("mon_checked");
+		let mon_id = $(this).attr("id");
+		let tmp_mon = getMonObjFromDivID(mon_id)
+		$("#other_info").text(tmp_mon.name + ": HP=" + tmp_mon.hp + " 护盾=" + tmp_mon.ac);
 	});
 	$(".card").on("click", function() {
 		if ($(this).hasClass("card_checked")) {
@@ -331,7 +334,7 @@ function initClick() {
 				checkedCardInfo = {};
 				checkedCardInfo.name = $(this).attr("name");
 				checkedCardInfo.type = $(this).attr("type");
-				checkedCardInfo.effect = $(this).attr("effect");
+				checkedCardInfo.effect = $(this).attr("name");
 				checkedCardInfo.value = parseInt($(this).attr("value"));
 				checkedCardInfo.counter = 1;
 				$(".card").removeClass("card_checked");
@@ -343,6 +346,18 @@ function initClick() {
 			}
 		}
 		refreshAttInfoBar();
+		if ($(this).attr("type") == "effect") {
+			let _name = $(this).attr("name");
+			$("#other_info").text("「"+_name + "」" + CardEffect[_name].desc);
+		} else {
+			let _name = $(this).attr("name");
+			$("#other_info").text("「"+_name + "」无效果." );
+		}
+
+	});
+
+	$("#player_div").on("click", function() {
+		$("#other_info").text(player.name + ": HP=" + player.hp + " 护盾=" + player.ac);
 	});
 }
 

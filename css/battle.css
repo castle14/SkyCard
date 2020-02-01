@@ -76,7 +76,7 @@ body {
 	height: 120px;
 	position: absolute;
 	left: calc(50% - 40px);
-	bottom: 180px;
+	bottom: 200px;
 	border: grey solid 1px;
 }
 
@@ -198,10 +198,10 @@ body {
 	position: absolute;
 	right: 65px;
 	left: 65px;
-	bottom: 125px;
+	bottom: 120px;
 	color: lightgrey;
 	text-align: center;
-	font-size: 10px;
+	font-size: 9px;
 }
 
 #deck_info {
@@ -210,10 +210,22 @@ body {
 	position: absolute;
 	right: 65px;
 	left: 65px;
-	bottom: 145px;
+	bottom: 140px;
 	color: lightgrey;
 	text-align: center;
-	font-size: 10px;
+	font-size: 9px;
+	border-bottom: lightgrey solid 1px;
+}
+
+#other_info {
+	min-height: 20px;
+	position: absolute;
+	right: 65px;
+	left: 65px;
+	bottom: 160px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 9px;
 	border-bottom: lightgrey solid 1px;
 }
 
