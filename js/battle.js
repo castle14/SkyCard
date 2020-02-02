@@ -275,6 +275,7 @@ function initClick() {
 
 	$("#btn3").on("click", function() {
 		let effect_name = player.effect;
+		let _mon = {};
 		if (!RoleEffect[effect_name]) {
 			alert("这个角色没有技能!");
 			return;
@@ -284,6 +285,8 @@ function initClick() {
 			if (tmpdivs.length == 0 || tmpdivs.length > 1) {
 				alert("你需要选择一个目标!");
 				return;
+			} else {
+				_mon = getMonObjFromDivID(tmpdivs.attr("id"));
 			}
 		}
 
@@ -292,7 +295,7 @@ function initClick() {
 			return;
 		}
 		Turn.chainCounter = 0;
-		checkedCardInfo = RoleEffect[effect_name].effect(player);
+		checkedCardInfo = RoleEffect[effect_name].effect(player, _mon, Turn, 1);
 		if (checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall") {
 			playerAttAll();
 		} else if (checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal") {
@@ -348,16 +351,16 @@ function initClick() {
 		refreshAttInfoBar();
 		if ($(this).attr("type") == "effect") {
 			let _name = $(this).attr("name");
-			$("#other_info").text("「"+_name + "」" + CardEffect[_name].desc);
+			$("#other_info").text("「" + _name + "」" + CardEffect[_name].desc);
 		} else {
 			let _name = $(this).attr("name");
-			$("#other_info").text("「"+_name + "」无效果." );
+			$("#other_info").text("「" + _name + "」无效果.");
 		}
 
 	});
 
 	$("#player_div").on("click", function() {
-		$("#other_info").text(player.name + ": HP=" + player.hp + " 护盾=" + player.ac);
+		$("#other_info").text(player.name + "(" + player.hp + "/" + player.ac+") "+RoleEffect[player.effect].desc);
 	});
 }
 

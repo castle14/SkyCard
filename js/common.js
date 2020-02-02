@@ -1,7 +1,7 @@
 Turn = {
 	comCounter: 3,
 	chainCounter:3,
-	index: 1,
+	index: 1,//回合数
 	turnOwner: "PLAYER",
 	deck:[],
 	handCardList:[],

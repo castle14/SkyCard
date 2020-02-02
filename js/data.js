@@ -995,7 +995,7 @@ CARD5 = {
 	"name": "钢甲壳",
 	"type": "arm",
 	"value": 40,
-	"star": 3,
+	"star": 2,
 	"img": "card/钢甲壳.jpg"
 }
 CARD6 = {
@@ -1191,14 +1191,14 @@ CARD33 = {
 	"name": "神鹰护甲",
 	"type": "arm",
 	"value": 60,
-	"star": 4,
+	"star": 3,
 	"img": "card/神鹰护甲.jpg"
 }
 CARD34 = {
 	"name": "暗之假面",
 	"type": "arm",
 	"value": 90,
-	"star": 5,
+	"star": 4,
 	"img": "card/暗之假面.jpg"
 }
 CARD35 = {
@@ -1209,11 +1209,11 @@ CARD35 = {
 	"img": "card/二重旋风.jpg"
 }
 CARD36 = {
-	"name": "炽焰飞腾",
+	"name": "大火葬",
 	"type": "magall",
 	"value": 17,
 	"star": 4,
-	"img": "card/炽焰飞腾.jpg"
+	"img": "card/大火葬.jpg"
 }
 CARD37 = {
 	"name": "毁灭之焰",
@@ -1290,21 +1290,21 @@ CARD47 = {
 	"name": "混沌护盾",
 	"type": "arm",
 	"value": 120,
-	"star": 7,
+	"star": 6,
 	"img": "card/混沌护盾.jpg"
 }
 CARD48 = {
 	"name": "终极护甲",
 	"type": "arm",
-	"value": 999,
-	"star": 99,
+	"value": 150,
+	"star": 7,
 	"img": "card/终极护甲.jpg"
 }
 CARD49 = {
 	"name": "圣光治疗",
 	"type": "heal",
-	"value": 999,
-	"star": 99,
+	"value": 150,
+	"star": 7,
 	"img": "card/圣光治疗.jpg"
 }
 CARD50 = {
@@ -1366,6 +1366,47 @@ CARD57 = {
 	"effect": "活命水",
 	"img": "card/活命水.jpg"
 }
+CARD58 = {
+	"name": "连锁破坏",
+	"type": "effect",
+	"value": 0,
+	"star": 10,
+	"effect": "连锁破坏",
+	"img": "card/连锁破坏.jpg"
+}
+CARD59 = {
+	"name": "炽焰飞腾",
+	"type": "effect",
+	"value": 0,
+	"star": 10,
+	"effect": "炽焰飞腾",
+	"img": "card/炽焰飞腾.jpg"
+}
+CARD60 = {
+	"name": "体力增强",
+	"type": "effect",
+	"value": 0,
+	"star": 10,
+	"effect": "体力增强",
+	"img": "card/体力增强.jpg"
+}
+CARD61 = {
+	"name": "终焉倒计",
+	"type": "effect",
+	"value": 0,
+	"star": 10,
+	"effect": "终焉倒计",
+	"img": "card/终焉倒计.jpg"
+}
+CARD62 = {
+	"name": "白净之水",
+	"type": "heal",
+	"value": 90,
+	"star": 4,
+	"img": "card/白净之水.jpg"
+}
+
+
 //对怪兽进行注册
 MonList["FIRE_MON"] = FIRE_MON;
 MonList["HAT_MON"] = HAT_MON;
@@ -1454,6 +1495,11 @@ CardList["CARD54"] = CARD54;
 CardList["CARD55"] = CARD55;
 CardList["CARD56"] = CARD56;
 CardList["CARD57"] = CARD57;
+CardList["CARD58"] = CARD58;
+CardList["CARD59"] = CARD59;
+CardList["CARD60"] = CARD60;
+CardList["CARD61"] = CARD61;
+CardList["CARD62"] = CARD62;
 
 GameInfo = {
 	win_counter: 0,
