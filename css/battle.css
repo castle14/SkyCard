@@ -37,6 +37,8 @@ body {
 .f_div {
 	width: 100%;
 	height: calc(100% - 152px);
+	background: url(../img/bg/摩天楼.jpg) no-repeat  fixed top;
+	background-size: cover;
 	background-color: black;
 	border-bottom: white solid 1px;
 }
@@ -281,7 +283,7 @@ body {
 }
 
 .hp_number {
-	width: 100%;
+	width: 1%;
 	height: 6px;
 	background-color: green;
 	margin-top: 2px;
@@ -301,7 +303,7 @@ body {
 }
 
 .shield_number {
-	width: 90%;
+	width: 1%;
 	height: 6px;
 	background-color: saddlebrown;
 	margin-top: 2px;
@@ -315,4 +317,20 @@ body {
 	text-align: center;
 	line-height: 16px;
 	font-size: 12px;
+}
+/* .ele {
+	height: 3px;
+	width: 1px;
+	background-color: #09dbdb;
+	position: absolute;
+	border-top: yellow solid 1px;
+	border-bottom: yellow solid 1px;
+} */
+.ele {
+	height: 3px;
+	width: 1px;
+	background-color: yellow;
+	position: absolute;
+	border-top: lightyellow solid 1px;
+	border-bottom: lightyellow solid 1px;
 }

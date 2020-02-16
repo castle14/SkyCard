@@ -29,7 +29,7 @@ Anim.arm = function(divid, fn) {
 	let blooddiv = $("<div></div>");
 	blooddiv.addClass("arm");
 	blooddiv.css("left", X);
-	blooddiv.css("top", Y+110);
+	blooddiv.css("top", Y + 110);
 
 	blooddiv.appendTo("body");
 	blooddiv.animate({
@@ -49,7 +49,7 @@ Anim.heal = function(divid, fn) {
 	let blooddiv = $("<div></div>");
 	blooddiv.addClass("heal");
 	blooddiv.css("left", X);
-	blooddiv.css("top", Y+110);
+	blooddiv.css("top", Y + 110);
 
 	blooddiv.appendTo("body");
 	blooddiv.animate({
@@ -81,14 +81,14 @@ Anim.shake = function(divid, fn) {
 }
 
 Anim.showHPChange = function(divid, hurtnumber, fn) {
-	Anim.showValue(divid, "HP - "+hurtnumber, fn)
+	Anim.showValue(divid, "HP - " + hurtnumber, fn)
 }
 
-Anim.showValue = function(divid,text,fn){
+Anim.showValue = function(divid, text, fn) {
 	var tmpdiv = $("#" + divid);
 	var Y = tmpdiv.offset().top;
 	var X = tmpdiv.offset().left;
-	
+
 	let hpdiv = $("<div></div>");
 	hpdiv.addClass("hp_change");
 	hpdiv.css("left", X);
@@ -119,21 +119,21 @@ Anim.beHurt = function(divid, value, fn) {
 Anim.beShielded = function(divid, value, fn) {
 	Anim.hurt(divid);
 	Anim.shake(divid);
-	Anim.showValue(divid, "AC - "+value, fn)
+	Anim.showValue(divid, "AC - " + value, fn)
 }
 /* 
  治疗自己,生命值增加
  */
 Anim.beHealed = function(divid, value, fn) {
 	Anim.heal(divid);
-	Anim.showValue(divid, "HP + "+value, fn)
+	Anim.showValue(divid, "HP + " + value, fn)
 }
 /* 
  武装自己,护甲增加
  */
 Anim.beArmed = function(divid, value, fn) {
 	Anim.arm(divid);
-	Anim.showValue(divid, "AC + "+value, fn)
+	Anim.showValue(divid, "AC + " + value, fn)
 }
 
 
@@ -165,4 +165,50 @@ Anim.comGoAct = function(divid, fn) {
 			fn();
 		}
 	});
+}
+
+Anim.beShockedByEle = function(divid, fn) {
+	let tmpdiv = $("#" + divid);
+	let Y = tmpdiv.offset().top;
+	let X = tmpdiv.offset().left;
+
+	let i = 0;
+	let tmpY1 = Y + 40;
+	let tmpY2 = Y + 40;
+	let eleArr = [
+		1, 1, 1, 1, 1, -1, -1, -1, -1, -1,
+		-1, -1, -1, -1, 1, 1, 1, 1, 1, -1,
+		1, 1, -1, -1, -1, -1, -1, 1, 1, 1,
+		1, 1, 1, 1, -1, -1, -1, -1, -1, 1,
+		1, 1, 1, 1, 1, -1, -1, -1, -1, -1,
+		-1, -1, -1, -1, 1, 1, 1, 1, 1, -1,
+		1, 1, -1, -1, -1, -1, -1, 1, 1, 1,
+		1, 1, 1, 1, -1, -1, -1, -1, -1, 1
+	];
+	let intervalId = setInterval(function() {
+		let rdm = Math.ceil(Math.random() * 10);
+		tmpY1 += eleArr[i] * 3;
+		tmpY2 -= eleArr[i] * 3;
+		let blooddiv1 = $("<div></div>");
+		blooddiv1.addClass("ele");
+		blooddiv1.css("left", X + i);
+		blooddiv1.css("top", Y + 40 - Math.abs(tmpY1 - tmpY2) / 2);
+		blooddiv1.css("height", Math.abs(tmpY1 - tmpY2));
+		blooddiv1.appendTo("body");
+		blooddiv1.fadeOut(300, function() {
+			blooddiv1.remove();
+		});
+
+		/* setTimeout(function() {
+			blooddiv1.remove();
+		}, 300); */
+		i++;
+		if (i >= 79) {
+			clearInterval(intervalId);
+			// $(".ele").remove();
+			if (fn != null && fn != undefined) {
+				fn();
+			}
+		}
+	}, 5);
 }

@@ -115,29 +115,39 @@ function refreshMonDiv(divid, monData) {
 	let hpPct = monData.hp / monData.maxHp * 100;
 	let acPct = monData.ac / monData.maxAc * 100;
 	let tmpdiv = $("#" + divid);
-	tmpdiv.find(".hp_number").css("width", hpPct + "%");
-	tmpdiv.find(".shield_number").css("width", acPct + "%");
+	// tmpdiv.find(".hp_number").css("width", hpPct + "%");
+	tmpdiv.find(".hp_number").animate({
+		"width": hpPct + "%"
+	}, 200);
+
+	// tmpdiv.find(".shield_number").css("width", acPct + "%");
+	tmpdiv.find(".shield_number").animate({
+		"width": acPct + "%"
+	}, 200);
+
 	tmpdiv.find(".state_bar").text(monData.name);
 	if (monData.hp == 0) {
 		if (divid == "div1" || divid == "div2" || divid == "div3") {
 			$("#" + divid).removeClass("mon_checked");
-			$("#" + divid).hide();
-			Turn.comCounter -= 1;
-			if (Turn.comCounter == 0) {
-				tmptasks[tmptaskname].isComplete = "yes";
-				CommonUtil.saveTaskState(tmptasks);
-				let gmif = CommonUtil.getGameInfo();
-				gmif.win_counter += 1;
-				// gmif.opportunity_counter +=1;
-				let random_card = CardUtil.getRandomCard();
-				gmif.extra_cards.push(random_card);
-				let tmp_star_number = mon1.star + mon2.star + mon3.star;
-				gmif.star_counter += tmp_star_number;
-				CommonUtil.saveGameInfo(gmif);
+			// $("#" + divid).hide();
+			$("#" + divid).fadeOut(function() {
+				Turn.comCounter -= 1;
+				if (Turn.comCounter == 0) {
+					tmptasks[tmptaskname].isComplete = "yes";
+					CommonUtil.saveTaskState(tmptasks);
+					let gmif = CommonUtil.getGameInfo();
+					gmif.win_counter += 1;
+					// gmif.opportunity_counter +=1;
+					let random_card = CardUtil.getRandomCard();
+					gmif.extra_cards.push(random_card);
+					let tmp_star_number = mon1.star + mon2.star + mon3.star;
+					gmif.star_counter += tmp_star_number;
+					CommonUtil.saveGameInfo(gmif);
 
-				alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
-				location.href = "tasklist.html";
-			}
+					alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
+					location.href = "tasklist.html";
+				}
+			});
 		} else if (divid == "player_div") {
 			let gmif = CommonUtil.getGameInfo();
 			gmif.lose_counter += 1;
@@ -360,7 +370,7 @@ function initClick() {
 	});
 
 	$("#player_div").on("click", function() {
-		$("#other_info").text(player.name + "(" + player.hp + "/" + player.ac+") "+RoleEffect[player.effect].desc);
+		$("#other_info").text(player.name + "(" + player.hp + "/" + player.ac + ") " + RoleEffect[player.effect].desc);
 	});
 }
 
