@@ -130,24 +130,24 @@ function refreshMonDiv(divid, monData) {
 		if (divid == "div1" || divid == "div2" || divid == "div3") {
 			$("#" + divid).removeClass("mon_checked");
 			// $("#" + divid).hide();
-			$("#" + divid).fadeOut(function() {
-				Turn.comCounter -= 1;
-				if (Turn.comCounter == 0) {
-					tmptasks[tmptaskname].isComplete = "yes";
-					CommonUtil.saveTaskState(tmptasks);
-					let gmif = CommonUtil.getGameInfo();
-					gmif.win_counter += 1;
-					// gmif.opportunity_counter +=1;
-					let random_card = CardUtil.getRandomCard();
-					gmif.extra_cards.push(random_card);
-					let tmp_star_number = mon1.star + mon2.star + mon3.star;
-					gmif.star_counter += tmp_star_number;
-					CommonUtil.saveGameInfo(gmif);
+			$("#" + divid).fadeOut(500);
+			Turn.comCounter -= 1;
+			if (Turn.comCounter == 0) {
+				tmptasks[tmptaskname].isComplete = "yes";
+				CommonUtil.saveTaskState(tmptasks);
+				let gmif = CommonUtil.getGameInfo();
+				gmif.win_counter += 1;
+				// gmif.opportunity_counter +=1;
+				let random_card = CardUtil.getRandomCard();
+				gmif.extra_cards.push(random_card);
+				let tmp_star_number = mon1.star + mon2.star + mon3.star;
+				gmif.star_counter += tmp_star_number;
+				CommonUtil.saveGameInfo(gmif);
 
-					alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
-					location.href = "tasklist.html";
-				}
-			});
+				alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
+				location.href = "tasklist.html";
+			}
+
 		} else if (divid == "player_div") {
 			let gmif = CommonUtil.getGameInfo();
 			gmif.lose_counter += 1;

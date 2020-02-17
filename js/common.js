@@ -28,7 +28,9 @@ Turn = {
 		console.log("【TURN " + this.index + " END】");
 		refreshHandCardsDiv(this.handCardList);
 		refreshEnergyInfo();
-		this.comTurnStart();
+		setTimeout(function(){
+			Turn.comTurnStart();
+		},550);
 	},
 	comTurnEnd: function() {
 		console.log("【TURN " + this.index + " END】");
