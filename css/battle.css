@@ -37,7 +37,7 @@ body {
 .f_div {
 	width: 100%;
 	height: calc(100% - 152px);
-	background: url(../img/bg/海滨地区.jpg) no-repeat   top;
+	background: url(../img/bg/暗.jpg) no-repeat   top;
 	background-size: cover;
 	background-color: black;
 	border-bottom: white solid 1px;
@@ -340,4 +340,12 @@ body {
 	position: absolute;
 	border-top: lightyellow solid 1px;
 	border-bottom: lightyellow solid 1px;
+}
+
+.eff_light {
+	height: 8px;
+	width:8px;
+	background-color: yellow;
+	position: absolute;
+	border-radius: 4px;
 }

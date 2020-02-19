@@ -5,6 +5,8 @@ var MonList = {};
 var CardList = {};
 var TaskList = {};
 var GameInfo = {};
+var FieldBG = ["暗","暗黑都市","草原","海","摩天楼","拟似空间","森","山","湿地草原","古代都市"];
+
 var GameSTD = {
 	StarCostMaxHp: 5,
 	StarCostHp: 3,

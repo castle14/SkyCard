@@ -212,3 +212,66 @@ Anim.beShockedByEle = function(divid, fn) {
 		}
 	}, 5);
 }
+
+Anim.prepareToEffect = function(divid, fn) {
+	let tmpdiv = $("#" + divid);
+	let Y = tmpdiv.offset().top;
+	let X = tmpdiv.offset().left;
+
+	let blooddiv1 = $("<div></div>");
+	blooddiv1.addClass("eff_light");
+	blooddiv1.css("left", X);
+	blooddiv1.css("top", Y);
+	blooddiv1.appendTo("body");
+	blooddiv1.animate({
+			left: "+=38",
+			top: "+=60"
+		}, 500)
+		.animate({
+			top: "-=60"
+		}, 500, function() {
+			blooddiv1.remove();
+		});
+	let blooddiv2 = $("<div></div>");
+	blooddiv2.addClass("eff_light");
+	blooddiv2.css("left", X+20);
+	blooddiv2.css("top", Y);
+	blooddiv2.appendTo("body");
+	blooddiv2.animate({
+			left: "+=18",
+			top: "+=60"
+		}, 500)
+		.animate({
+			top: "-=60"
+		}, 500, function() {
+			blooddiv2.remove();
+		});
+	let blooddiv3 = $("<div></div>");
+	blooddiv3.addClass("eff_light");
+	blooddiv3.css("left", X+60);
+	blooddiv3.css("top", Y);
+	blooddiv3.appendTo("body");
+	blooddiv3.animate({
+			left: "-=18",
+			top: "+=60"
+		}, 500)
+		.animate({
+			top: "-=60"
+		}, 500, function() {
+			blooddiv3.remove();
+		});
+	let blooddiv4 = $("<div></div>");
+	blooddiv4.addClass("eff_light");
+	blooddiv4.css("left", X+80);
+	blooddiv4.css("top", Y);
+	blooddiv4.appendTo("body");
+	blooddiv4.animate({
+			left: "-=38",
+			top: "+=60"
+		}, 500)
+		.animate({
+			top: "-=60"
+		}, 500, function() {
+			blooddiv4.remove();
+		});
+}

@@ -373,8 +373,13 @@ function initClick() {
 		$("#other_info").text(player.name + "(" + player.hp + "/" + player.ac + ") " + RoleEffect[player.effect].desc);
 	});
 }
-
+function initBackground(){
+	let imgStr = FieldBG.shuffle().shuffle().shuffle()[0];
+	$(".f_div").css("background-image", "url(../img/bg/" + imgStr + ".jpg)");
+	$(".env_info_div").text(imgStr);
+}
 $(function() {
+	initBackground();
 	initMonAndPlayer();
 	initClick();
 });
