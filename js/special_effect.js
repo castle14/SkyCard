@@ -3,7 +3,7 @@ var CardEffect = {};
 
 
 RoleEffect["1599"] = {
-	"desc": "将护甲清零,对某一怪兽进行原有护甲数值4倍的物理攻击.",
+	"desc": "将护甲清零,将HP补满,对某一怪兽进行原有护甲数值4倍的物理攻击.",
 	"type": "attone",
 	"effect": function(plyr, com, turn, counter) {
 		let t = plyr.ac * 4;
@@ -14,6 +14,7 @@ RoleEffect["1599"] = {
 		chkd_cd_inf.value = t;
 
 		plyr.ac = 0;
+		plyr.hp = plyr.maxHp;
 		return chkd_cd_inf;
 	}
 }
