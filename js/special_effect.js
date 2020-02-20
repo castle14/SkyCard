@@ -3,31 +3,34 @@ var CardEffect = {};
 
 
 RoleEffect["1599"] = {
-	"desc": "将护甲清零,对某一怪兽进行原有护甲数值2倍的物理攻击.",
+	"desc": "将护甲清零,对某一怪兽进行原有护甲数值4倍的物理攻击.",
 	"type": "attone",
 	"effect": function(plyr, com, turn, counter) {
-		let t = plyr.ac * 2;
+		let t = plyr.ac * 4;
 		let = chkd_cd_inf = {};
 		chkd_cd_inf.name = "技能";
 		chkd_cd_inf.type = "attone";
 		chkd_cd_inf.counter = 1;
 		chkd_cd_inf.value = t;
+
 		plyr.ac = 0;
 		return chkd_cd_inf;
 	}
 }
 
 RoleEffect["1602"] = {
-	"desc": "将HP减半,对某一怪兽进行HP减少数值2倍的魔法攻击.",
+	"desc": "将HP减半,将护甲补满,对某一怪兽进行HP已损失值2倍魔法攻击.",
 	"type": "magone",
 	"effect": function(plyr, com, turn, counter) {
 		let = chkd_cd_inf = {};
-		let t = Math.floor(plyr.hp / 2);
+		let t = plyr.maxHp - Math.floor(plyr.hp / 2);
 		chkd_cd_inf.name = "技能";
 		chkd_cd_inf.type = "magone";
 		chkd_cd_inf.counter = 1;
 		chkd_cd_inf.value = t * 2;
-		plyr.hp = plyr.hp - t;
+
+		plyr.hp = Math.floor(plyr.hp / 2);
+		plyr.ac = plyr.maxAc;
 		return chkd_cd_inf;
 	}
 }
@@ -49,17 +52,17 @@ RoleEffect["1601"] = {
 }
 
 RoleEffect["1600"] = {
-	"desc": "将玩家的护甲减半,将玩家的HP补满,对某一怪兽进行护甲减少值2倍的物理攻击.",
+	"desc": "将玩家的护甲减半,将玩家的HP补满,对某一怪兽进行护甲和HP变化值2倍的物理攻击.",
 	"type": "attone",
 	"effect": function(plyr, com, turn, counter) {
 		let = chkd_cd_inf = {};
-		let t = Math.floor(plyr.ac / 2);
+		let t = plyr.ac + 2 * (plyr.maxHp - plyr.hp);
 		chkd_cd_inf.name = "技能";
 		chkd_cd_inf.type = "attone";
 		chkd_cd_inf.counter = 1;
 		chkd_cd_inf.value = t;
 
-		plyr.ac = plyr.ac - t;
+		plyr.ac = Math.floor(plyr.ac / 2);
 		plyr.hp = plyr.maxHp;
 
 		return chkd_cd_inf;
@@ -67,24 +70,24 @@ RoleEffect["1600"] = {
 }
 
 RoleEffect["3618"] = {
-	"desc": "将护甲清零,对所有怪兽进行原有护甲数值的物理攻击.",
+	"desc": "将玩家的护甲补满,对所有怪兽进行恢复数值的物理攻击.",
 	"type": "attall",
 	"effect": function(plyr, com, turn, counter) {
 		let = chkd_cd_inf = {};
-		let t = Math.floor(plyr.ac / 2);
+		let t = plyr.maxAc - plyr.ac;
 		chkd_cd_inf.name = "技能";
 		chkd_cd_inf.type = "attall";
 		chkd_cd_inf.counter = 1;
 		chkd_cd_inf.value = t;
 
-		plyr.ac = 0;
+		plyr.ac = plyr.maxAc;
 
 		return chkd_cd_inf;
 	}
 }
 
 RoleEffect["英雄小子"] = {
-	"desc": "将HP和护甲恢复至上限,对某一怪兽进行恢复值之和的物理攻击.",
+	"desc": "将HP和护甲补满,对某一怪兽进行恢复值之和的物理攻击.",
 	"type": "attone",
 	"effect": function(plyr, com, turn, counter) {
 		let t1 = plyr.maxHp - plyr.hp;
@@ -101,7 +104,7 @@ RoleEffect["英雄小子"] = {
 	}
 }
 RoleEffect["爆热女郎1"] = {
-	"desc": "对某一怪兽进行卡组剩余卡片数×15的魔法攻击.",
+	"desc": "将玩家的HP补满,对某一怪兽进行卡组剩余卡片数×15的魔法攻击.",
 	"type": "magone",
 	"effect": function(plyr, com, turn, counter) {
 		let t = turn.deck.length * 15;
@@ -110,12 +113,12 @@ RoleEffect["爆热女郎1"] = {
 		chkd_cd_inf.type = "magone";
 		chkd_cd_inf.counter = 1;
 		chkd_cd_inf.value = t;
-
+		plyr.hp = plyr.maxHp;
 		return chkd_cd_inf;
 	}
 }
 RoleEffect["爆热女郎2"] = {
-	"desc": "对所有怪兽进行弃卡池卡片数×8的魔法攻击.",
+	"desc": "将玩家的HP补满,对所有怪兽进行弃卡池卡片数×8的魔法攻击.",
 	"type": "magall",
 	"effect": function(plyr, com, turn, counter) {
 		let t = turn.discardList.length * 8;
@@ -124,7 +127,7 @@ RoleEffect["爆热女郎2"] = {
 		chkd_cd_inf.type = "magall";
 		chkd_cd_inf.counter = 1;
 		chkd_cd_inf.value = t;
-
+		plyr.hp = plyr.maxHp;
 		return chkd_cd_inf;
 	}
 }
@@ -138,13 +141,15 @@ RoleEffect["炽热侠"] = {
 		chkd_cd_inf.type = "magone";
 		chkd_cd_inf.counter = 1;
 		chkd_cd_inf.value = t;
-
+		plyr.hp = plyr.maxHp;
 		return chkd_cd_inf;
 	}
 }
 
 
-/*-----------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
 CardEffect["死灵咒"] = {
 	"desc": "给与目标已损失护甲数值一半的魔法攻击.",
 	"type": "magone",
