@@ -349,3 +349,23 @@ body {
 	position: absolute;
 	border-radius: 4px;
 }
+
+.global_info {
+	height: 32px;
+	width:100%;
+	color: lightyellow;
+	position: absolute;
+	background-color: #00000099; 
+	text-align: center;
+	line-height: 32px;
+	font-size: 24px;
+}
+
+.pointer_div_blue {
+	height: 10px;
+	width: 10px;
+	border: blue solid 1px;
+	border-radius: 5px;
+	background-color: blue;
+	position: absolute;
+}

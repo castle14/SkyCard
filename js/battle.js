@@ -2,6 +2,7 @@ var mon1 = null;
 var mon2 = null;
 var mon3 = null;
 var player = null;
+var env = null;
 var checkedCardInfo = null;
 var tmptasks = CommonUtil.getTaskState();
 var tmpRequest = CommonUtil.getRequest();
@@ -130,23 +131,24 @@ function refreshMonDiv(divid, monData) {
 		if (divid == "div1" || divid == "div2" || divid == "div3") {
 			$("#" + divid).removeClass("mon_checked");
 			// $("#" + divid).hide();
-			$("#" + divid).fadeOut(500);
-			Turn.comCounter -= 1;
-			if (Turn.comCounter == 0) {
-				tmptasks[tmptaskname].isComplete = "yes";
-				CommonUtil.saveTaskState(tmptasks);
-				let gmif = CommonUtil.getGameInfo();
-				gmif.win_counter += 1;
-				// gmif.opportunity_counter +=1;
-				let random_card = CardUtil.getRandomCard();
-				gmif.extra_cards.push(random_card);
-				let tmp_star_number = mon1.star + mon2.star + mon3.star;
-				gmif.star_counter += tmp_star_number;
-				CommonUtil.saveGameInfo(gmif);
+			$("#" + divid).fadeOut(500, () => {
+				Turn.comCounter -= 1;
+				if (Turn.comCounter == 0) {
+					tmptasks[tmptaskname].isComplete = "yes";
+					CommonUtil.saveTaskState(tmptasks);
+					let gmif = CommonUtil.getGameInfo();
+					gmif.win_counter += 1;
+					// gmif.opportunity_counter +=1;
+					let random_card = CardUtil.getRandomCard();
+					gmif.extra_cards.push(random_card);
+					let tmp_star_number = mon1.star + mon2.star + mon3.star;
+					gmif.star_counter += tmp_star_number;
+					CommonUtil.saveGameInfo(gmif);
 
-				alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
-				location.href = "tasklist.html";
-			}
+					alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
+					location.href = "tasklist.html";
+				}
+			});
 
 		} else if (divid == "player_div") {
 			let gmif = CommonUtil.getGameInfo();
@@ -193,15 +195,19 @@ function initMonAndPlayer() {
 
 	mon1 = MonData.getComInstance(MonList[monNameList[0]]);
 	mon1.name = mon1.name + "1";
+	mon1.div = "div1";
 	initMonDiv("div1", mon1);
 	mon2 = MonData.getComInstance(MonList[monNameList[1]]);
 	mon2.name = mon2.name + "2";
+	mon2.div = "div2";
 	initMonDiv("div2", mon2);
 	mon3 = MonData.getComInstance(MonList[monNameList[2]]);
 	mon3.name = mon3.name + "3";
+	mon3.div = "div3";
 	initMonDiv("div3", mon3);
 
 	player = CommonUtil.getPlayerStorage();
+	player.div = "player_div";
 	Turn.deck = CommonUtil.getDeckStorage().shuffle();
 	for (let i = 0; i < 5; i++) {
 		let tmpcard = Turn.deck.pop();
@@ -372,11 +378,17 @@ function initClick() {
 	$("#player_div").on("click", function() {
 		$("#other_info").text(player.name + "(" + player.hp + "/" + player.ac + ") " + RoleEffect[player.effect].desc);
 	});
+	
+	$(".env_info_div").on("click",()=>{
+		alert("场地效果: "+env.desc);
+	});
 }
-function initBackground(){
-	let imgStr = FieldBG.shuffle().shuffle().shuffle()[0];
-	$(".f_div").css("background-image", "url(../img/bg/" + imgStr + ".jpg)");
-	$(".env_info_div").text(imgStr);
+
+function initBackground() {
+	env = FieldBG.shuffle().shuffle().shuffle()[0];
+
+	$(".f_div").css("background-image", "url(../img/" + env.img + ")");
+	$(".env_info_div").text(env.name);
 }
 $(function() {
 	initBackground();

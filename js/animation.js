@@ -166,7 +166,9 @@ Anim.comGoAct = function(divid, fn) {
 		}
 	});
 }
-
+/* 
+ todo
+ */
 Anim.beShockedByEle = function(divid, fn) {
 	let tmpdiv = $("#" + divid);
 	let Y = tmpdiv.offset().top;
@@ -212,7 +214,9 @@ Anim.beShockedByEle = function(divid, fn) {
 		}
 	}, 5);
 }
-
+/* 
+ todo
+ */
 Anim.prepareToEffect = function(divid, fn) {
 	let tmpdiv = $("#" + divid);
 	let Y = tmpdiv.offset().top;
@@ -234,7 +238,7 @@ Anim.prepareToEffect = function(divid, fn) {
 		});
 	let blooddiv2 = $("<div></div>");
 	blooddiv2.addClass("eff_light");
-	blooddiv2.css("left", X+20);
+	blooddiv2.css("left", X + 20);
 	blooddiv2.css("top", Y);
 	blooddiv2.appendTo("body");
 	blooddiv2.animate({
@@ -248,7 +252,7 @@ Anim.prepareToEffect = function(divid, fn) {
 		});
 	let blooddiv3 = $("<div></div>");
 	blooddiv3.addClass("eff_light");
-	blooddiv3.css("left", X+60);
+	blooddiv3.css("left", X + 60);
 	blooddiv3.css("top", Y);
 	blooddiv3.appendTo("body");
 	blooddiv3.animate({
@@ -262,7 +266,7 @@ Anim.prepareToEffect = function(divid, fn) {
 		});
 	let blooddiv4 = $("<div></div>");
 	blooddiv4.addClass("eff_light");
-	blooddiv4.css("left", X+80);
+	blooddiv4.css("left", X + 80);
 	blooddiv4.css("top", Y);
 	blooddiv4.appendTo("body");
 	blooddiv4.animate({
@@ -274,4 +278,71 @@ Anim.prepareToEffect = function(divid, fn) {
 		}, 500, function() {
 			blooddiv4.remove();
 		});
+}
+Anim.showGlobalInfo = function(info, fn) {
+	let w = document.body.clientWidth;
+	let h = document.body.clientHeight;
+	let bar = $("<div>" + info + "</div>");
+	bar.addClass("global_info");
+	bar.css("left", 0 - w);
+	bar.css("top", h / 2 - 80);
+	bar.appendTo("body");
+
+	bar.animate({
+			left: 0
+		}, 400)
+		.animate({
+			"background-color": "yellow"
+		}, 400)
+		.animate({
+			left: w
+		}, 400, function() {
+			bar.remove();
+			if (fn != null && fn != undefined) {
+				fn();
+			}
+		});
+}
+
+Anim.showPointLine = function(divid1, divid2, fn) {
+	let Y = 0;
+	let X = 0;
+	if (divid1 == null) {
+		Y = document.body.clientHeight / 2 - 80;
+		X = document.body.clientWidth / 2 - 5;
+	} else {
+		let tmpdiv = $("#" + divid1);
+		Y = tmpdiv.offset().top;
+		X = tmpdiv.offset().left + 40;
+	}
+	let tmpdiv2 = $("#" + divid2);
+	let Y2 = 0;
+	let X2 = tmpdiv2.offset().left + 40 - 5;
+	if (tmpdiv2.offset().top > Y) {
+		Y2 = tmpdiv2.offset().top;
+	} else {
+		Y2 = tmpdiv2.offset().top + 120;
+	}
+	let step_x = (X2 - X) / 15;
+	let step_y = (Y2 - Y) / 15;
+	let counter = 0;
+	let intervalId = setInterval(function() {
+		counter++;
+		X = X + step_x;
+		Y = Y + step_y;
+		let blooddiv = $("<div></div>");
+		blooddiv.addClass("pointer_div_blue");
+		blooddiv.css("left", X);
+		blooddiv.css("top", Y);
+		blooddiv.appendTo("body");
+		blooddiv.fadeOut(400);
+		if (counter >= 15) {
+			clearInterval(intervalId);
+			$(".pointer_div_blue").remove();
+			if (fn != null && fn != undefined) {
+				fn();
+			}
+		}
+	}, 30);
+
 }

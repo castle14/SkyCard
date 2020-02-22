@@ -4,7 +4,9 @@ var tmpdeck = CommonUtil.getDeckStorage().sort(card_compare);
 
 
 function card_compare(c1, c2) {
-	if ((c1.value - c2.value) != 0) {
+	if ((c1.star - c2.star) != 0) {
+		return c1.star - c2.star;
+	} else if ((c1.value - c2.value) != 0) {
 		return c1.value - c2.value;
 	} else {
 		return c1.name.localeCompare(c2.name, "zh");

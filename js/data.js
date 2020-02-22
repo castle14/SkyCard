@@ -5,7 +5,7 @@ var MonList = {};
 var CardList = {};
 var TaskList = {};
 var GameInfo = {};
-var FieldBG = ["暗","暗黑都市","草原","海","摩天楼","拟似空间","森","山","湿地草原","古代都市"];
+var FieldBG = [];
 
 var GameSTD = {
 	StarCostMaxHp: 5,
@@ -1705,3 +1705,200 @@ TaskList["task_alien_23"] = {
 	"taskcontent": ["MON_ALIEN_18", "MON_ALIEN_9", "MON_ALIEN_14"],
 	"isComplete": "no"
 };
+
+
+ENV_1 = {
+	name: "暗黑都市",
+	desc: "每6个回合,为当前护甲最低的玩家或者怪兽增加15点护甲.",
+	img: "bg/暗黑都市.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			let role = null;
+			let arr = [plyr];
+			if (com1.hp > 0) arr.push(com1);
+			if (com2.hp > 0) arr.push(com2);
+			if (com3.hp > 0) arr.push(com3);
+			arr.sort((a, b) => {
+				return a.ac - b.ac;
+			});
+			role = arr[0];
+			console.log(role.name + "被选为场地效果的对象!");
+			if (role.maxAc - role.ac > 15) {
+				role.ac += 15;
+			} else {
+				role.ac = role.maxAc;
+			}
+			console.log(role);
+			return role;
+		} else {
+			return null;
+		}
+	}
+}
+ENV_2 = {
+	name: "暗",
+	desc: "每6个回合,给当前HP最低的角色造成10点魔法伤害.",
+	img: "bg/暗.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			let role = null;
+			let arr = [plyr];
+			if (com1.hp > 0) arr.push(com1);
+			if (com2.hp > 0) arr.push(com2);
+			if (com3.hp > 0) arr.push(com3);
+			arr.sort((a, b) => {
+				return a.hp - b.hp;
+			});
+			role = arr[0];
+			console.log(role.name + "被选为场地效果的对象!");
+			if (role.hp > 10) {
+				role.hp -= 10;
+			} else {
+				role.hp = 0;
+			}
+			console.log(role);
+			return role;
+		} else {
+			return null;
+		}
+	}
+}
+ENV_3 = {
+	name: "古代都市",
+	desc: "每6个回合,给当前HP最低的角色恢复10点HP.",
+	img: "bg/古代都市.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			let role = null;
+			let arr = [plyr];
+			if (com1.hp > 0) arr.push(com1);
+			if (com2.hp > 0) arr.push(com2);
+			if (com3.hp > 0) arr.push(com3);
+			arr.sort((a, b) => {
+				return a.hp - b.hp;
+			});
+			role = arr[0];
+			console.log(role.name + "被选为场地效果的对象!");
+			if (role.maxHp - role.hp > 10) {
+				role.hp += 10;
+			} else {
+				role.hp = role.maxHp;
+			}
+			console.log(role);
+			return role;
+		} else {
+			return null;
+		}
+	}
+}
+ENV_4 = {
+	name: "病毒城市",
+	desc: "每6个回合,对当前所有角色造成5点魔法伤害.",
+	img: "bg/病毒城市.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			if (plyr.hp > 5) {
+				plyr.hp -= 5;
+			} else {
+				plyr.hp = 0;
+			}
+
+			if (com1.hp > 5) {
+				com1.hp -= 5;
+			} else {
+				plyr.hp = 0;
+			}
+
+			if (com2.hp > 5) {
+				com2.hp -= 5;
+			} else {
+				com2.hp = 0;
+			}
+
+			if (com3.hp > 5) {
+				com3.hp -= 5;
+			} else {
+				com3.hp = 0;
+			}
+
+			return "all";
+		} else {
+			return null;
+		}
+	}
+}
+ENV_5 = {
+	name: "异界空间",
+	desc: "每6个回合,所有怪兽随机能力提升5,玩家获得1点连击能量.",
+	img: "bg/异界空间.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			com1.actions[0].value += 5;
+			com2.actions[0].value += 5;
+			com3.actions[0].value += 5;
+			turn.chainCounter += 1;
+			return "all";
+		} else {
+			return null;
+		}
+	}
+}
+ENV_6 = {
+	name: "摩天楼",
+	desc: "每6个回合,所有角色护甲提升15.",
+	img: "bg/摩天楼.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			if (com1.maxAc - com1.ac > 15) {
+				com1.ac += 15;
+			} else {
+				com1.ac = com1.maxAc;
+			}
+
+			if (com2.maxAc - com2.ac > 15) {
+				com2.ac += 15;
+			} else {
+				com2.ac = com2.maxAc;
+			}
+
+			if (com3.maxAc - com3.ac > 15) {
+				com3.ac += 15;
+			} else {
+				com3.ac = com3.maxAc;
+			}
+
+			if (plyr.maxAc - plyr.ac > 15) {
+				plyr.ac += 15;
+			} else {
+				plyr.ac = plyr.maxAc;
+			}
+
+			return "all";
+		} else {
+			return null;
+		}
+	}
+}
+ENV_7 = {
+	name: "拟似空间",
+	desc: "每6个回合,所有角色最大HP提升5.",
+	img: "bg/拟似空间.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			plyr.maxHp += 5;
+			com1.maxHp += 5;
+			com2.maxHp += 5;
+			com3.maxHp += 5;
+			return "all";
+		} else {
+			return null;
+		}
+	}
+}
+FieldBG.push(ENV_1);
+FieldBG.push(ENV_2);
+FieldBG.push(ENV_3);
+FieldBG.push(ENV_4);
+FieldBG.push(ENV_5);
+FieldBG.push(ENV_6);
+FieldBG.push(ENV_7);
