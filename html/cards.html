@@ -70,7 +70,7 @@
 					let tmp_tx_color = getTxColor(cardlist[i].type);
 					let _value = cardlist[i].type == "effect" ? "?" : cardlist[i].value;
 					cntr++;
-					let tmp_div_str = '<div class="card_div" effect="'+ cardlist[i].effect +'">';
+					let tmp_div_str = '<div class="card_div" effect="' + cardlist[i].effect + '">';
 					tmp_div_str = tmp_div_str + '<div class="img_div"><img src="../img/' + cardlist[i].img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="name_div">' + cardlist[i].name + '·' + cardlist[i].star + '☆' + '</div>';
 					tmp_div_str = tmp_div_str + '<div class="data_div"><span class="' + tmp_tx_color + '">&nbsp;' + CommonUtil.getAtkType(
@@ -86,6 +86,17 @@
 						$(tmp_div_str).appendTo($(".content_div_2"));
 					}
 				}
+				$(".card_div").on("click", function() {
+					$(".card_div").removeClass("checked");
+					$(this).addClass("checked");
+					let effect_name = $(this).attr("effect");
+					if (effect_name && effect_name != "undefined") {
+						let desc = CardEffect[effect_name].desc;
+						$(".effect_div span").text(desc);
+					} else {
+						$(".effect_div span").text("无");
+					}
+				});
 			}
 			$(function() {
 				$(".back_div").on("click", function() {
@@ -101,18 +112,6 @@
 				});
 
 				initList();
-
-				$(".card_div").on("click", function() {
-					$(".card_div").removeClass("checked");
-					$(this).addClass("checked");
-					let effect_name = $(this).attr("effect");
-					if(effect_name && effect_name!="undefined"){
-						let desc = CardEffect[effect_name].desc;
-						$(".effect_div span").text(desc);
-					}else{
-						$(".effect_div span").text("无");
-					}
-				});
 
 			});
 		</script>
