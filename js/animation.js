@@ -214,9 +214,7 @@ Anim.beShockedByEle = function(divid, fn) {
 		}
 	}, 5);
 }
-/* 
- todo
- */
+
 Anim.prepareToEffect = function(divid, fn) {
 	let tmpdiv = $("#" + divid);
 	let Y = tmpdiv.offset().top;
@@ -230,10 +228,10 @@ Anim.prepareToEffect = function(divid, fn) {
 	blooddiv1.animate({
 			left: "+=38",
 			top: "+=60"
-		}, 500)
+		}, 400)
 		.animate({
 			top: "-=60"
-		}, 500, function() {
+		}, 400, function() {
 			blooddiv1.remove();
 		});
 	let blooddiv2 = $("<div></div>");
@@ -244,10 +242,10 @@ Anim.prepareToEffect = function(divid, fn) {
 	blooddiv2.animate({
 			left: "+=18",
 			top: "+=60"
-		}, 500)
+		}, 400)
 		.animate({
 			top: "-=60"
-		}, 500, function() {
+		}, 400, function() {
 			blooddiv2.remove();
 		});
 	let blooddiv3 = $("<div></div>");
@@ -258,10 +256,10 @@ Anim.prepareToEffect = function(divid, fn) {
 	blooddiv3.animate({
 			left: "-=18",
 			top: "+=60"
-		}, 500)
+		}, 400)
 		.animate({
 			top: "-=60"
-		}, 500, function() {
+		}, 400, function() {
 			blooddiv3.remove();
 		});
 	let blooddiv4 = $("<div></div>");
@@ -272,11 +270,14 @@ Anim.prepareToEffect = function(divid, fn) {
 	blooddiv4.animate({
 			left: "-=38",
 			top: "+=60"
-		}, 500)
+		}, 400)
 		.animate({
 			top: "-=60"
-		}, 500, function() {
+		}, 400, function() {
 			blooddiv4.remove();
+			if (fn != null && fn != undefined) {
+				fn();
+			}
 		});
 }
 Anim.showGlobalInfo = function(info, fn) {

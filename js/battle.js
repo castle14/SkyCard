@@ -55,7 +55,13 @@ function playerAttAll() {
 	if (checkedCardInfo == null) {
 		return;
 	}
-
+	if (checkedCardInfo && checkedCardInfo.hasEffect) {
+		let _effect = checkedCardInfo.effect;
+		let _counter = checkedCardInfo.counter;
+		checkedCardInfo = CardEffect[_effect].effect(player, mon1, Turn, _counter);
+		checkedCardInfo = CardEffect[_effect].effect(player, mon2, Turn, _counter);
+		checkedCardInfo = CardEffect[_effect].effect(player, mon3, Turn, _counter);
+	}
 	Turn.addAnim(function() {
 		Anim.playerGoAct("player_div", function() {
 			Turn.nextAnim();
@@ -94,7 +100,7 @@ function playerAttOne() {
 				Turn.nextAnim();
 			});
 		});
-		if (checkedCardInfo && checkedCardInfo.type == "effect") {
+		if (checkedCardInfo && checkedCardInfo.hasEffect) {
 			let _mon = getMonObjFromDivID(divid);
 			let _effect = checkedCardInfo.effect;
 			let _counter = checkedCardInfo.counter;
@@ -240,6 +246,11 @@ function initClick() {
 		if (checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall") {
 			playerAttAll();
 		} else if (checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal") {
+			if (checkedCardInfo && checkedCardInfo.hasEffect) {
+				let _effect = checkedCardInfo.effect;
+				let _counter = checkedCardInfo.counter;
+				checkedCardInfo = CardEffect[_effect].effect(player, null, Turn, _counter);
+			}
 			Turn.addAnim(function() {
 				Anim.playerGoAct("player_div", function() {
 					Turn.nextAnim();
@@ -312,6 +323,11 @@ function initClick() {
 		}
 		Turn.chainCounter = 0;
 		checkedCardInfo = RoleEffect[effect_name].effect(player, _mon, Turn, 1);
+		Turn.addAnim(function() {
+			Anim.prepareToEffect("player_div", function() {
+				Turn.nextAnim();
+			});
+		});
 		if (checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall") {
 			playerAttAll();
 		} else if (checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal") {
@@ -352,7 +368,9 @@ function initClick() {
 			if (checkedCardInfo == null || $(this).attr("name") != checkedCardInfo.name) {
 				checkedCardInfo = {};
 				checkedCardInfo.name = $(this).attr("name");
-				checkedCardInfo.type = $(this).attr("type");
+				checkedCardInfo.type = $(this).attr("type") == "effect" ? CardEffect[checkedCardInfo.name].type : $(this).attr(
+					"type");
+				checkedCardInfo.hasEffect = $(this).attr("type") == "effect" ? true : false;
 				checkedCardInfo.effect = $(this).attr("name");
 				checkedCardInfo.value = parseInt($(this).attr("value"));
 				checkedCardInfo.counter = 1;
@@ -378,9 +396,9 @@ function initClick() {
 	$("#player_div").on("click", function() {
 		$("#other_info").text(player.name + "(" + player.hp + "/" + player.ac + ") " + RoleEffect[player.effect].desc);
 	});
-	
-	$(".env_info_div").on("click",()=>{
-		alert("场地效果: "+env.desc);
+
+	$(".env_info_div").on("click", () => {
+		alert("场地效果: " + env.desc);
 	});
 }
 

@@ -1806,7 +1806,7 @@ ENV_4 = {
 			if (com1.hp > 5) {
 				com1.hp -= 5;
 			} else {
-				plyr.hp = 0;
+				com1.hp = 0;
 			}
 
 			if (com2.hp > 5) {
@@ -1895,10 +1895,10 @@ ENV_7 = {
 		}
 	}
 }
-FieldBG.push(ENV_1);
-FieldBG.push(ENV_2);
-FieldBG.push(ENV_3);
+// FieldBG.push(ENV_1);
+// FieldBG.push(ENV_2);
+// FieldBG.push(ENV_3);
 FieldBG.push(ENV_4);
-FieldBG.push(ENV_5);
-FieldBG.push(ENV_6);
-FieldBG.push(ENV_7);
+// FieldBG.push(ENV_5);
+// FieldBG.push(ENV_6);
+// FieldBG.push(ENV_7);
