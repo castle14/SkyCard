@@ -215,7 +215,7 @@ CardEffect["连锁破坏"] = {
 	}
 }
 CardEffect["炽焰飞腾"] = {
-	"desc": "对某一怪兽进行20点的魔法攻击;同时使用多张此卡时,攻击增加.",
+	"desc": "对某一怪兽进行20点的魔法攻击,并附加1点燃烧状态;同时使用多张此卡时,攻击增加.",
 	"type": "magone",
 	"effect": function(plyr, com, turn, counter) {
 		let t = 30;
@@ -224,6 +224,7 @@ CardEffect["炽焰飞腾"] = {
 		chkd_cd_inf.name = "炽焰飞腾";
 		chkd_cd_inf.type = "magone";
 		chkd_cd_inf.counter = counter;
+		chkd_cd_inf.state = "fire";
 		chkd_cd_inf.value = t * counter + (counter - 1) * counter * 0.5 * 20;
 
 		return chkd_cd_inf;

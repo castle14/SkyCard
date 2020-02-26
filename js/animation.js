@@ -344,6 +344,6 @@ Anim.showPointLine = function(divid1, divid2, fn) {
 				fn();
 			}
 		}
-	}, 30);
+	}, 25);
 
 }

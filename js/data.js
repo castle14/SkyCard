@@ -113,6 +113,9 @@ MonData.comAct = function(attmon, defmon) {
 	let n = attmon.actions.length;
 	let i = CommonUtil.randomNum(0, n - 1);
 	let o = attmon.actions[i];
+	if (o.state) {
+		MonData.addState(defmon, o.state, 1);
+	}
 	if (o.type == "att" || o.type == "mag") {
 		return MonData.att(o.value, defmon, o.type);
 	} else if (o.type == "heal") {
@@ -122,9 +125,83 @@ MonData.comAct = function(attmon, defmon) {
 	} else {
 		console.log("other actions to do ");
 	}
+
 }
-
-
+MonData.getStateObj = function(state_str) {
+	let state_obj = {
+		state: "state_" + state_str,
+		value: 0
+	}
+	return state_obj;
+}
+MonData.addState = function(role, state_str, value) {
+	if (!role) return;
+	if (!role.states) {
+		let stat = MonData.getStateObj(state_str);
+		stat.value = value;
+		role.states = [stat];
+	} else {
+		let has_this_state = false;
+		for (i = 0; i < role.states.length; i++) {
+			if (role.states[i].state == "state_" + state_str) {
+				role.states[i].value += value;
+				has_this_state = true;
+			}
+		}
+		if (!has_this_state) {
+			let stat = MonData.getStateObj(state_str);
+			stat.value = value;
+			role.states.push(stat);
+		}
+	}
+}
+MonData.hasState = function(role, state_str) {
+	if (!role) return false;
+	if (!role.states) {
+		return false;
+	} else {
+		let has_this_state = false;
+		for (i = 0; i < role.states.length; i++) {
+			if (role.states[i].state == "state_" + state_str && role.states[i].value > 0) {
+				has_this_state = true;
+			}
+		}
+		return has_this_state;
+	}
+}
+MonData.clearState = function(role, state_str) {
+	if (!role) return;
+	if (!role.states) {
+		return;
+	} else {
+		for (i = 0; i < role.states.length; i++) {
+			if (role.states[i].state == "state_" + state_str) {
+				role.states[i].value = 0;
+			}
+		}
+	}
+}
+MonData.getStateValue = function(role, state_str) {
+	if (!role) return 0;
+	if (!role.states) {
+		return 0;
+	} else {
+		let state_value = 0;
+		for (i = 0; i < role.states.length; i++) {
+			if (role.states[i].state == "state_" + state_str && role.states[i].value > 0) {
+				state_value = role.states[i].value;
+			}
+		}
+		return state_value;
+	}
+}
+MonData.getStateName = function(state_str) {
+	let t = {
+		"fire": "燃烧",
+		"ele": "电击"
+	}
+	return t[state_str] ? t[state_str] : "";
+}
 /* 
  获取uuid
  */
@@ -151,7 +228,20 @@ CommonUtil.clearStorage = function() {
 	localStorage.clear();
 }
 CommonUtil.getDeckStorage = function() {
-	return JSON.parse(localStorage.getItem("skycard_deck"));
+	let deck = JSON.parse(localStorage.getItem("skycard_deck"));
+	for (i = 0; i < deck.length; i++) {
+		let t_card = deck[i];
+		for (j in CardList) {
+			if (CardList[j].name == t_card.name) {
+				t_card.type = CardList[j].type;
+				t_card.value = CardList[j].value;
+				t_card.img = CardList[j].img;
+				t_card.state = CardList[j].state;
+			}
+		}
+	}
+	return deck;
+
 }
 CommonUtil.getPlayerStorage = function() {
 	return JSON.parse(localStorage.getItem("skycard_player"));
@@ -305,15 +395,18 @@ FIRE_MON = {
 	"img": "fire_mon.jpg",
 	"actions": [{
 		"type": "att",
-		"value": 15
+		"value": 15,
+		"state": "fire"
 	}, {
 		"type": "heal",
+		"state": "fire",
 		"value": 30
 	}, {
 		"type": "arm",
 		"value": 20
 	}, {
 		"type": "mag",
+		"state": "fire",
 		"value": 8
 	}]
 }
@@ -560,15 +653,19 @@ MON_ALIEN_2 = {
 	"img": "alien/熔岩外星人.jpg",
 	"actions": [{
 		"type": "att",
+		"state": "fire",
 		"value": 40
 	}, {
 		"type": "mag",
+		"state": "fire",
 		"value": 20
 	}, {
 		"type": "mag",
+		"state": "fire",
 		"value": 18
 	}, {
 		"type": "att",
+		"state": "fire",
 		"value": 38
 	}, {
 		"type": "heal",
@@ -813,18 +910,23 @@ MON_ALIEN_13 = {
 	"img": "alien/外星人猎手.jpg",
 	"actions": [{
 		"type": "att",
+		"state": "ele",
 		"value": 75
 	}, {
 		"type": "att",
+		"state": "ele",
 		"value": 70
 	}, {
 		"type": "att",
+		"state": "ele",
 		"value": 65
 	}, {
 		"type": "att",
+		"state": "ele",
 		"value": 60
 	}, {
 		"type": "mag",
+		"state": "ele",
 		"value": 25
 	}, {
 		"type": "heal",
@@ -977,6 +1079,7 @@ CARD2 = {
 	"type": "attall",
 	"value": 18,
 	"star": 3,
+	"state": "ele",
 	"img": "card/电击鞭.jpg"
 }
 CARD3 = {
@@ -1012,6 +1115,7 @@ CARD7 = {
 	"type": "magall",
 	"value": 5,
 	"star": 3,
+	"state": "fire",
 	"img": "card/火球.jpg"
 }
 CARD8 = {
@@ -1019,6 +1123,7 @@ CARD8 = {
 	"type": "magone",
 	"value": 10,
 	"star": 1,
+	"state": "fire",
 	"img": "card/火炎弹.jpg"
 }
 CARD9 = {
@@ -1054,6 +1159,7 @@ CARD13 = {
 	"type": "attone",
 	"value": 28,
 	"star": 3,
+	"state": "ele",
 	"img": "card/闪电之剑.jpg"
 }
 CARD14 = {
@@ -1110,6 +1216,7 @@ CARD21 = {
 	"type": "attone",
 	"value": 24,
 	"star": 3,
+	"state": "fire",
 	"img": "card/灼热之枪.jpg"
 }
 CARD22 = {
@@ -1159,6 +1266,7 @@ CARD28 = {
 	"type": "magone",
 	"value": 18,
 	"star": 3,
+	"state": "ele",
 	"img": "card/魔界之雷.jpg"
 }
 CARD29 = {
@@ -1215,6 +1323,7 @@ CARD36 = {
 	"type": "magall",
 	"value": 17,
 	"star": 4,
+	"state": "fire",
 	"img": "card/大火葬.jpg"
 }
 CARD37 = {
@@ -1222,6 +1331,7 @@ CARD37 = {
 	"type": "magall",
 	"value": 32,
 	"star": 7,
+	"state": "fire",
 	"img": "card/毁灭之焰.jpg"
 }
 CARD38 = {
@@ -1229,6 +1339,7 @@ CARD38 = {
 	"type": "magone",
 	"value": 30,
 	"star": 5,
+	"state": "ele",
 	"img": "card/雷击.jpg"
 }
 CARD39 = {
@@ -1243,6 +1354,7 @@ CARD40 = {
 	"type": "magall",
 	"value": 20,
 	"star": 5,
+	"state": "ele",
 	"img": "card/闪电漩涡.jpg"
 }
 CARD41 = {
@@ -1285,6 +1397,7 @@ CARD46 = {
 	"type": "attall",
 	"value": 35,
 	"star": 5,
+	"state": "fire",
 	"img": "card/打火石.jpg"
 }
 
@@ -1321,6 +1434,7 @@ CARD51 = {
 	"type": "magone",
 	"value": 50,
 	"star": 9,
+	"state": "ele",
 	"img": "card/闪电风暴.jpg"
 }
 CARD52 = {
@@ -1328,6 +1442,7 @@ CARD52 = {
 	"type": "magall",
 	"value": 26,
 	"star": 6,
+	"state": "ele",
 	"img": "card/无限雷击.jpg"
 }
 CARD53 = {
@@ -1335,6 +1450,7 @@ CARD53 = {
 	"type": "magall",
 	"value": 14,
 	"star": 4,
+	"state": "fire",
 	"img": "card/燃烧大地.jpg"
 }
 CARD54 = {
@@ -1342,6 +1458,7 @@ CARD54 = {
 	"type": "magone",
 	"value": 34,
 	"star": 6,
+	"state": "fire",
 	"img": "card/转生爆炎.jpg"
 }
 CARD55 = {
@@ -1722,13 +1839,13 @@ ENV_1 = {
 				return a.ac - b.ac;
 			});
 			role = arr[0];
-			console.log(role.name + "被选为场地效果的对象!");
 			if (role.maxAc - role.ac > 15) {
 				role.ac += 15;
 			} else {
 				role.ac = role.maxAc;
 			}
 			console.log(role);
+			console.log("↑被选为场地效果的对象!");
 			return role;
 		} else {
 			return null;
@@ -1750,13 +1867,14 @@ ENV_2 = {
 				return a.hp - b.hp;
 			});
 			role = arr[0];
-			console.log(role.name + "被选为场地效果的对象!");
+
 			if (role.hp > 10) {
 				role.hp -= 10;
 			} else {
 				role.hp = 0;
 			}
 			console.log(role);
+			console.log("↑被选为场地效果的对象!");
 			return role;
 		} else {
 			return null;
@@ -1765,7 +1883,7 @@ ENV_2 = {
 }
 ENV_3 = {
 	name: "古代都市",
-	desc: "每6个回合,给当前HP最低的角色恢复10点HP.",
+	desc: "每6个回合,给当前HP最低的角色恢复10点HP,并给与其1点燃烧状态",
 	img: "bg/古代都市.jpg",
 	effect: function(plyr, com1, com2, com3, turn) {
 		if (turn.index % 6 == 0) {
@@ -1778,13 +1896,13 @@ ENV_3 = {
 				return a.hp - b.hp;
 			});
 			role = arr[0];
-			console.log(role.name + "被选为场地效果的对象!");
 			if (role.maxHp - role.hp > 10) {
 				role.hp += 10;
 			} else {
 				role.hp = role.maxHp;
 			}
 			console.log(role);
+			console.log("↑被选为场地效果的对象!");
 			return role;
 		} else {
 			return null;
@@ -1895,6 +2013,46 @@ ENV_7 = {
 		}
 	}
 }
+ENV_8 = {
+	name: "天火的牢狱",
+	desc: "每6个回合,对某一带有燃烧状态的角色造成状态点数×5的魔法伤害,然后清除其燃烧状态.",
+	img: "bg/天火的牢狱.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			let role = null;
+			let role_arr = [];
+
+			if (player.states && player.hp > 0 && MonData.hasState(player, "fire")) {
+				role_arr.push(player);
+			}
+			if (com1.states && com1.hp > 0 && MonData.hasState(com1, "fire")) {
+				role_arr.push(com1);
+			}
+			if (com2.states && com2.hp > 0 && MonData.hasState(com2, "fire")) {
+				role_arr.push(com2);
+			}
+			if (com3.states && com3.hp > 0 && MonData.hasState(com3, "fire")) {
+				role_arr.push(com3);
+			}
+			if (role_arr.length > 0) {
+				role = role_arr.shuffle().shuffle()[0];
+				let val = MonData.getStateValue(role, "fire") * 5;
+				if (role.hp > val) {
+					role.hp -= val;
+				} else {
+					role.hp = 0;
+				}
+				MonData.clearState(role, "fire");
+			}
+			console.log(role);
+			console.log("↑被选为场地效果的对象!");
+			return role;
+		} else {
+			return null;
+		}
+	}
+}
+
 FieldBG.push(ENV_1);
 FieldBG.push(ENV_2);
 FieldBG.push(ENV_3);
@@ -1902,3 +2060,4 @@ FieldBG.push(ENV_4);
 FieldBG.push(ENV_5);
 FieldBG.push(ENV_6);
 FieldBG.push(ENV_7);
+FieldBG.push(ENV_8);

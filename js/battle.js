@@ -14,6 +14,9 @@ function comMonBeHurt(divid) {
 	}
 	Turn.addAnim(function() {
 		let ret = null;
+		if (checkedCardInfo.state) {
+			MonData.addState(getMonObjFromDivID(divid), checkedCardInfo.state, checkedCardInfo.counter);
+		}
 		if (checkedCardInfo.type == "attone" || checkedCardInfo.type == "attall") {
 			ret = MonData.att(parseInt(checkedCardInfo.value), getMonObjFromDivID(divid), "att");
 		} else if (checkedCardInfo.type == "magone" || checkedCardInfo.type == "magall") {
@@ -132,7 +135,19 @@ function refreshMonDiv(divid, monData) {
 		"width": acPct + "%"
 	}, 200);
 
-	tmpdiv.find(".state_bar").text(monData.name);
+	tmpdiv.find(".mon_info_bar").text(monData.name);
+	tmpdiv.find(".state_bar").html("");
+	if (monData.states) {
+		for (i = 0; i < monData.states.length; i++) {
+			if (monData.states[i].value > 0) {
+				let t_state_data = monData.states[i];
+				let blooddiv = $("<div>" + t_state_data.value + "</div>");
+				blooddiv.addClass(t_state_data.state);
+				blooddiv.appendTo(tmpdiv.find(".state_bar"));
+			}
+		}
+	}
+
 	if (monData.hp == 0) {
 		if (divid == "div1" || divid == "div2" || divid == "div3") {
 			$("#" + divid).removeClass("mon_checked");
@@ -169,11 +184,13 @@ function refreshMonDiv(divid, monData) {
 function refreshHandCardsDiv(handcards) {
 	$(".card").each(function(index) {
 		$(this).removeClass("card_checked");
+		$(this).removeAttr("effect").removeAttr("state");
 		$(this).attr("id", handcards[index].id)
 			.attr("name", handcards[index].name)
 			.attr("type", handcards[index].type)
 			.attr("value", handcards[index].value)
-			.attr("effect", handcards[index].effect);
+			.attr("effect", handcards[index].effect)
+			.attr("state", handcards[index].state);
 		$(this).find("img").attr("src", "../img/" + handcards[index].img);
 		$(this).find(".card_name_div").text(handcards[index].name);
 		$(this).find(".card_desc_div").text(CommonUtil.getAtkType(handcards[index].type) + "·" + handcards[index].value);
@@ -228,9 +245,10 @@ function refreshAttInfoBar() {
 	if (checkedCardInfo == null) {
 		$("#att_info").text("----");
 	} else {
-		let _value = checkedCardInfo.type == "effect" ? "?" : checkedCardInfo.value;
-		$("#att_info").html("「" + checkedCardInfo.name + "」×" + checkedCardInfo.counter +
-			"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + CommonUtil.getAtkType(checkedCardInfo.type) + "·" + _value);
+		let _value = checkedCardInfo.hasEffect ? "?" : checkedCardInfo.value;
+		let _state = checkedCardInfo.state ? checkedCardInfo.state : "";
+		$("#att_info").html("<" + checkedCardInfo.name + ">×" + checkedCardInfo.counter +
+			" | " + CommonUtil.getAtkType(checkedCardInfo.type) + "·" + _value + " | " + MonData.getStateName(_state));
 	}
 }
 
@@ -371,6 +389,7 @@ function initClick() {
 				checkedCardInfo.type = $(this).attr("type") == "effect" ? CardEffect[checkedCardInfo.name].type : $(this).attr(
 					"type");
 				checkedCardInfo.hasEffect = $(this).attr("type") == "effect" ? true : false;
+				checkedCardInfo.state = $(this).attr("state");
 				checkedCardInfo.effect = $(this).attr("name");
 				checkedCardInfo.value = parseInt($(this).attr("value"));
 				checkedCardInfo.counter = 1;
