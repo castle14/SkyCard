@@ -304,7 +304,7 @@ CommonUtil.saveTaskState = function(tsklst) {
 CommonUtil.getTaskState = function() {
 	let tmp_tasklist = JSON.parse(localStorage.getItem("skycard_tasklist"));
 	for (let i in tmp_tasklist) {
-		TaskList[i] = tmp_tasklist[i];
+		TaskList[i].isComplete = tmp_tasklist[i].isComplete;
 	}
 	return TaskList;
 }
@@ -1647,61 +1647,73 @@ TaskList["task_test_3"] = {
 
 TaskList["task_diamond_1"] = {
 	"taskname": "task_diamond_1",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_1", "MON_DIAMOND_1", "MON_DIAMOND_1"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_2"] = {
 	"taskname": "task_diamond_2",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_1", "MON_DIAMOND_2", "MON_DIAMOND_1"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_3"] = {
 	"taskname": "task_diamond_3",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_1", "MON_DIAMOND_3", "MON_DIAMOND_2"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_4"] = {
 	"taskname": "task_diamond_4",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_3", "MON_DIAMOND_4", "MON_DIAMOND_2"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_5"] = {
 	"taskname": "task_diamond_5",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_3", "MON_DIAMOND_5", "MON_DIAMOND_4"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_6"] = {
 	"taskname": "task_diamond_6",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_5", "MON_DIAMOND_6", "MON_DIAMOND_4"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_7"] = {
 	"taskname": "task_diamond_7",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_5", "MON_DIAMOND_7", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_8"] = {
 	"taskname": "task_diamond_8",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_7", "MON_DIAMOND_8", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_9"] = {
 	"taskname": "task_diamond_9",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_7", "MON_DIAMOND_9", "MON_DIAMOND_6"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_10"] = {
 	"taskname": "task_diamond_10",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_9", "MON_DIAMOND_9", "MON_DIAMOND_9"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_11"] = {
 	"taskname": "task_diamond_11",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_9", "MON_DIAMOND_8", "MON_DIAMOND_9"],
 	"isComplete": "no"
 };
 TaskList["task_diamond_12"] = {
 	"taskname": "task_diamond_12",
+	"task_env": "ENV_3",
 	"taskcontent": ["MON_DIAMOND_8", "MON_DIAMOND_8", "MON_DIAMOND_8"],
 	"isComplete": "no"
 };
@@ -1709,116 +1721,139 @@ TaskList["task_diamond_12"] = {
 
 TaskList["task_alien_1"] = {
 	"taskname": "task_alien_1",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_1", "MON_ALIEN_1", "MON_ALIEN_1"],
 	"isComplete": "no"
 };
 TaskList["task_alien_2"] = {
 	"taskname": "task_alien_2",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_1", "MON_ALIEN_2", "MON_ALIEN_1"],
 	"isComplete": "no"
 };
 TaskList["task_alien_3"] = {
 	"taskname": "task_alien_3",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_1", "MON_ALIEN_2"],
 	"isComplete": "no"
 };
 TaskList["task_alien_4"] = {
 	"taskname": "task_alien_4",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_2", "MON_ALIEN_2"],
 	"isComplete": "no"
 };
 TaskList["task_alien_5"] = {
 	"taskname": "task_alien_5",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_3", "MON_ALIEN_2", "MON_ALIEN_3"],
 	"isComplete": "no"
 };
 TaskList["task_alien_6"] = {
 	"taskname": "task_alien_6",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_3", "MON_ALIEN_4"],
 	"isComplete": "no"
 };
 TaskList["task_alien_7"] = {
 	"taskname": "task_alien_7",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_4", "MON_ALIEN_3", "MON_ALIEN_4"],
 	"isComplete": "no"
 };
 TaskList["task_alien_8"] = {
 	"taskname": "task_alien_8",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_5", "MON_ALIEN_2", "MON_ALIEN_5"],
 	"isComplete": "no"
 };
 TaskList["task_alien_9"] = {
 	"taskname": "task_alien_9",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_2", "MON_ALIEN_6"],
 	"isComplete": "no"
 };
 TaskList["task_alien_10"] = {
 	"taskname": "task_alien_10",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_6", "MON_ALIEN_6"],
 	"isComplete": "no"
 };
 TaskList["task_alien_11"] = {
 	"taskname": "task_alien_11",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_7", "MON_ALIEN_7", "MON_ALIEN_7"],
 	"isComplete": "no"
 };
 TaskList["task_alien_12"] = {
 	"taskname": "task_alien_12",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_7", "MON_ALIEN_8"],
 	"isComplete": "no"
 };
 TaskList["task_alien_13"] = {
 	"taskname": "task_alien_13",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_2", "MON_ALIEN_6", "MON_ALIEN_8"],
 	"isComplete": "no"
 };
 TaskList["task_alien_14"] = {
 	"taskname": "task_alien_14",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_6", "MON_ALIEN_9", "MON_ALIEN_6"],
 	"isComplete": "no"
 };
 TaskList["task_alien_15"] = {
 	"taskname": "task_alien_15",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_8", "MON_ALIEN_9", "MON_ALIEN_8"],
 	"isComplete": "no"
 };
 TaskList["task_alien_16"] = {
 	"taskname": "task_alien_16",
+	"task_env": "ENV_4",
 	"taskcontent": ["MON_ALIEN_10", "MON_ALIEN_9", "MON_ALIEN_10"],
 	"isComplete": "no"
 };
 TaskList["task_alien_17"] = {
 	"taskname": "task_alien_17",
+	"task_env": "ENV_5",
 	"taskcontent": ["MON_ALIEN_12", "MON_ALIEN_9", "MON_ALIEN_12"],
 	"isComplete": "no"
 };
 TaskList["task_alien_18"] = {
 	"taskname": "task_alien_18",
+	"task_env": "ENV_5",
 	"taskcontent": ["MON_ALIEN_11", "MON_ALIEN_13", "MON_ALIEN_11"],
 	"isComplete": "no"
 };
 TaskList["task_alien_19"] = {
 	"taskname": "task_alien_19",
+	"task_env": "ENV_5",
 	"taskcontent": ["MON_ALIEN_15", "MON_ALIEN_12", "MON_ALIEN_15"],
 	"isComplete": "no"
 };
 TaskList["task_alien_20"] = {
 	"taskname": "task_alien_20",
+	"task_env": "ENV_5",
 	"taskcontent": ["MON_ALIEN_15", "MON_ALIEN_14", "MON_ALIEN_16"],
 	"isComplete": "no"
 };
 TaskList["task_alien_21"] = {
 	"taskname": "task_alien_21",
+	"task_env": "ENV_5",
 	"taskcontent": ["MON_ALIEN_15", "MON_ALIEN_17", "MON_ALIEN_15"],
 	"isComplete": "no"
 };
 TaskList["task_alien_22"] = {
 	"taskname": "task_alien_22",
+	"task_env": "ENV_5",
 	"taskcontent": ["MON_ALIEN_17", "MON_ALIEN_18", "MON_ALIEN_15"],
 	"isComplete": "no"
 };
 TaskList["task_alien_23"] = {
 	"taskname": "task_alien_23",
+	"task_env": "ENV_5",
 	"taskcontent": ["MON_ALIEN_18", "MON_ALIEN_9", "MON_ALIEN_14"],
 	"isComplete": "no"
 };

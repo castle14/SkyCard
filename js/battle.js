@@ -215,6 +215,10 @@ function initMonAndPlayer() {
 		alert("找不到这个任务");
 	}
 	let monNameList = tmptasks[tmptaskname].taskcontent;
+	let task_env = tmptasks[tmptaskname].task_env;
+	if (task_env) {
+		env = window[task_env];
+	}
 
 	mon1 = MonData.getComInstance(MonList[monNameList[0]]);
 	mon1.name = mon1.name + "1";
@@ -422,13 +426,15 @@ function initClick() {
 }
 
 function initBackground() {
-	env = FieldBG.shuffle().shuffle().shuffle()[0];
+	if (env == null) {
+		env = FieldBG.shuffle().shuffle().shuffle()[0];
+	}
 
 	$(".f_div").css("background-image", "url(../img/" + env.img + ")");
 	$(".env_info_div").text(env.name);
 }
 $(function() {
-	initBackground();
 	initMonAndPlayer();
+	initBackground();
 	initClick();
 });
