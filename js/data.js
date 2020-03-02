@@ -1064,7 +1064,143 @@ MON_ALIEN_18 = {
 	}]
 }
 
-
+MON_DIMEN_1 = {
+	"name": "战士-格雷法",
+	"maxHp": 150, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 4,
+	"img": "dimen/战士-格雷法.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 26
+	}, {
+		"type": "att",
+		"value": 27
+	}, {
+		"type": "att",
+		"value": 28
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_DIMEN_2 = {
+	"name": "灵魂龙",
+	"maxHp": 100, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 2,
+	"img": "dimen/灵魂龙.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 7
+	}, {
+		"type": "mag",
+		"value": 8
+	}, {
+		"type": "heal",
+		"value": 20
+	}]
+}
+MON_DIMEN_3 = {
+	"name": "荒野女战士",
+	"maxHp": 50, //最大生命
+	"maxAc": 150, //最大护甲
+	"star": 4,
+	"img": "dimen/荒野女战士.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 24
+	}, {
+		"type": "att",
+		"value": 28
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_DIMEN_4 = {
+	"name": "暗黑战士-格雷法",
+	"maxHp": 150, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 4,
+	"img": "dimen/暗黑战士-格雷法.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 12
+	}, {
+		"type": "att",
+		"value": 28
+	}, {
+		"type": "att",
+		"value": 50
+	}]
+}
+MON_DIMEN_5 = {
+	"name": "光芒使者-格雷法",
+	"maxHp": 150, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 4,
+	"img": "dimen/光芒使者-格雷法.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 12
+	}, {
+		"type": "att",
+		"value": 28
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "heal",
+		"value": 50
+	}]
+}
+MON_DIMEN_6 = {
+	"name": "龙战士-格雷法",
+	"maxHp": 250, //最大生命
+	"maxAc": 51, //最大护甲
+	"star": 6,
+	"img": "dimen/龙战士-格雷法.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 15
+	}, {
+		"type": "mag",
+		"value": 16
+	}, {
+		"type": "mag",
+		"value": 18
+	}, {
+		"type": "heal",
+		"value": 20
+	}]
+}
+MON_DIMEN_7 = {
+	"name": "骑士-格雷法",
+	"maxHp": 250, //最大生命
+	"maxAc": 101, //最大护甲
+	"star": 7,
+	"img": "dimen/骑士-格雷法.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 20
+	}, {
+		"type": "mag",
+		"value": 16
+	}, {
+		"type": "att",
+		"value": 42
+	}, {
+		"type": "att",
+		"value": 43
+	}, {
+		"type": "arm",
+		"value": 99
+	}, {
+		"type": "heal",
+		"value": 99
+	}]
+}
 /* 卡牌的初始化数据 */
 
 CARD1 = {
@@ -1556,6 +1692,13 @@ MonList["MON_ALIEN_15"] = MON_ALIEN_15;
 MonList["MON_ALIEN_16"] = MON_ALIEN_16;
 MonList["MON_ALIEN_17"] = MON_ALIEN_17;
 MonList["MON_ALIEN_18"] = MON_ALIEN_18;
+MonList["MON_DIMEN_1"] = MON_DIMEN_1;
+MonList["MON_DIMEN_2"] = MON_DIMEN_2;
+MonList["MON_DIMEN_3"] = MON_DIMEN_3;
+MonList["MON_DIMEN_4"] = MON_DIMEN_4;
+MonList["MON_DIMEN_5"] = MON_DIMEN_5;
+MonList["MON_DIMEN_6"] = MON_DIMEN_6;
+MonList["MON_DIMEN_7"] = MON_DIMEN_7;
 //对卡牌进行注册
 CardList["CARD1"] = CARD1;
 CardList["CARD2"] = CARD2;
@@ -1857,6 +2000,42 @@ TaskList["task_alien_23"] = {
 	"taskcontent": ["MON_ALIEN_18", "MON_ALIEN_9", "MON_ALIEN_14"],
 	"isComplete": "no"
 };
+TaskList["task_dimen_1"] = {
+	"taskname": "task_dimen_1",
+	"task_env": "ENV_9",
+	"taskcontent": ["MON_DIMEN_2", "MON_DIMEN_1", "MON_DIMEN_2"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_2"] = {
+	"taskname": "task_dimen_2",
+	"task_env": "ENV_9",
+	"taskcontent": ["MON_DIMEN_2", "MON_DIMEN_3", "MON_DIMEN_2"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_3"] = {
+	"taskname": "task_dimen_3",
+	"task_env": "ENV_9",
+	"taskcontent": ["MON_DIMEN_2", "MON_DIMEN_4", "MON_DIMEN_2"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_4"] = {
+	"taskname": "task_dimen_4",
+	"task_env": "ENV_9",
+	"taskcontent": ["MON_DIMEN_2", "MON_DIMEN_5", "MON_DIMEN_2"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_5"] = {
+	"taskname": "task_dimen_5",
+	"task_env": "ENV_9",
+	"taskcontent": ["MON_DIMEN_2", "MON_DIMEN_6", "MON_DIMEN_2"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_6"] = {
+	"taskname": "task_dimen_6",
+	"task_env": "ENV_9",
+	"taskcontent": ["MON_DIMEN_2", "MON_DIMEN_7", "MON_DIMEN_2"],
+	"isComplete": "no"
+};
 
 
 ENV_1 = {
@@ -2087,7 +2266,74 @@ ENV_8 = {
 		}
 	}
 }
+ENV_9 = {
+	name: "死域海",
+	desc: "每6个回合,将随意角色的HP减少10，护甲增加20.",
+	img: "bg/死域海.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			let role = null;
+			let role_arr = [];
+			if (plyr.hp > 0) {
+				role_arr.push(plyr);
+			}
+			if (com1.hp > 0) {
+				role_arr.push(com1);
+			}
+			if (com2.hp > 0) {
+				role_arr.push(com2);
+			}
+			if (com3.hp > 0) {
+				role_arr.push(com3);
+			}
+			role = role_arr.shuffle().shuffle()[0];
 
+			if (role.hp > 10) {
+				role.hp -= 10;
+				if (role.maxAc - role.ac > 20) {
+					role.ac += 20;
+				} else {
+					role.ac = role.maxAc;
+				}
+			} else {
+				role.hp = 0;
+			}
+			console.log(role);
+			console.log("↑被选为场地效果的对象!");
+			return role;
+		} else {
+			return null;
+		}
+	}
+}
+ENV_10 = {
+	name: "异次元的缝隙",
+	desc: "每6个回合,将所有角色的状态消除，每消除一点状态减少1点HP",
+	img: "bg/异次元的缝隙.jpg",
+	effect: function(plyr, com1, com2, com3, turn) {
+		if (turn.index % 6 == 0) {
+			let role_arr = [plyr, com1, com2, com3];
+			for (let j = 0; j < role_arr.length; j++) {
+				let role = role_arr[j];
+				if (role.states && role.hp > 0) {
+					let counter = 0;
+					for (let i = 0; i < role.states.length; i++) {
+						counter += role.states[i].value;
+					}
+					if (role.hp > counter) {
+						role.hp -= counter;
+					} else {
+						role.hp = 0;
+					}
+					role.states = [];
+				}
+			}
+			return "all";
+		} else {
+			return null;
+		}
+	}
+}
 FieldBG.push(ENV_1);
 FieldBG.push(ENV_2);
 FieldBG.push(ENV_3);
@@ -2096,3 +2342,5 @@ FieldBG.push(ENV_5);
 FieldBG.push(ENV_6);
 FieldBG.push(ENV_7);
 FieldBG.push(ENV_8);
+FieldBG.push(ENV_9);
+FieldBG.push(ENV_10);
