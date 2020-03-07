@@ -167,7 +167,7 @@ function refreshMonDiv(divid, monData) {
 				Turn.comCounter -= 1;
 				MySound.die();
 				if (Turn.comCounter == 0) {
-
+					Anim.showGlobalInfo("挑战成功！");
 					tmptasks[tmptaskname].isComplete = "yes";
 					CommonUtil.saveTaskState(tmptasks);
 					let gmif = CommonUtil.getGameInfo();
@@ -186,6 +186,7 @@ function refreshMonDiv(divid, monData) {
 			});
 
 		} else if (divid == "player_div") {
+			Anim.showGlobalInfo("挑战失败！");
 			let gmif = CommonUtil.getGameInfo();
 			gmif.lose_counter += 1;
 			CommonUtil.saveGameInfo(gmif);
