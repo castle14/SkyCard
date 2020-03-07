@@ -186,14 +186,20 @@ function refreshMonDiv(divid, monData) {
 			});
 
 		} else if (divid == "player_div") {
-			Anim.showGlobalInfo("挑战失败！");
-			let gmif = CommonUtil.getGameInfo();
-			gmif.lose_counter += 1;
-			CommonUtil.saveGameInfo(gmif);
-			MySound.fail(() => {
-				alert("o(╥﹏╥)o挑战失败!");
-				location.href = "tasklist.html";
-			});
+			$("#div1").stop(true).clearQueue();
+			$("#div2").stop(true).clearQueue();
+			$("#div3").stop(true).clearQueue();
+			if (Turn.hasResult == false) {
+				Anim.showGlobalInfo("挑战失败！");
+				let gmif = CommonUtil.getGameInfo();
+				gmif.lose_counter += 1;
+				CommonUtil.saveGameInfo(gmif);
+				Turn.hasResult = true;
+				MySound.fail(() => {
+					alert("o(╥﹏╥)o挑战失败!");
+					location.href = "tasklist.html";
+				});
+			}
 		}
 	}
 }

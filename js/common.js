@@ -1,6 +1,7 @@
 Turn = {
 	comCounter: 3,
 	chainCounter: 3,
+	hasResult: false,
 	index: 1, //回合数
 	turnOwner: "PLAYER",
 	deck: [],

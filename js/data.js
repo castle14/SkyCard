@@ -1122,7 +1122,7 @@ MON_DIMEN_3 = {
 	}]
 }
 MON_DIMEN_4 = {
-	"name": "暗黑战士-格雷法",
+	"name": "暗黑战士格雷法",
 	"maxHp": 150, //最大生命
 	"maxAc": 50, //最大护甲
 	"star": 4,
@@ -1139,7 +1139,7 @@ MON_DIMEN_4 = {
 	}]
 }
 MON_DIMEN_5 = {
-	"name": "光芒使者-格雷法",
+	"name": "光芒使者格雷法",
 	"maxHp": 150, //最大生命
 	"maxAc": 50, //最大护甲
 	"star": 4,
@@ -1159,7 +1159,7 @@ MON_DIMEN_5 = {
 	}]
 }
 MON_DIMEN_6 = {
-	"name": "龙战士-格雷法",
+	"name": "龙战士格雷法",
 	"maxHp": 250, //最大生命
 	"maxAc": 51, //最大护甲
 	"star": 6,
@@ -1179,7 +1179,7 @@ MON_DIMEN_6 = {
 	}]
 }
 MON_DIMEN_7 = {
-	"name": "骑士-格雷法",
+	"name": "骑士格雷法",
 	"maxHp": 250, //最大生命
 	"maxAc": 101, //最大护甲
 	"star": 7,
@@ -1204,6 +1204,212 @@ MON_DIMEN_7 = {
 		"value": 99
 	}]
 }
+MON_DIMEN_8 = {
+	"name": "四级漆黑魔王",
+	"maxHp": 100, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 4,
+	"img": "dimen/漆黑之魔王-LV4.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 12
+	}, {
+		"type": "mag",
+		"value": 13
+	}, {
+		"type": "mag",
+		"value": 20
+	}, {
+		"type": "mag",
+		"value": 25
+	}, {
+		"type": "arm",
+		"value": 50
+	}, {
+		"type": "heal",
+		"value": 99
+	}]
+}
+MON_DIMEN_9 = {
+	"name": "六级漆黑魔王",
+	"maxHp": 200, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 6,
+	"img": "dimen/漆黑之魔王-LV6.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 20
+	}, {
+		"type": "mag",
+		"value": 25
+	}, {
+		"type": "mag",
+		"value": 30
+	}, {
+		"type": "mag",
+		"value": 35
+	}, {
+		"type": "arm",
+		"value": 50
+	}, {
+		"type": "heal",
+		"value": 120
+	}]
+}
+MON_DIMEN_10 = {
+	"name": "八级漆黑魔王",
+	"maxHp": 300, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 8,
+	"img": "dimen/漆黑之魔王-LV8.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 25
+	}, {
+		"type": "mag",
+		"value": 30
+	}, {
+		"type": "mag",
+		"value": 35
+	}, {
+		"type": "mag",
+		"value": 40
+	}, {
+		"type": "arm",
+		"value": 50
+	}, {
+		"type": "heal",
+		"value": 150
+	}]
+}
+MON_DIMEN_11 = {
+	"name": "异次元精灵",
+	"maxHp": 100, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 2,
+	"img": "dimen/异次元的精灵.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "ele",
+		"value": 9
+	}, {
+		"type": "mag",
+		"state": "ele",
+		"value": 7
+	}, {
+		"type": "mag",
+		"state": "ele",
+		"value": 10
+	}, {
+		"type": "heal",
+		"value": 50
+	}]
+}
+MON_DIMEN_12 = {
+	"name": "异次元战士",
+	"maxHp": 75, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 3,
+	"img": "dimen/异次元的战士.jpg",
+	"actions": [{
+		"type": "att",
+		"state": "ele",
+		"value": 20
+	}, {
+		"type": "att",
+		"state": "ele",
+		"value": 24
+	}, {
+		"type": "att",
+		"state": "ele",
+		"value": 25
+	}]
+}
+MON_DIMEN_13 = {
+	"name": "异次元女战士",
+	"maxHp": 50, //最大生命
+	"maxAc": 150, //最大护甲
+	"star": 4,
+	"img": "dimen/异次元女战士.jpg",
+	"actions": [{
+		"type": "att",
+		"state": "ele",
+		"value": 25
+	}, {
+		"type": "att",
+		"state": "ele",
+		"value": 28
+	}, {
+		"type": "att",
+		"state": "ele",
+		"value": 29
+	}, {
+		"type": "arm",
+		"value": 125
+	}]
+}
+MON_DIMEN_14 = {
+	"name": "异次元龙",
+	"maxHp": 260, //最大生命
+	"maxAc": 1, //最大护甲
+	"star": 5,
+	"img": "dimen/异次元龙.jpg",
+	"actions": [{
+		"type": "att",
+		"state": "ele",
+		"value": 30
+	}, {
+		"type": "att",
+		"state": "ele",
+		"value": 31
+	}, {
+		"type": "att",
+		"state": "ele",
+		"value": 34
+	}, {
+		"type": "heal",
+		"value": 125
+	}, {
+		"type": "mag",
+		"state": "ele",
+		"value": 17
+	}, {
+		"type": "mag",
+		"state": "ele",
+		"value": 18
+	}]
+}
+MON_DIMEN_15 = {
+	"name": "异次元之主",
+	"maxHp": 200, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 6,
+	"img": "dimen/异次元之主.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "ele",
+		"value": 45
+	}, {
+		"type": "mag",
+		"state": "ele",
+		"value": 47
+	}, {
+		"type": "mag",
+		"state": "ele",
+		"value": 48
+	}, {
+		"type": "heal",
+		"value": 100
+	}]
+}
+
+
+
+
+
+
+
+
 /* 卡牌的初始化数据 */
 
 CARD1 = {
@@ -1521,7 +1727,7 @@ CARD44 = {
 	"name": "旋风回力镖",
 	"type": "attall",
 	"value": 25,
-	"star": 5,
+	"star": 4,
 	"img": "card/旋风回力镖.jpg"
 }
 CARD45 = {
@@ -1702,6 +1908,16 @@ MonList["MON_DIMEN_4"] = MON_DIMEN_4;
 MonList["MON_DIMEN_5"] = MON_DIMEN_5;
 MonList["MON_DIMEN_6"] = MON_DIMEN_6;
 MonList["MON_DIMEN_7"] = MON_DIMEN_7;
+MonList["MON_DIMEN_8"] = MON_DIMEN_8;
+MonList["MON_DIMEN_9"] = MON_DIMEN_9;
+MonList["MON_DIMEN_10"] = MON_DIMEN_10;
+MonList["MON_DIMEN_11"] = MON_DIMEN_11;
+MonList["MON_DIMEN_12"] = MON_DIMEN_12;
+MonList["MON_DIMEN_13"] = MON_DIMEN_13;
+MonList["MON_DIMEN_14"] = MON_DIMEN_14;
+MonList["MON_DIMEN_15"] = MON_DIMEN_15;
+
+
 //对卡牌进行注册
 CardList["CARD1"] = CARD1;
 CardList["CARD2"] = CARD2;
@@ -2039,6 +2255,82 @@ TaskList["task_dimen_6"] = {
 	"taskcontent": ["MON_DIMEN_2", "MON_DIMEN_7", "MON_DIMEN_2"],
 	"isComplete": "no"
 };
+TaskList["task_dimen_7"] = {
+	"taskname": "task_dimen_7",
+	"task_env": "ENV_2",
+	"taskcontent": ["MON_DIMEN_8", "MON_DIMEN_8", "MON_DIMEN_8"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_8"] = {
+	"taskname": "task_dimen_8",
+	"task_env": "ENV_2",
+	"taskcontent": ["MON_DIMEN_8", "MON_DIMEN_9", "MON_DIMEN_8"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_9"] = {
+	"taskname": "task_dimen_9",
+	"task_env": "ENV_2",
+	"taskcontent": ["MON_DIMEN_9", "MON_DIMEN_9", "MON_DIMEN_9"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_10"] = {
+	"taskname": "task_dimen_10",
+	"task_env": "ENV_2",
+	"taskcontent": ["MON_DIMEN_9", "MON_DIMEN_10", "MON_DIMEN_9"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_11"] = {
+	"taskname": "task_dimen_11",
+	"task_env": "ENV_2",
+	"taskcontent": ["MON_DIMEN_10", "MON_DIMEN_10", "MON_DIMEN_10"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_12"] = {
+	"taskname": "task_dimen_12",
+	"task_env": "ENV_10",
+	"taskcontent": ["MON_DIMEN_11", "MON_DIMEN_11", "MON_DIMEN_11"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_13"] = {
+	"taskname": "task_dimen_13",
+	"task_env": "ENV_10",
+	"taskcontent": ["MON_DIMEN_11", "MON_DIMEN_12", "MON_DIMEN_11"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_14"] = {
+	"taskname": "task_dimen_14",
+	"task_env": "ENV_10",
+	"taskcontent": ["MON_DIMEN_12", "MON_DIMEN_13", "MON_DIMEN_11"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_15"] = {
+	"taskname": "task_dimen_15",
+	"task_env": "ENV_10",
+	"taskcontent": ["MON_DIMEN_12", "MON_DIMEN_14", "MON_DIMEN_13"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_16"] = {
+	"taskname": "task_dimen_16",
+	"task_env": "ENV_10",
+	"taskcontent": ["MON_DIMEN_14", "MON_DIMEN_14", "MON_DIMEN_14"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_17"] = {
+	"taskname": "task_dimen_17",
+	"task_env": "ENV_10",
+	"taskcontent": ["MON_DIMEN_12", "MON_DIMEN_15", "MON_DIMEN_13"],
+	"isComplete": "no"
+};
+TaskList["task_dimen_18"] = {
+	"taskname": "task_dimen_18",
+	"task_env": "ENV_10",
+	"taskcontent": ["MON_DIMEN_14", "MON_DIMEN_15", "MON_DIMEN_14"],
+	"isComplete": "no"
+};
+
+
+
+
 
 
 ENV_1 = {
@@ -2311,7 +2603,7 @@ ENV_9 = {
 }
 ENV_10 = {
 	name: "异次元的缝隙",
-	desc: "每6个回合,将所有角色的状态消除，每消除一点状态减少1点HP",
+	desc: "每6个回合,将所有角色的状态消除，每消除1点状态减少2点HP",
 	img: "bg/异次元的缝隙.jpg",
 	effect: function(plyr, com1, com2, com3, turn) {
 		if (turn.index % 6 == 0) {
