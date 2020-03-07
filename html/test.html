@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta charset="utf-8">
+		<script type="application/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script type="application/javascript" src="../js/howler.js"></script>
+		<script type="application/javascript">
+			$(function(){
+				$("button").on("click",function(){
+					var sound = new Howl({
+						src: ['../sound/攻击.mp3']
+					});
+					sound.play();
+				});
+			});
+		</script>
+		<title>测试</title>
+		<button>播放</button>
+	</head>
+	<body>
+	</body>
+</html>
