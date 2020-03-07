@@ -2603,7 +2603,7 @@ ENV_9 = {
 }
 ENV_10 = {
 	name: "异次元的缝隙",
-	desc: "每6个回合,将所有角色的状态消除，每消除1点状态减少2点HP",
+	desc: "每6个回合,将所有角色的状态消除，每消除1点状态减少5点HP",
 	img: "bg/异次元的缝隙.jpg",
 	effect: function(plyr, com1, com2, com3, turn) {
 		if (turn.index % 6 == 0) {
@@ -2613,7 +2613,7 @@ ENV_10 = {
 				if (role.states && role.hp > 0) {
 					let counter = 0;
 					for (let i = 0; i < role.states.length; i++) {
-						counter += role.states[i].value;
+						counter += role.states[i].value * 5;
 					}
 					if (role.hp > counter) {
 						role.hp -= counter;
