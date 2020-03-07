@@ -83,6 +83,7 @@ function envEffect() {
 		Turn.addAnim(function() {
 			Anim.showGlobalInfo("场地的效果发动", function() {
 				Turn.nextAnim();
+				MySound.fieldEffect();
 			});
 		});
 		Turn.addAnim(function() {
@@ -126,6 +127,7 @@ function envEffect() {
 		Turn.addAnim(function() {
 			Anim.showGlobalInfo("场地的效果发动", function() {
 				Turn.nextAnim();
+				MySound.fieldEffect();
 			});
 		});
 		Turn.addAnim(function() {
@@ -153,26 +155,31 @@ function initComAtt(divid) {
 	});
 	Turn.addAnim(function() {
 		let ret = MonData.comAct(getMonObjFromDivID(divid), player);
+		MySound.monAtk();
 		if (ret.type == "-hp") {
 			Anim.beHurt("player_div", ret.hurtValue, function() {
 				refreshMonDiv("player_div", player);
 				// console.log(player);
 				Turn.nextAnim();
+				MySound.playerBeHurt();
 			});
 		} else if (ret.type == "-ac") {
 			Anim.beShielded("player_div", ret.hurtValue, function() {
 				refreshMonDiv("player_div", player);
 				Turn.nextAnim();
+				MySound.MonDef();
 			});
 		} else if (ret.type == "+hp") {
 			Anim.beHealed(divid, ret.hurtValue, function() {
 				refreshMonDiv(divid, getMonObjFromDivID(divid));
 				Turn.nextAnim();
+				MySound.heal();
 			});
 		} else if (ret.type == "+ac") {
 			Anim.beArmed(divid, ret.hurtValue, function() {
 				refreshMonDiv(divid, getMonObjFromDivID(divid));
 				Turn.nextAnim();
+				MySound.armed();
 			});
 		} else {
 			console.log("other actions to do ")

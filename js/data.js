@@ -229,6 +229,9 @@ CommonUtil.clearStorage = function() {
 }
 CommonUtil.getDeckStorage = function() {
 	let deck = JSON.parse(localStorage.getItem("skycard_deck"));
+	if (!deck) {
+		return null;
+	}
 	for (i = 0; i < deck.length; i++) {
 		let t_card = deck[i];
 		for (j in CardList) {

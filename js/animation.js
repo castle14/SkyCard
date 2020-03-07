@@ -1,5 +1,95 @@
 var Anim = {}
-
+var MySound = {}
+MySound.atkOne = function() {
+	let sound = new Howl({
+		src: ['../sound/攻击.mp3']
+	});
+	sound.play();
+}
+MySound.monAtk = function() {
+	let sound = new Howl({
+		src: ['../sound/怪兽攻击.mp3']
+	});
+	sound.play();
+}
+MySound.skill = function() {
+	let sound = new Howl({
+		src: ['../sound/刀剑出鞘.mp3']
+	});
+	sound.play();
+}
+MySound.armed = function() {
+	let sound = new Howl({
+		src: ['../sound/跺脚.mp3']
+	});
+	sound.play();
+}
+MySound.magicAtk = function() {
+	let sound = new Howl({
+		src: ['../sound/吱.mp3']
+	});
+	sound.play();
+}
+MySound.fieldEffect = function() {
+	let sound = new Howl({
+		src: ['../sound/闪电攻击.mp3']
+	});
+	sound.play();
+}
+MySound.heal = function() {
+	var sound = new Howl({
+		src: ['../sound/治疗.mp3']
+	});
+	sound.play();
+}
+MySound.MonBeHurt = function() {
+	let sound = new Howl({
+		src: ['../sound/受伤.mp3']
+	});
+	sound.play();
+}
+MySound.MonDef = function() {
+	let sound = new Howl({
+		src: ['../sound/盖.mp3']
+	});
+	sound.play();
+}
+MySound.playerBeHurt = function() {
+	let sound = new Howl({
+		src: ['../sound/受伤女.mp3']
+	});
+	sound.play();
+}
+MySound.die = function() {
+	let sound = new Howl({
+		src: ['../sound/受伤怪.mp3']
+	});
+	sound.play();
+}
+MySound.victory = function(fn) {
+	let sound = new Howl({
+		src: ['../sound/胜利.mp3']
+	});
+	let id = sound.play();
+	sound.rate(1.5, id);
+	sound.on('end', function(){
+		if (fn != null && fn != undefined) {
+			fn();
+		}
+	});
+}
+MySound.fail = function(fn) {
+	let sound = new Howl({
+		src: ['../sound/失败.mp3']
+	});
+	let id = sound.play();
+	sound.rate(1.5, id);
+	sound.on('end', function(){
+		if (fn != null && fn != undefined) {
+			fn();
+		}
+	});
+}
 Anim.hurt = function(divid, fn) {
 	let tmpdiv = $("#" + divid);
 	var Y = tmpdiv.offset().top;

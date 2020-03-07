@@ -32,21 +32,27 @@ function comMonBeHurt(divid) {
 			Anim.beHurt(divid, ret.hurtValue, function() {
 				refreshMonDiv(divid, getMonObjFromDivID(divid));
 				Turn.nextAnim();
+				MySound.MonBeHurt();
 			});
 		} else if (ret.type == "-ac") {
 			Anim.beShielded(divid, ret.hurtValue, function() {
 				refreshMonDiv(divid, getMonObjFromDivID(divid));
 				Turn.nextAnim();
+				MySound.MonDef();
 			});
 		} else if (ret.type == "+hp") {
+			MySound.heal();
 			Anim.beHealed("player_div", ret.hurtValue, function() {
 				refreshMonDiv("player_div", player);
 				Turn.nextAnim();
+
 			});
 		} else if (ret.type == "+ac") {
+			MySound.armed();
 			Anim.beArmed("player_div", ret.hurtValue, function() {
 				refreshMonDiv("player_div", player);
 				Turn.nextAnim();
+
 			});
 		} else {
 			console.log("comMonBeHurt: other act type to do!");
@@ -114,6 +120,11 @@ function playerAttOne() {
 
 
 		Turn.nextAnim();
+		if (checkedCardInfo.type == "magone") {
+			MySound.magicAtk();
+		} else {
+			MySound.atkOne();
+		}
 		return 1;
 	} else {
 		console.log("the number of mon_checked is bigger than 1!");
@@ -154,7 +165,9 @@ function refreshMonDiv(divid, monData) {
 			// $("#" + divid).hide();
 			$("#" + divid).fadeOut(500, () => {
 				Turn.comCounter -= 1;
+				MySound.die();
 				if (Turn.comCounter == 0) {
+
 					tmptasks[tmptaskname].isComplete = "yes";
 					CommonUtil.saveTaskState(tmptasks);
 					let gmif = CommonUtil.getGameInfo();
@@ -165,9 +178,10 @@ function refreshMonDiv(divid, monData) {
 					let tmp_star_number = mon1.star + mon2.star + mon3.star;
 					gmif.star_counter += tmp_star_number;
 					CommonUtil.saveGameInfo(gmif);
-
-					alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
-					location.href = "tasklist.html";
+					MySound.victory(() => {
+						alert("^_^挑战成功!STAR+" + tmp_star_number + "!\n你获得了卡片[" + random_card.name + "]");
+						location.href = "tasklist.html";
+					});
 				}
 			});
 
@@ -175,8 +189,10 @@ function refreshMonDiv(divid, monData) {
 			let gmif = CommonUtil.getGameInfo();
 			gmif.lose_counter += 1;
 			CommonUtil.saveGameInfo(gmif);
-			alert("o(╥﹏╥)o挑战失败!");
-			location.href = "tasklist.html";
+			MySound.fail(() => {
+				alert("o(╥﹏╥)o挑战失败!");
+				location.href = "tasklist.html";
+			});
 		}
 	}
 }
@@ -267,6 +283,11 @@ function initClick() {
 		}
 		if (checkedCardInfo.type == "attall" || checkedCardInfo.type == "magall") {
 			playerAttAll();
+			if (checkedCardInfo.type == "magall") {
+				MySound.magicAtk();
+			} else {
+				MySound.atkOne();
+			}
 		} else if (checkedCardInfo.type == "arm" || checkedCardInfo.type == "heal") {
 			if (checkedCardInfo && checkedCardInfo.hasEffect) {
 				let _effect = checkedCardInfo.effect;
@@ -363,6 +384,7 @@ function initClick() {
 		} else {
 			playerAttOne()
 		}
+		MySound.skill();
 		refreshMonDiv("player_div", player);
 		refreshEnergyInfo();
 		$("#btn1").hide();
