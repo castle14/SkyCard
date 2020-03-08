@@ -88,7 +88,7 @@ RoleEffect["3618"] = {
 }
 
 RoleEffect["英雄小子"] = {
-	"desc": "将HP和护甲补满,对某一怪兽进行恢复值之和的物理攻击.",
+	"desc": "将HP和护甲补满,对某一怪兽进行恢复值之和一半的物理攻击.",
 	"type": "attone",
 	"effect": function(plyr, com, turn, counter) {
 		let t1 = plyr.maxHp - plyr.hp;
@@ -97,7 +97,7 @@ RoleEffect["英雄小子"] = {
 		chkd_cd_inf.name = "技能";
 		chkd_cd_inf.type = "attone";
 		chkd_cd_inf.counter = 1;
-		chkd_cd_inf.value = t1 + t2;
+		chkd_cd_inf.value = Math.floor((t1 + t2) / 2);
 
 		plyr.ac = plyr.maxAc;
 		plyr.hp = plyr.maxHp;

@@ -1403,7 +1403,397 @@ MON_DIMEN_15 = {
 	}]
 }
 
+MON_HERO_1 = {
+	"name": "土灵师",
+	"maxHp": 125, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 4,
+	"img": "hero/1599.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 25
+	}, {
+		"type": "att",
+		"value": 27
+	}, {
+		"type": "mag",
+		"value": 13
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_2 = {
+	"name": "恶魔海狸",
+	"maxHp": 100, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 2,
+	"img": "hero/恶魔海狸.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 15
+	}, {
+		"type": "att",
+		"value": 20
+	}, {
+		"type": "mag",
+		"value": 10
+	}]
+}
+MON_HERO_3 = {
+	"name": "水灵师",
+	"maxHp": 75, //最大生命
+	"maxAc": 125, //最大护甲
+	"star": 4,
+	"img": "hero/1600.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 25
+	}, {
+		"type": "mag",
+		"value": 14
+	}, {
+		"type": "mag",
+		"value": 13
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_4 = {
+	"name": "小魔蜥",
+	"maxHp": 75, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 2,
+	"img": "hero/小魔蜥.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 15
+	}, {
+		"type": "att",
+		"value": 20
+	}, {
+		"type": "att",
+		"value": 25
+	}]
+}
+MON_HERO_5 = {
+	"name": "火灵师",
+	"maxHp": 75, //最大生命
+	"maxAc": 125, //最大护甲
+	"star": 4,
+	"img": "hero/1601.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "fire",
+		"value": 25
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 14
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 13
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_6 = {
+	"name": "火狐",
+	"maxHp": 75, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 2,
+	"img": "hero/火狐.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "fire",
+		"value": 7
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 10
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 20
+	}]
+}
 
+MON_HERO_7 = {
+	"name": "风灵师",
+	"maxHp": 75, //最大生命
+	"maxAc": 100, //最大护甲
+	"star": 4,
+	"img": "hero/1602.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 35
+	}, {
+		"type": "att",
+		"value": 36
+	}, {
+		"type": "att",
+		"value": 40
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_8 = {
+	"name": "小龙",
+	"maxHp": 75, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 2,
+	"img": "hero/小龙.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 7
+	}, {
+		"type": "mag",
+		"value": 10
+	}, {
+		"type": "mag",
+		"value": 20
+	}]
+}
+MON_HERO_9 = {
+	"name": "暗灵使达克",
+	"maxHp": 75, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 4,
+	"img": "hero/暗灵使-达克.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 17
+	}, {
+		"type": "mag",
+		"value": 18
+	}, {
+		"type": "mag",
+		"value": 20
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_10 = {
+	"name": "眼球恶魔",
+	"maxHp": 75, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 2,
+	"img": "hero/眼球恶魔.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 20
+	}, {
+		"type": "att",
+		"value": 25
+	}, {
+		"type": "att",
+		"value": 30
+	}]
+}
+MON_HERO_11 = {
+	"name": "光灵使莱娜",
+	"maxHp": 75, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 4,
+	"img": "hero/光灵使-莱娜.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 40
+	}, {
+		"type": "att",
+		"value": 43
+	}, {
+		"type": "att",
+		"value": 45
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_12 = {
+	"name": "幸福天使",
+	"maxHp": 75, //最大生命
+	"maxAc": 25, //最大护甲
+	"star": 2,
+	"img": "hero/幸福天使.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 10
+	}, {
+		"type": "mag",
+		"value": 15
+	}, {
+		"type": "mag",
+		"value": 12
+	}]
+}
+MON_HERO_13 = {
+	"name": "英雄小子",
+	"maxHp": 50, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 2,
+	"img": "hero/英雄小子.jpg",
+	"actions": [{
+		"type": "att",
+		"value": 20
+	}, {
+		"type": "att",
+		"value": 15
+	}, {
+		"type": "att",
+		"value": 17
+	}]
+}
+MON_HERO_14 = {
+	"name": "冰凌侠",
+	"maxHp": 50, //最大生命
+	"maxAc": 150, //最大护甲
+	"star": 4,
+	"img": "hero/3618.jpg",
+	"actions": [{
+		"type": "mag",
+		"value": 12
+	}, {
+		"type": "mag",
+		"value": 13
+	}, {
+		"type": "mag",
+		"value": 30
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_15 = {
+	"name": "爆热女郎",
+	"maxHp": 75, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 4,
+	"img": "hero/爆热女郎1.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "fire",
+		"value": 12
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 25
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 30
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_16 = {
+	"name": "六级爆热女郎",
+	"maxHp": 150, //最大生命
+	"maxAc": 75, //最大护甲
+	"star": 6,
+	"img": "hero/爆热女郎2.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "fire",
+		"value": 12
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 30
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 40
+	}, {
+		"type": "heal",
+		"value": 80
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_17 = {
+	"name": "炽热侠",
+	"maxHp": 75, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 4,
+	"img": "hero/炽热侠.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "fire",
+		"value": 28
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 20
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 30
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
+MON_HERO_18 = {
+	"name": "炽炎女郎",
+	"maxHp": 50, //最大生命
+	"maxAc": 50, //最大护甲
+	"star": 4,
+	"img": "hero/炽炎女郎.jpg",
+	"actions": [{
+		"type": "mag",
+		"state": "fire",
+		"value": 28
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 25
+	}, {
+		"type": "mag",
+		"state": "fire",
+		"value": 30
+	}, {
+		"type": "heal",
+		"value": 50
+	}, {
+		"type": "arm",
+		"value": 50
+	}]
+}
 
 
 
@@ -1917,6 +2307,33 @@ MonList["MON_DIMEN_13"] = MON_DIMEN_13;
 MonList["MON_DIMEN_14"] = MON_DIMEN_14;
 MonList["MON_DIMEN_15"] = MON_DIMEN_15;
 
+MonList["MON_HERO_1"] = MON_HERO_1;
+MonList["MON_HERO_2"] = MON_HERO_2;
+MonList["MON_HERO_3"] = MON_HERO_3;
+MonList["MON_HERO_4"] = MON_HERO_4;
+MonList["MON_HERO_5"] = MON_HERO_5;
+MonList["MON_HERO_6"] = MON_HERO_6;
+MonList["MON_HERO_7"] = MON_HERO_7;
+MonList["MON_HERO_8"] = MON_HERO_8;
+MonList["MON_HERO_9"] = MON_HERO_9;
+MonList["MON_HERO_10"] = MON_HERO_10;
+MonList["MON_HERO_11"] = MON_HERO_11;
+MonList["MON_HERO_12"] = MON_HERO_12;
+MonList["MON_HERO_13"] = MON_HERO_13;
+MonList["MON_HERO_14"] = MON_HERO_14;
+MonList["MON_HERO_15"] = MON_HERO_15;
+MonList["MON_HERO_16"] = MON_HERO_16;
+MonList["MON_HERO_17"] = MON_HERO_17;
+MonList["MON_HERO_18"] = MON_HERO_18;
+
+
+
+
+
+
+
+
+
 
 //对卡牌进行注册
 CardList["CARD1"] = CARD1;
@@ -2327,7 +2744,114 @@ TaskList["task_dimen_18"] = {
 	"taskcontent": ["MON_DIMEN_14", "MON_DIMEN_15", "MON_DIMEN_14"],
 	"isComplete": "no"
 };
-
+TaskList["task_hero_1"] = {
+	"taskname": "task_hero_1",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_2", "MON_HERO_1", "MON_HERO_2"],
+	"isComplete": "no"
+};
+TaskList["task_hero_2"] = {
+	"taskname": "task_hero_2",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_4", "MON_HERO_3", "MON_HERO_4"],
+	"isComplete": "no"
+};
+TaskList["task_hero_3"] = {
+	"taskname": "task_hero_3",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_6", "MON_HERO_5", "MON_HERO_6"],
+	"isComplete": "no"
+};
+TaskList["task_hero_4"] = {
+	"taskname": "task_hero_4",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_8", "MON_HERO_7", "MON_HERO_8"],
+	"isComplete": "no"
+};
+TaskList["task_hero_5"] = {
+	"taskname": "task_hero_5",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_10", "MON_HERO_9", "MON_HERO_10"],
+	"isComplete": "no"
+};
+TaskList["task_hero_6"] = {
+	"taskname": "task_hero_6",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_12", "MON_HERO_11", "MON_HERO_12"],
+	"isComplete": "no"
+};
+TaskList["task_hero_7"] = {
+	"taskname": "task_hero_7",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_5", "MON_HERO_1", "MON_HERO_3"],
+	"isComplete": "no"
+};
+TaskList["task_hero_8"] = {
+	"taskname": "task_hero_8",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_5", "MON_HERO_7", "MON_HERO_3"],
+	"isComplete": "no"
+};
+TaskList["task_hero_9"] = {
+	"taskname": "task_hero_9",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_5", "MON_HERO_7", "MON_HERO_9"],
+	"isComplete": "no"
+};
+TaskList["task_hero_10"] = {
+	"taskname": "task_hero_10",
+	"task_env": "ENV_6",
+	"taskcontent": ["MON_HERO_11", "MON_HERO_7", "MON_HERO_9"],
+	"isComplete": "no"
+};
+TaskList["task_hero_11"] = {
+	"taskname": "task_hero_11",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_13", "MON_HERO_13", "MON_HERO_13"],
+	"isComplete": "no"
+};
+TaskList["task_hero_12"] = {
+	"taskname": "task_hero_12",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_13", "MON_HERO_14", "MON_HERO_13"],
+	"isComplete": "no"
+};
+TaskList["task_hero_13"] = {
+	"taskname": "task_hero_13",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_13", "MON_HERO_15", "MON_HERO_13"],
+	"isComplete": "no"
+};
+TaskList["task_hero_14"] = {
+	"taskname": "task_hero_14",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_13", "MON_HERO_16", "MON_HERO_13"],
+	"isComplete": "no"
+};
+TaskList["task_hero_15"] = {
+	"taskname": "task_hero_15",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_13", "MON_HERO_17", "MON_HERO_13"],
+	"isComplete": "no"
+};
+TaskList["task_hero_16"] = {
+	"taskname": "task_hero_16",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_13", "MON_HERO_18", "MON_HERO_13"],
+	"isComplete": "no"
+};
+TaskList["task_hero_17"] = {
+	"taskname": "task_hero_17",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_17", "MON_HERO_13", "MON_HERO_18"],
+	"isComplete": "no"
+};
+TaskList["task_hero_18"] = {
+	"taskname": "task_hero_18",
+	"task_env": "ENV_1",
+	"taskcontent": ["MON_HERO_16", "MON_HERO_15", "MON_HERO_14"],
+	"isComplete": "no"
+};
 
 
 
