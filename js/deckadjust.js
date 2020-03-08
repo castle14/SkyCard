@@ -98,7 +98,7 @@ $(function() {
 				extra_cards.forEach(function(item, index, arr) {
 					if (item.id == card_in_extra_id) {
 						card_star = item.star;
-						tmpdeck.push(item);
+						// tmpdeck.push(item);
 						arr.splice(index, 1);
 					}
 				});
