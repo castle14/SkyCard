@@ -167,11 +167,13 @@ CardEffect["死灵咒"] = {
 	}
 }
 CardEffect["DD炸弹"] = {
-	"desc": "给与目标当前HP一半的物理攻击.",
+	"desc": "给与目标当前HP一半的物理攻击，但不超过120点.",
 	"type": "attone",
 	"effect": function(plyr, com, turn, counter) {
 		let t = Math.floor(com.hp / 2);
-
+		if (t > 120) {
+			t = 120;
+		}
 		let = chkd_cd_inf = {};
 		chkd_cd_inf.name = "DD炸弹";
 		chkd_cd_inf.type = "attone";

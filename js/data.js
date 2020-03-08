@@ -2852,8 +2852,18 @@ TaskList["task_hero_18"] = {
 	"taskcontent": ["MON_HERO_16", "MON_HERO_15", "MON_HERO_14"],
 	"isComplete": "no"
 };
-
-
+TaskList["task_hero_19"] = {
+	"taskname": "task_hero_19",
+	"task_env": "ENV_8",
+	"taskcontent": ["MON_HERO_16", "MON_HERO_15", "MON_HERO_17"],
+	"isComplete": "no"
+};
+TaskList["task_hero_20"] = {
+	"taskname": "task_hero_20",
+	"task_env": "ENV_8",
+	"taskcontent": ["MON_HERO_16", "MON_HERO_18", "MON_HERO_17"],
+	"isComplete": "no"
+};
 
 
 
@@ -3048,10 +3058,10 @@ ENV_7 = {
 }
 ENV_8 = {
 	name: "天火的牢狱",
-	desc: "每6个回合,对某一带有燃烧状态的角色造成状态点数×5的魔法伤害,然后清除其燃烧状态.",
+	desc: "每4个回合,对某一带有燃烧状态的角色造成状态点数×5的魔法伤害,然后清除其燃烧状态.",
 	img: "bg/天火的牢狱.jpg",
 	effect: function(plyr, com1, com2, com3, turn) {
-		if (turn.index % 6 == 0) {
+		if (turn.index % 4 == 0) {
 			let role = null;
 			let role_arr = [];
 
