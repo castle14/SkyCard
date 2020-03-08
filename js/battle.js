@@ -7,6 +7,7 @@ var checkedCardInfo = null;
 var tmptasks = CommonUtil.getTaskState();
 var tmpRequest = CommonUtil.getRequest();
 var tmptaskname = tmpRequest["taskname"] ? tmpRequest["taskname"] : "task1";
+var tasklevel = tmpRequest["tasklevel"] ? tmpRequest["tasklevel"] : "1";
 
 function comMonBeHurt(divid) {
 	if ($("#" + divid).css('display') == "none") {
@@ -168,7 +169,13 @@ function refreshMonDiv(divid, monData) {
 				MySound.die();
 				if (Turn.comCounter == 0) {
 					Anim.showGlobalInfo("挑战成功！");
-					tmptasks[tmptaskname].isComplete = "yes";
+					if(tasklevel == 3){
+						tmptasks[tmptaskname].isCompleteHell = "yes";
+					}else if(tasklevel == 2){
+						tmptasks[tmptaskname].isCompleteHard = "yes";
+					}else{
+						tmptasks[tmptaskname].isComplete = "yes";
+					}
 					CommonUtil.saveTaskState(tmptasks);
 					let gmif = CommonUtil.getGameInfo();
 					gmif.win_counter += 1;
@@ -242,16 +249,16 @@ function initMonAndPlayer() {
 	if (task_env) {
 		env = window[task_env];
 	}
-
-	mon1 = MonData.getComInstance(MonList[monNameList[0]]);
+	tasklevel = Number(tasklevel);
+	mon1 = MonData.getComInstance(MonList[monNameList[0]], tasklevel);
 	mon1.name = mon1.name + "1";
 	mon1.div = "div1";
 	initMonDiv("div1", mon1);
-	mon2 = MonData.getComInstance(MonList[monNameList[1]]);
+	mon2 = MonData.getComInstance(MonList[monNameList[1]], tasklevel);
 	mon2.name = mon2.name + "2";
 	mon2.div = "div2";
 	initMonDiv("div2", mon2);
-	mon3 = MonData.getComInstance(MonList[monNameList[2]]);
+	mon3 = MonData.getComInstance(MonList[monNameList[2]], tasklevel);
 	mon3.name = mon3.name + "3";
 	mon3.div = "div3";
 	initMonDiv("div3", mon3);

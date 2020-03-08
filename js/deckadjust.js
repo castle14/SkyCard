@@ -28,6 +28,8 @@ function getTxColor(atttype) {
 }
 
 function refresh_extra_card_div() {
+	$(".content_div_1").html("");
+	extra_cards = extra_cards.sort(card_compare);
 	for (let i = 0; i < extra_cards.length; i++) {
 		let tmp_tx_color = getTxColor(extra_cards[i].type);
 		let tmp_card = extra_cards[i];
@@ -44,9 +46,15 @@ function refresh_extra_card_div() {
 		tmp_div_str = tmp_div_str + '</div></div>';
 		$(tmp_div_str).appendTo($(".content_div_1"));
 	}
+	$(".extra_card_div").on("click", function() {
+		$(".extra_card_div").removeClass("checked_div");
+		$(this).addClass("checked_div");
+	});
 }
 
 function refresh_deck_card_div() {
+	$(".content_div_2").html("");
+	tmpdeck = tmpdeck.sort(card_compare);
 	for (let j = 0; j < tmpdeck.length; j++) {
 		let tmp_tx_color = getTxColor(tmpdeck[j].type);
 		let tmp_card = tmpdeck[j];
@@ -63,6 +71,10 @@ function refresh_deck_card_div() {
 		tmp_div_str = tmp_div_str + '</div></div>';
 		$(tmp_div_str).appendTo($(".content_div_2"));
 	}
+	$(".deck_card_div").on("click", function() {
+		$(".deck_card_div").removeClass("checked_div");
+		$(this).addClass("checked_div");
+	});
 }
 
 
@@ -75,14 +87,8 @@ $(function() {
 	refresh_extra_card_div();
 	refresh_deck_card_div();
 	$("#checked_number_div span").text(CommonUtil.getGameInfo().star_counter);
-	$(".extra_card_div").on("click", function() {
-		$(".extra_card_div").removeClass("checked_div");
-		$(this).addClass("checked_div");
-	});
-	$(".deck_card_div").on("click", function() {
-		$(".deck_card_div").removeClass("checked_div");
-		$(this).addClass("checked_div");
-	});
+
+
 	$("#decompose_card_btn").on("click", function() {
 		let card_in_extra_id = $(".content_div_1 .checked_div").attr("card_info");
 		let card_star = 0;
@@ -98,7 +104,9 @@ $(function() {
 				});
 				tmp_gameinfo.star_counter += card_star;
 				CommonUtil.saveGameInfo(tmp_gameinfo);
-				location.reload();
+				// location.reload();
+				refresh_extra_card_div();
+				$("#checked_number_div span").text(CommonUtil.getGameInfo().star_counter);
 			}
 		}
 	});
@@ -129,7 +137,10 @@ $(function() {
 				tmp_gameinfo.star_counter -= 10;
 				CommonUtil.saveDeckStorage(tmpdeck.shuffle());
 				CommonUtil.saveGameInfo(tmp_gameinfo);
-				location.reload();
+				// location.reload();
+				refresh_extra_card_div();
+				refresh_deck_card_div();
+				$("#checked_number_div span").text(CommonUtil.getGameInfo().star_counter);
 			}
 		}
 	});

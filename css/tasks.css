@@ -38,11 +38,10 @@ body {
 }
 
 .task_div {
-	height: 74px;
+	height: 160px;
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 10px;
-	line-height: 74px;
 	background-color: black;
 	color: lightgrey;
 	font-size: 12px;
@@ -50,36 +49,57 @@ body {
 }
 
 .task_name_div {
-	height: 74px;
-	line-height: 18px; 
+	height: 30px;
+	line-height: 30px;
 	margin-left: 10px;
 	margin-right: 10px;
-	float: left;
+	font-weight: bolder;
+}
+
+.img_list_div {
+	height: 60px;
+	padding-left: 10px;
 }
 
 .task_img_div {
-	margin-top: 9px;
+	margin-top: 4px;
 	margin-right: 8px;
-	height: 54px;
-	width: 54px;
+	height: 80px;
+	width: 80px;
 	background-color: #008000;
 	float: left;
-	border:lightgrey solid 1px;
+	border: lightgrey solid 1px;
 }
-.task_img_div img{
-	height: 52px;
-	width: 52px;
+
+.task_img_div img {
+	height: 78px;
+	width: 78px;
 }
+
 .task_state_div {
-	height: 74px;
-	line-height: 74px;
-	margin-left: 5px;
-	float: left;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 10px;
+
 }
-.background_green{
+
+.task_state_1,
+.task_state_2,
+.task_state_3 {
+	height: 28px;
+	width: 80px;
+	text-align: center;
+	line-height: 28px;
+	float: left;
+	margin-right: 8px;
+	border: lightgrey solid 1px;
+	margin-top: 8px;
+}
+
+.background_green {
 	background-color: darkgreen;
 }
 
-.background_red{
+.background_red {
 	background-color: darkred;
 }

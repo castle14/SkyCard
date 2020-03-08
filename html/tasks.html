@@ -13,16 +13,16 @@
 				$(".back_div").on("click", function() {
 					location.href = "tasklist.html";
 				});
-				
+
 				let tsktype = CommonUtil.getRequest()["type"];
-				
+
 				let tmptasklist = CommonUtil.getTaskState();
 				if (tmptasklist == null) {
 					alert("TaskList is null");
 					return;
 				}
 				for (i in tmptasklist) {
-					if( tmptasklist[i].taskname.indexOf(tsktype) == -1){
+					if (tmptasklist[i].taskname.indexOf(tsktype) == -1) {
 						continue;
 					}
 					let tmp_div_str = '';
@@ -32,18 +32,34 @@
 					let tmp_mon_2 = MonList[mon_arr[2]];
 					let star_num = tmp_mon_0.star + tmp_mon_1.star + tmp_mon_2.star;
 					tmp_div_str = tmp_div_str + '<div class="task_div" task_name="' + i + '">';
-					tmp_div_str = tmp_div_str + '<div class="task_name_div"><br>' + tmptasklist[i].taskname + "<br>★×" + star_num + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="task_name_div">' + tmptasklist[i].taskname + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;★×" + star_num +
+						'</div>';
+					tmp_div_str = tmp_div_str + '<div class="img_list_div">';
 					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_0.img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_1.img + '"></div>';
 					tmp_div_str = tmp_div_str + '<div class="task_img_div"><img src="../img/' + tmp_mon_2.img + '"></div>';
-					let tml_color_class = tmptasklist[i].isComplete == "yes" ? "background_green" : "background_red";
-					tmp_div_str = tmp_div_str + '<div class="task_state_div"><span class="' + tml_color_class + '">' + 
-					(tmptasklist[i].isComplete == "yes" ? "完成" : "&nbsp？") + '</span></div>';
+					tmp_div_str = tmp_div_str + '</div>';
+					tmp_div_str = tmp_div_str + '<div class="task_state_div">';
+					let tml_color_class = tmptasklist[i].isComplete == "yes" ? "background_green" : "";
+					tmp_div_str = tmp_div_str + '<div class="task_state_1 ' + tml_color_class + '" task_name="' + i + '">简单</div>';
+					tml_color_class = tmptasklist[i].isCompleteHard == "yes" ? "background_green" : "";
+					tmp_div_str = tmp_div_str + '<div class="task_state_2 ' + tml_color_class + '" task_name="' + i + '">困难</div>';
+					tml_color_class = tmptasklist[i].isCompleteHell == "yes" ? "background_green" : "";
+					tmp_div_str = tmp_div_str + '<div class="task_state_3 ' + tml_color_class + '" task_name="' + i + '">地狱</div>';
+					tmp_div_str = tmp_div_str + '</div>';
 					tmp_div_str = tmp_div_str + '</div>';
 					$(tmp_div_str).appendTo($(".content_div"));
 				}
-				$(".task_div").on("click", function() {
-					let _url = "battle.html?taskname=" + $(this).attr("task_name");
+				$(".task_state_1").on("click", function() {
+					let _url = "battle.html?tasklevel=1&taskname=" + $(this).attr("task_name");
+					location.href = _url;
+				});
+				$(".task_state_2").on("click", function() {
+					let _url = "battle.html?tasklevel=2&taskname=" + $(this).attr("task_name");
+					location.href = _url;
+				});
+				$(".task_state_3").on("click", function() {
+					let _url = "battle.html?tasklevel=3&taskname=" + $(this).attr("task_name");
 					location.href = _url;
 				});
 			});
@@ -54,8 +70,19 @@
 		<div class="back_div">
 			&lt;-</div>
 		<div class="content_div">
-
-		</div>
+			<!-- <div class="task_div" task_name="task_test_1">
+				<div class="task_name_div">task_test_1 ★×6</div>
+				<div class="img_list_div">
+					<div class="task_img_div"><img src="../img/hat_mon.jpg"></div>
+					<div class="task_img_div"><img src="../img/hat_mon.jpg"></div>
+					<div class="task_img_div"><img src="../img/hat_mon.jpg"></div>
+				</div>
+				<div class="task_state_div">
+					<div class="task_state_1 background_green">简单</div>
+					<div class="task_state_2">困难</div>
+					<div class="task_state_3">地狱</div>
+				</div>
+			</div> -->
 		</div>
 	</body>
 </html>
