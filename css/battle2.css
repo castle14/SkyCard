@@ -1,0 +1,412 @@
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
+
+.header_div {
+	width: 100%;
+	height: 32px;
+	line-height: 32px;
+	background-color: black;
+	border-bottom: white solid 1px;
+	color: white;
+	text-align: center;
+}
+
+.env_info_div {
+	width: 25%;
+	height: 32px;
+	float: left;
+	border-right: white solid 1px;
+}
+
+.turn_info_div {
+	width: 50%;
+	height: 32px;
+	float: left;
+	border-right: white solid 1px;
+}
+
+.owner_info_div {
+	width: 25%;
+	height: 32px;
+	float: left;
+}
+
+.f_div {
+	width: 100%;
+	height: calc(100% - 152px);
+	background: url(../img/bg/暗.jpg) no-repeat top;
+	background-size: cover;
+	background-color: black;
+	border-bottom: white solid 1px;
+}
+
+.div1 {
+	/* background-color: grey; */
+	width: 80px;
+	height: 120px;
+	position: absolute;
+	right: calc(30% + 16px);
+	bottom: calc(50% + 20px);
+	border: grey solid 1px;
+	background-color: #000000;
+}
+
+.div2 {
+	/* background-color: grey; */
+	width: 80px;
+	height: 120px;
+	position: absolute;
+	right: calc(20% - 16px);
+	bottom: calc(50% + 20px);
+	border: grey solid 1px;
+	background-color: #000000;
+}
+
+.div3 {
+	/* background-color: grey; */
+	width: 80px;
+	height: 120px;
+	position: absolute;
+	right: calc(10% - 48px);
+	bottom: calc(50% + 20px);
+	border: grey solid 1px;
+	background-color: #000000;
+}
+
+.player_div {
+	width: 80px;
+	height: 120px;
+	position: absolute;
+	bottom: calc(50% - 40px);
+	border: grey solid 1px;
+	background-color: #000000;
+}
+#player_1 {
+	left: calc(10% - 48px);
+}
+#player_2 {
+	left: calc(20% - 16px);
+}
+#player_3 {
+	left: calc(30% + 16px);
+}
+.control_div {
+	background-color: black;
+	width: 100%;
+	height: 120px;
+	bottom: 0px;
+}
+.cards {
+	background-color: black;
+	width: calc(100% - 200px);
+	height: 120px;
+	bottom: 0px;
+}
+
+.card {
+	width: 67px;
+	height: 110px;
+	float: left;
+	border: grey solid 1px;
+	margin-top: 5px;
+	margin-left: calc(16.7% - 56px);
+}
+
+.card_checked {
+	border: yellow solid 1px;
+}
+
+.card_img_div {
+	width: 65px;
+	height: 65px;
+	background-color: yellow;
+}
+
+.card_img_div img {
+	width: 65px;
+	height: 65px;
+}
+
+.card_name_div {
+	width: 65px;
+	height: 23px;
+	line-height: 23px;
+	text-align: center;
+	color: lightgrey;
+	font-size: 10px;
+	border-top: grey solid 1px;
+	border-bottom: grey solid 1px;
+	background-color: darkslategrey;
+}
+
+.card_desc_div {
+	width: 65px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	color: lightgrey;
+	font-size: 10px;
+	background-color: darkslategrey;
+}
+
+#btn1 {
+	height: 60px;
+	width: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	border: darkred solid 1px;
+	position: absolute;
+	right: 5px;
+	top: calc(100% - 90px);
+	color: lightgrey;
+	text-align: center;
+	font-weight: bold;
+	background-color: darkred;
+	border-radius: 30px;
+}
+
+#btn2 {
+	height: 60px;
+	width: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	border: darkred solid 1px;
+	position: absolute;
+	right: 135px;
+	top: calc(100% - 90px);
+	color: lightgrey;
+	text-align: center;
+	font-weight: bold;
+	background-color: darkred;
+	border-radius: 30px;
+}
+
+#btn3 {
+	height: 60px;
+	width: 60px;
+	line-height: 60px;
+	font-size: 20px;
+	border: darkred solid 1px;
+	position: absolute;
+	right: 70px;
+	top: calc(100% - 90px);
+	color: lightgrey;
+	text-align: center;
+	font-weight: bold;
+	background-color: darkred;
+	border-radius: 30px;
+}
+
+#energy_info {
+	height: 20px;
+	width: 60px;
+	line-height: 20px;
+	font-size: 12px;
+	position: absolute;
+	right: 5px;
+	top: calc(100% - 255px);
+	color: lightgrey;
+	text-align: center;
+	font-weight: bold;
+}
+
+#att_info {
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	right: 65px;
+	left: 65px;
+	bottom: 120px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 10px;
+	background-color: #00000099;
+}
+
+#deck_info {
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	right: 65px;
+	left: 65px;
+	bottom: 140px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 10px;
+	border-bottom: lightgrey solid 1px;
+	background-color: #00000099;
+}
+
+#other_info {
+	min-height: 20px;
+	position: absolute;
+	right: 65px;
+	left: 65px;
+	bottom: 160px;
+	color: lightgrey;
+	text-align: center;
+	font-size: 10px;
+	border-bottom: lightgrey solid 1px;
+	background-color: #00000099;
+}
+
+.blood {
+	height: 10px;
+	width: 10px;
+	border: red solid 1px;
+	border-radius: 3px;
+	background-color: red;
+	position: absolute;
+}
+
+.arm {
+	height: 10px;
+	width: 80px;
+	background-color: saddlebrown;
+	position: absolute;
+}
+
+.heal {
+	height: 10px;
+	width: 80px;
+	background-color: green;
+	position: absolute;
+}
+
+.hp_change {
+	height: 18px;
+	width: 80px;
+	text-align: center;
+	line-height: 18px;
+	position: absolute;
+	color: red;
+}
+
+.mon {}
+
+.mon_checked {
+	border: yellow solid 1px;
+}
+
+.pic_div img {
+	width: 78px;
+	height: 78px;
+}
+
+.hp_bar {
+	width: 78px;
+	height: 12px;
+	border-top: gray solid 1px;
+	border-bottom: gray solid 1px;
+	background-color: black;
+}
+
+.hp_number {
+	width: 1%;
+	height: 6px;
+	background-color: green;
+	margin-top: 2px;
+}
+
+.pic_div {
+	width: 78px;
+	height: 78px;
+	background-color: gold;
+}
+
+.shield_bar {
+	width: 78px;
+	height: 10px;
+	border-bottom: gray solid 1px;
+	background-color: black;
+}
+
+.shield_number {
+	width: 1%;
+	height: 6px;
+	background-color: saddlebrown;
+	margin-top: 2px;
+}
+
+.state_bar,
+.mon_info_bar {
+	width: 100%;
+	height: 16px;
+	/* background: #333333; */
+	color: lightgrey;
+	text-align: center;
+	line-height: 16px;
+	font-size: 12px;
+}
+
+.mon_info_bar {
+	background: #333333;
+}
+.state_ele {
+	height: 12px;
+	width: 12px;
+	background-color: dodgerblue;
+	margin-left: 2px;
+	margin-top: 3px;
+	line-height: 12px;
+	border-radius: 1px;
+	float: left;
+}
+.state_fire {
+	height: 12px;
+	width: 12px;
+	background-color: orangered;
+	margin-left: 2px;
+	margin-top: 3px;
+	line-height: 12px;
+	border-radius: 1px;
+	float: left;
+}
+/* .ele {
+	height: 3px;
+	width: 1px;
+	background-color: #09dbdb;
+	position: absolute;
+	border-top: yellow solid 1px;
+	border-bottom: yellow solid 1px;
+} */
+.ele {
+	height: 3px;
+	width: 1px;
+	background-color: yellow;
+	position: absolute;
+	border-top: lightyellow solid 1px;
+	border-bottom: lightyellow solid 1px;
+}
+
+.eff_light {
+	height: 8px;
+	width: 8px;
+	background-color: yellow;
+	position: absolute;
+	border-radius: 4px;
+}
+
+.global_info {
+	height: 32px;
+	width: 100%;
+	color: lightyellow;
+	position: absolute;
+	background-color: #00000099;
+	text-align: center;
+	line-height: 32px;
+	font-size: 24px;
+}
+
+.pointer_div_blue {
+	height: 10px;
+	width: 10px;
+	border: blue solid 1px;
+	border-radius: 5px;
+	background-color: blue;
+	position: absolute;
+}
