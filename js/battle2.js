@@ -28,7 +28,7 @@ function initClick() {
 		player3.gotoAtt();
 	});
 }
-
+// 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
 
 
 
